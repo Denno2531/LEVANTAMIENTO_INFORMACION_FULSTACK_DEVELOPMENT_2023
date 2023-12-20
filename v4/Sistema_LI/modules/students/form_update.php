@@ -47,15 +47,15 @@ if ($result = $conexion->query($sql)) {
 					<label for="txtusername" class="label">Nombre</label>
 					<input id="txtusername" class="text" type="text" name="txtname"
 						value="<?php echo $_SESSION['student_name']; ?>" placeholder="Nombre" autofocus maxlength="30"
-						required />
+						disabled/>
 					<label for="txtusersurnames" class="label">Apellidos</label>
 					<input id="txtusersurnames" class="text" type="text" name="txtsurnames"
 						value="<?php echo $_SESSION['student_surnames']; ?>" placeholder="Apellidos" maxlength="60"
-						required />
+						disabled />
 					<label for="txtuseremail" class="label">Correo</label>
 					<input id="txtuseremail" class="text" type="email" name="txtemailupdate"
 						value="<?php echo $_SESSION['email']; ?>" placeholder="ejemplo@email.com" maxlength="200"
-						autofocus />
+						autofocus disabled />
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 					<input id="dateofbirth" class="date" type="date" name="dateofbirth"
 						value="<?php echo $_SESSION['student_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}"
@@ -200,15 +200,15 @@ if ($result = $conexion->query($sql)) {
 					<label for="txtusercedula" class="label">Cédula</label>
 					<input id="txtusercedula" class="text" type="text" name="txtcedula"
 						value="<?php echo $_SESSION['student_cedula']; ?>" placeholder="Cédula de Identidad"
-						pattern="[0-9]{10}" maxlength="10" required />
+						pattern="[0-9]{10}" maxlength="10" required disabled/>
 					<label for="txtuserpass" class="label">Contraseña</label>
 					<input id="txtuserpass" class="text" type="password" name="txtpass"
-						placeholder="XXXXXXXXX"
+						placeholder="************ "
 						pattern="[A-Za-z0-9]{8}" maxlength="8" />
 					<label for="txtuserid" class="label">ID</label>
 					<input id="txtuserid" class="text" type="text" name="txtid"
 						value="<?php echo $_SESSION['student_id']; ?>" placeholder="L00XXXXXXX" pattern="[A-Za-z0-9]{9}"
-						maxlength="9" onkeyup="this.value = this.value.toUpperCase()" required />
+						maxlength="9" onkeyup="this.value = this.value.toUpperCase()" disabled />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
 					<input id="txtuserphone" class="text" type="text" name="txtphone"
 						value="<?php echo $_SESSION['student_phone']; ?>" pattern="[0-9]{10}"
