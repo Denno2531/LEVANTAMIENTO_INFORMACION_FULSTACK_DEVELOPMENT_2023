@@ -128,7 +128,7 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
 <!-- Muestra Notificaciones -->
 <div class="content-aside">
     <?php
-        $start_index = max(0, $_SESSION['total_not'] - 8); // Comienza desde el índice que mostrará las últimas 5 notificaciones
+        $start_index = max(0, $_SESSION['total_not'] - 5); // Comienza desde el índice que mostrará las últimas 5 notificaciones
         for ($i = $start_index; $i < $_SESSION['total_not']; $i++) {
             mysqli_data_seek($result, $i);
             $row = mysqli_fetch_array($result);
