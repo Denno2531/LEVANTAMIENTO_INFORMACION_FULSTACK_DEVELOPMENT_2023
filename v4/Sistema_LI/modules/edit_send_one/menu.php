@@ -81,7 +81,7 @@ if ($result = $conexion->query($sql)) {
       </div>
 
       <div class="item downLeft rounded-blue-box">
-        <h2 >Envío 1</h2>
+        <h2 >Envío 1 y Record Academico</h2>
         <form action="" method="POST">
           <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
           <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />

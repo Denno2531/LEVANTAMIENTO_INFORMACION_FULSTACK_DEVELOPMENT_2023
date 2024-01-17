@@ -70,7 +70,7 @@ if (strpos($url_actual, 'modules')) {
                         } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span>Justificaciones</a></li>
          <li><a class="<?php if ($output[1] == 'Envio_1') {
                             echo 'active';
-                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span>Envio 1</a></li>
+                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span>Envio 1 y Record academico</a></li>
         <li><a class="<?php if ($output[1] == 'Envio_2') {
                             echo 'active';
                         } ?>" href="/modules/send_two"><span class="icon">recent_actors</span>Envio 2</a></li>
