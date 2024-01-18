@@ -2964,3 +2964,12 @@ ul li a.student-list {
   color: black !important; /* Cambia el color del texto a negro */
   padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
 }
+
+.btn {
+  color: black !important; /* Cambia el color del texto a negro */
+  padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
+}
+.btnedit {
+  color: black !important; /* Cambia el color del texto a negro */
+  padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
+}
