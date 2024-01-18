@@ -2960,3 +2960,7 @@ ul li a.student-list {
   border-radius: 10em;
   pointer-events: none;
 }
+.btnview {
+  color: black !important; /* Cambia el color del texto a negro */
+  padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
+}

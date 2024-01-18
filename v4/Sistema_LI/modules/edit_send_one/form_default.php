@@ -61,7 +61,7 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
 								<form action="" method="POST">
 									<input style="display:none;" type="text" id="texuserid" name="txtuserid" value="' . $_SESSION["user_id"][$i] . '"/>
 									<input style="display:none;" type="text" id="txtname" name="txtname" value="' . $_SESSION["student_name"][$i] . '"/>
-									<button class="btnview" name="btn" value="menu" type="submit"></button>
+									<button class="btnview" name="btn" value="menu" type="submit">Ver</button>
 								</form>
 							</td>
 						</tr>
