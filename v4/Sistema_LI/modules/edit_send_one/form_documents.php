@@ -112,12 +112,12 @@ if (!empty($_POST['search'])) {
 														<td> 
 															<div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
 															title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
-															name="btn" value="form_consult" type="submit">Ver</button>
+															name="btn" value="form_consult" type="submit"></button>
 														</td>
 														<td>
 															<form action="" method="POST">
 																<input style="display:none;" type="text" name="txtuserid" value="'.$archivo.'"/>
-																<button class="btnedit" name="btn" value="form_update" type="submit">Editar</button>
+																<button class="btnedit" name="btn" value="form_update" type="submit"></button>
 															</form>
 														</td>													
 													</tr>';         
