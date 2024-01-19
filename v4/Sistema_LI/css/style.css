@@ -2961,12 +2961,3 @@ ul li a.student-list {
   pointer-events: none;
 }
 
-.btnview {
-  color: black !important; /* Cambia el color del texto a negro */
-  padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
-}
-
-.btnedit {
-  color: black !important; /* Cambia el color del texto a negro */
-  padding-top: 20px; /* Añade espacio en la parte superior para empujar el texto hacia abajo */
-}
