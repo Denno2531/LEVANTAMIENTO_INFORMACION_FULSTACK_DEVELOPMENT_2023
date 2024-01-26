@@ -26,7 +26,9 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="txtusersurnames" class="label">Apellidos</label>
                     <input id="txtusersurnames" class="text" type="text" name="txtsurnames" placeholder="Apellidos" value="" maxlength="60" required />
                     <label for="dateofbirth" class="label">Fecha de nacimiento</label>
-                    <input id="dateuseradmission" class="date" type="date" name="dateofbirth" value="<?php echo date('Y-m-d'); ?>" required />                    
+                    <input id="dateuseradmission" class="date" type="date" name="dateofbirth" value="<?php echo date('Y-m-d'); ?>" required /> 
+                    <label for="txtuseraddress" class="label">Ciudad</label>
+                    <input id="txtusercity" class="text" type="city" name="txtcity" value="" placeholder="ciudad" maxlength="200" required />                   
                 </div>
                 <div class="last">
                     <label for="selectgender" class="label">Género</label>
@@ -44,6 +46,13 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="txtuserphone" class="text" type="text" name="txtphone" value="" placeholder="09999XXXXX" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." maxlength="10" required />
                     <label for="txtuseraddress" class="label">Correo Electrónico</label>
                     <input id="txtuseraddress" class="text" type="email" name="txtaddress" value="" placeholder="ejemplo@email.com" maxlength="200" required />
+                    <label for="selectorganization" class="label">Organizacion</label>
+                    <select id="selectorganization" class="select"  name="selectorganization" required >
+                    <option value="">Seleccione</option>
+                        <option value="Espe">Espe</option>
+                        <option value="USP">Osr</option>
+                        <option value="otro">Otro</option>                        
+                    </select>
                 </div>
             </div>
             
