@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('America/Guayaquil');
 
-$conexion = mysqli_connect("localhost", "root", "Keyner1250@K", "db_li");
+$conexion = mysqli_connect("localhost", "root", "Gabriel2616", "db_li");
 
 if (mysqli_connect_errno()) {
 	printf("Falló la conexión a la base de datos: %s\n", mysqli_connect_error());
