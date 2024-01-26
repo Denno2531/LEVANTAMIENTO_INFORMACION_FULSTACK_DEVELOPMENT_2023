@@ -49,7 +49,7 @@ if ($result = $conexion->query($sql)) {
 			$sql_update = "UPDATE users SET name = '" . trim($_POST['txtname']) . "', surnames = '" . trim($_POST['txtsurnames']) . "', email = '" . trim($_POST['txtaddress']) . "', pass = '" . trim($_POST['txtpass']) . "' WHERE user = '" . trim($_POST['txtuserid']) . "'";
 
 		if (mysqli_query($conexion, $sql_update)) {
-			Info('Emprendedor actualizado.');
+			Info('Beneficiario actualizado.');
 		} else {
 			Error('Error al actualizar.');
 		}
@@ -57,7 +57,7 @@ if ($result = $conexion->query($sql)) {
 		header('Location: /user');
 		exit();
 	} else {
-		Error('Este ID de emprendedor no existe.');
+		Error('Este ID de beneficiario no existe.');
 		header('Location: /user');
 		exit();
 	}
