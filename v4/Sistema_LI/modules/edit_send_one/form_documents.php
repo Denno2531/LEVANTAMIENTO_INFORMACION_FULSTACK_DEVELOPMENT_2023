@@ -107,7 +107,7 @@ if (!empty($_POST['search'])) {
 													echo '
 													<tr>
 														<td>' . $archivo . '</td>
-														<td>' . $_SESSION["send_estado"] . '</td>
+														<td>' . $_SESSION['state'] . '</td>
 														<td>' . $_SESSION["send_created"] . '</td>
 														<td>' . $_SESSION["send_updated"] . '</td>
 														<td> 

@@ -34,7 +34,7 @@ if ($result = $conexion->query($sql)) {
 
 			if (mysqli_query($conexion, $sql_insert_administrative)) {
 
-				Info('eneficiario agregado.');
+				Info('Beneficiario agregado.');
 			} else {
 				$sql_delete_users = "DELETE FROM users WHERE user = '" . trim($_POST['txtuserid']) . "'";
 
