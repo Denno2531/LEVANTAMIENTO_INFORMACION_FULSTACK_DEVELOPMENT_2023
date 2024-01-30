@@ -39,6 +39,7 @@ if (!empty($_POST['search'])) {
 	$sql = "SELECT * FROM send_one WHERE num LIKE '%" . $_POST['search'] . "%' OR archivo LIKE '%" . $_POST['search'] . "%' OR user LIKE '%" . $_POST['search'] . "%' OR descripcion LIKE '%" . $_POST['search'] . "%' ORDER BY num";
 
 	if ($result = $conexion->query($sql)) {
+		$i = 0;
 		while ($row = mysqli_fetch_array($result)) {
 			$_SESSION['num'][$i] = $row['num'];
 			$_SESSION['send_archivo'][$i] = $row['archivopdf'];
@@ -107,7 +108,7 @@ if (!empty($_POST['search'])) {
 													echo '
 													<tr>
 														<td>' . $archivo . '</td>
-														<td>' . $_SESSION['state'] . '</td>
+														<td>' . $_SESSION['send_estado'] . '</td>
 														<td>' . $_SESSION["send_created"] . '</td>
 														<td>' . $_SESSION["send_updated"] . '</td>
 														<td> 
@@ -121,7 +122,8 @@ if (!empty($_POST['search'])) {
 																<button class="btnedit" name="btn" value="form_update" type="submit"></button>
 															</form>
 														</td>													
-													</tr>';         
+													</tr>';  
+													$i += 1;       
                         }
                     }
                 }
