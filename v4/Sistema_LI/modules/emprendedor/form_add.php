@@ -27,8 +27,8 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="txtusersurnames" class="text" type="text" name="txtsurnames" placeholder="Apellidos" value="" maxlength="60" required />
                     <label for="dateofbirth" class="label">Fecha de nacimiento</label>
                     <input id="dateuseradmission" class="date" type="date" name="dateofbirth" value="<?php echo date('Y-m-d'); ?>" required /> 
-                    <label for="txtuseraddress" class="label">Ciudad</label>
-                    <input id="txtusercity" class="text" type="city" name="txtcity" value="" placeholder="ciudad" maxlength="200" required />
+                    <label for="txtcity" class="label">Ciudad</label>
+                    <input id="txtcity" class="text" type="text" name="txtcity" value="" placeholder="ciudad" maxlength="50" required />
                     <div class="descri">   
                     <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
                         <input id="txtworkinghours" class="text" type="hidden" name="txtworkinghours" value=""
@@ -39,8 +39,8 @@ $id_generate = 'empre-' . unique_id(5);
                                 <input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtuserworkinghours_start">
                             </div>
                             <div>
-                              <label for="txtuserworkinghours_end" class="text">Cerrado:</label>
-                              <input id="txtuserworkinghours_end" class="hour-input" type="time" name="txtuserworkinghours_end">
+                              <label for="txtworkinghours_end" class="text">Cerrado:</label>
+                              <input id="txtworkinghours_end" class="hour-input" type="time" name="txtuserworkinghours_end">
                             <!-- <button id="addHourBtn" class="btn icon"><i
                                 class="fas fa-plus-circle fa-lg fa-spin"></i></button> -->
                             </div>
@@ -103,6 +103,7 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="txtuserphone" class="text" type="text" name="txtphone" value="" placeholder="09999XXXXX" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." maxlength="10" required />
                     <label for="txtuseraddress" class="label">Correo Electrónico</label>
                     <input id="txtuseraddress" class="text" type="email" name="txtaddress" value="" placeholder="ejemplo@email.com" maxlength="200" required />
+                    <div class="eight">
                     <label for="selectorganization" class="label">Organización</label>
                     <select id="selectorganization" class="select"  name="selectorganization" required >
                     <option value="">Seleccione</option>
@@ -111,8 +112,9 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Cooprede">COOPREDE</option>
                         <option value="otro">Otro</option>                        
                     </select>
+                    </div>
                     <label for="txtnameorganization" class="label">Nombre de empredimiento</label>
-                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="60" />
+                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" />
                     <div class="second">
                     <label for="selectstate" class="label">Estado</label>
                     <select id="selectstate" class="select" name="selectstate" required>
