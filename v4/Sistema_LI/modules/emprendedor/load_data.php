@@ -28,6 +28,21 @@ if ($result = $conexion->query($sql)) {
 				$_SESSION['empre_name'] = array();
 				$_SESSION['empre_surname'] = array();
 				$_SESSION['empre_date'] = array();
+				$_SESSION['empre_city'] = array();
+				$_SESSION['empre_workinghours'] = array();
+				$_SESSION['empre_education'] = array();
+				$_SESSION['empre_socialnetworks'] = array();
+				$_SESSION['empre_salesyear'] = array();
+				$_SESSION['empre_heritage'] = array();
+				$_SESSION['empre_gender'] = array();
+				$_SESSION['empre_pass'] = array();
+				$_SESSION['empre_phone'] = array();
+				$_SESSION['empre_email'] = array();
+				$_SESSION['empre_organization'] = array();
+				$_SESSION['empre_nameorganization'] = array();
+				$_SESSION['empre_state'] = array();
+				$_SESSION['empre_startdate'] = array();
+				$_SESSION['empre_socialsales'] = array();
 
 				$i = 0;
 
@@ -38,7 +53,23 @@ if ($result = $conexion->query($sql)) {
 						$_SESSION['user_id'][$i] = $row['user'];
 						$_SESSION['empre_name'][$i] = $row['name'];
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
-						$_SESSION['empre_date'][$i] = $row['email'];
+						$_SESSION['empre_date'][$i] = $row['dateofbirth'];
+						$_SESSION['empre_city'][$i] = $row['city'];
+						$_SESSION['empre_workinghours'][$i] = $row['workinghours'];
+						$_SESSION['empre_education'][$i] = $row['education'];
+						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
+						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
+						$_SESSION['empre_heritage'][$i] = $row['heritage'];
+						$_SESSION['empre_gender'][$i] = $row['gender'];
+						$_SESSION['empre_pass'][$i] = $row['pass'];
+						$_SESSION['empre_phone'][$i] = $row['phone'];
+						$_SESSION['empre_email'][$i] = $row['email'];
+						$_SESSION['empre_organization'][$i] = $row['organization'];
+						$_SESSION['empre_nameorganization'][$i] = $row['nameorganization'];
+						$_SESSION['empre_state'][$i] = $row['state'];
+						$_SESSION['empre_startdate'][$i] = $row['startdate'];
+						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
+
 
 						$i += 1;
 					}
@@ -49,6 +80,21 @@ if ($result = $conexion->query($sql)) {
 				$_SESSION['empre_name'] = array();
 				$_SESSION['empre_surname'] = array();
 				$_SESSION['empre_date'] = array();
+				$_SESSION['empre_city'] = array();
+				$_SESSION['empre_workinghours'] = array();
+				$_SESSION['empre_education'] = array();
+				$_SESSION['empre_socialnetworks'] = array();
+				$_SESSION['empre_salesyear'] = array();
+				$_SESSION['empre_heritage'] = array();
+				$_SESSION['empre_gender'] = array();
+				$_SESSION['empre_pass'] = array();
+				$_SESSION['empre_phone'] = array();
+				$_SESSION['empre_email'] = array();
+				$_SESSION['empre_organization'] = array();
+				$_SESSION['empre_nameorganization'] = array();
+				$_SESSION['empre_state'] = array();
+				$_SESSION['empre_startdate'] = array();
+				$_SESSION['empre_socialsales'] = array();
 
 				$i = 0;
 
@@ -60,6 +106,21 @@ if ($result = $conexion->query($sql)) {
 						$_SESSION['empre_name'][$i] = $row['name'];
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
 						$_SESSION['empre_date'][$i] = $row['email'];
+						$_SESSION['empre_city'][$i] = $row['city'];
+						$_SESSION['empre_workinghours'][$i] = $row['workinghours'];
+						$_SESSION['empre_education'][$i] = $row['education'];
+						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
+						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
+						$_SESSION['empre_heritage'][$i] = $row['heritage'];
+						$_SESSION['empre_gender'][$i] = $row['gender'];
+						$_SESSION['empre_pass'][$i] = $row['pass'];
+						$_SESSION['empre_phone'][$i] = $row['phone'];
+						$_SESSION['empre_email'][$i] = $row['email'];
+						$_SESSION['empre_organization'][$i] = $row['organization'];
+						$_SESSION['empre_nameorganization'][$i] = $row['nameorganization'];
+						$_SESSION['empre_state'][$i] = $row['state'];
+						$_SESSION['empre_startdate'][$i] = $row['startdate'];
+						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
 
 						$i += 1;
 					}
