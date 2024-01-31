@@ -43,6 +43,8 @@ if ($result = $conexion->query($sql)) {
 				$_SESSION['empre_state'] = array();
 				$_SESSION['empre_startdate'] = array();
 				$_SESSION['empre_socialsales'] = array();
+				$_SESSION['empre_id'] = array();//nuevo campo creado
+
 
 				$i = 0;
 
@@ -69,6 +71,7 @@ if ($result = $conexion->query($sql)) {
 						$_SESSION['empre_state'][$i] = $row['state'];
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
+						$_SESSION['empre_id'][$i] = $row['id'];//Crear el nuevo campo
 
 
 						$i += 1;
@@ -95,6 +98,7 @@ if ($result = $conexion->query($sql)) {
 				$_SESSION['empre_state'] = array();
 				$_SESSION['empre_startdate'] = array();
 				$_SESSION['empre_socialsales'] = array();
+				$_SESSION['empre_id'] = array();//Crear el nuevo campo
 
 				$i = 0;
 
@@ -121,6 +125,7 @@ if ($result = $conexion->query($sql)) {
 						$_SESSION['empre_state'][$i] = $row['state'];
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
+						$_SESSION['empre_id'][$i] = $row['id'];//Crear el nuevo campo
 
 						$i += 1;
 					}
