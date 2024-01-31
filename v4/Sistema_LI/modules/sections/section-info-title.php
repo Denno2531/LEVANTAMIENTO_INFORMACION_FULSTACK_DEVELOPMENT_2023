@@ -39,6 +39,8 @@ if (strpos($url_actual, 'modules')) {
         $_SESSION['title_form_section'] = 'Documentación';
     }elseif ($name_page[1] == 'send_two') {
         $_SESSION['title_form_section'] = 'Envío 2';
+    }elseif ($name_page[1] == 'certification') {
+        $_SESSION['title_form_section'] = 'Certificación';
     }
 
 } elseif (strpos($url_actual, 'user')) {

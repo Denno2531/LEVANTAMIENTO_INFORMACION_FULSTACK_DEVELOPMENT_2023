@@ -88,6 +88,7 @@ if ($result = $conexion->query($sql)) {
           <button class="btn-menu-editor" id="btnSave" value="form_documents" name="btn" type="submit">Ver</button>
         </form>
       </div>
+
       <div class="item downLeft rounded-blue-box">
         <h2 >Envío 2</h2>
         <form action="" method="POST">
@@ -96,6 +97,16 @@ if ($result = $conexion->query($sql)) {
           <button class="btn-menu-editor" id="btnSave" value="form_sendtwo" name="btn" type="submit">Ver</button>
         </form>
       </div>
+
+      <div class="item downLeft rounded-blue-box">
+        <h2 >Certificado</h2>
+        <form action="" method="POST">
+          <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
+          <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />
+          <button class="btn-menu-editor" id="btnSave" value="form_documents" name="btn" type="submit">Ver</button>
+        </form>
+      </div>
+
     </div>
   </table>  
 </div>

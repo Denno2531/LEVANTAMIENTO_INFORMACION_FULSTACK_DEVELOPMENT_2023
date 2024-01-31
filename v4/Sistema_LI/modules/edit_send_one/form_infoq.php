@@ -135,7 +135,7 @@ if (!empty($_POST['search'])) {
 				<img src="/images/404.svg" class="data-not-found" alt="404">
 		';
 	}
-	if ($_SESSION['total_infoq'] != 0) {
+	/*if ($_SESSION['total_infoq'] != 0) {
 		echo '
 				<div class="pages">
 					<ul>
@@ -151,7 +151,7 @@ if (!empty($_POST['search'])) {
 					</ul>
 				</div>
 		';
-	}
+	}*/
 
 
 	?>
