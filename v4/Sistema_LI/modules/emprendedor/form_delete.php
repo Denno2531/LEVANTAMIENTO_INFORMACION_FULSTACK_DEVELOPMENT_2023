@@ -8,7 +8,7 @@ require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php
     <div class="delete">
         <h1>¿Estas seguro?</h1>
         <h2>¡Se borrará de forma permanente!</h2>
-        <form name="form-delete-administratives" action="delete.php" method="POST">
+        <form name="form-delete-emprendedor" action="delete.php" method="POST">
             <input style="display: none;" type="text" name="txtuserid" value="<?php echo $_POST['txtuserid']; ?>" />
             <button id="btnYesDelete" class="btn-si" type="submit" autofocus>¡Si, bórralo!</button>
         </form>
