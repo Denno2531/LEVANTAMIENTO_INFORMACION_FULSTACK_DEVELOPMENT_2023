@@ -108,7 +108,16 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
+		$_SESSION['empre_salesyear1'] = $row['salesyear1'];
+		$_SESSION['empre_salesyear2'] = $row['salesyear2'];
+		$_SESSION['empre_salesyear3'] = $row['salesyear3'];
+		$_SESSION['empre_salesyear4'] = $row['salesyear4'];
 		$_SESSION['empre_heritage'] = $row['heritage'];		
+		$_SESSION['empre_heritage1'] = $row['heritage1'];		
+		$_SESSION['empre_heritage2'] = $row['heritage2'];		
+		$_SESSION['empre_heritage3'] = $row['heritage3'];		
+		$_SESSION['empre_heritage4'] = $row['heritage4'];		
+
 
 		
 	}

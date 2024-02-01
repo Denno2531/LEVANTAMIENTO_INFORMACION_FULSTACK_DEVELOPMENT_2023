@@ -63,22 +63,32 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="No">No</option>                        
                     </select>
                     </div>
-                    <div class="five">
-                    <label for="inputsalesyear" class="label">Ventas por año</label>
-                    <input id="inputsalesyear" class="input" placeholder="Año 2019"  name="inputsalesyear" required>
-                    <input id="inputsalesyear1" class="input" placeholder="Año 2020" name="inputsalesyear1" required>
-                    <input id="inputsalesyear2" class="input" placeholder="Año 2021" name="inputsalesyear2" required>
-                    <input id="inputsalesyear3" class="input" placeholder="Año 2022" name="inputsalesyear3" required>
-                    <input id="inputsalesyear4" class="input" placeholder="Año 2023" name="inputsalesyear4" required>
+                    
+                    <div class="twenty">
+                    <label for="salesyear" class="label">Ventas de año 2019</label>
+                    <input id="salesyear" class="text" type="text" name="salesyear" placeholder="Ventas del año 2019" value="<?php echo isset($_POST['salesyear']) ? htmlspecialchars($_POST['salesyear']) : ''; ?>" maxlength="50" required />
                     </div>
-                    <div class="six">
-                    <label for="inputheritage" class="label">Patrimonio</label>
-                    <input id="inputheritage" class="input" placeholder="Año 2019"  name="inputheritage" required>
-                    <input id="inputheritage1" class="input" placeholder="Año 2020" name="inputheritage1" required>
-                    <input id="inputheritage2" class="input" placeholder="Año 2021" name="inputheritage2" required>
-                    <input id="inputheritage3" class="input" placeholder="Año 2022" name="inputheritage3" required>
-                    <input id="inputheritage4" class="input" placeholder="Año 2023" name="inputheritage4" required>
+
+                    <div class="eleven">
+                    <label for="salesyear1" class="label">Ventas de año 2020</label>
+                    <input id="salesyear1" class="text" type="text" name="salesyear1" placeholder="Ventas del año 2020" value="<?php echo isset($_POST['salesyear1']) ? htmlspecialchars($_POST['salesyear1']) : ''; ?>" maxlength="50" required />
                     </div>
+
+                    <div class="third">
+                    <label for="salesyear2" class="label">Ventas de año 2021</label>
+                    <input id="salesyear2" class="text" type="text" name="salesyear2" placeholder="Ventas del año 2021" value="<?php echo isset($_POST['salesyear2']) ? htmlspecialchars($_POST['salesyear2']) : ''; ?>" maxlength="50" required />
+                    </div>
+
+                    <div class="fourth">
+                    <label for="salesyear3" class="label">Ventas de año 2022</label>
+                    <input id="salesyear3" class="text" type="text" name="salesyear3"  placeholder="Ventas del año 2022" value="<?php echo isset($_POST['salesyear3']) ? htmlspecialchars($_POST['salesyear3']) : ''; ?>" maxlength="50" required />
+                    </div>
+                    
+                    <div class="one">
+                    <label for="salesyear4" class="label">Ventas de año 2023</label>
+                    <input id="salesyear4" class="text" type="text" name="salesyear4" placeholder="Ventas del año 2023"  value="<?php echo isset($_POST['salesyear4']) ? htmlspecialchars($_POST['salesyear4']) : ''; ?>" maxlength="50" required />
+                    </div>
+                   
                     </div>
                     </div>
                     <div class="label" id="hourListContainer">
@@ -132,6 +142,32 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Si">Si</option>
                         <option value="No">No</option>                        
                     </select>
+                    </div>
+                    
+
+                    <div class="twenty-one">
+                    <label for="heritage" class="label">Patrimonio de año 2019</label>
+                    <input id="heritage" class="text" type="text" name="heritage" placeholder="Patrimonio del año 2019" value="<?php echo isset($_POST['heritage']) ? htmlspecialchars($_POST['heritage']) : ''; ?>" maxlength="50" required />
+                    </div>
+
+                    <div class="tweny-two">
+                    <label for="heritage1" class="label">Patrimonio de año 2020</label>
+                    <input id="heritage1" class="text" type="text" name="heritage1" placeholder="Patrimonio del año 2020" value="<?php echo isset($_POST['heritage1']) ? htmlspecialchars($_POST['heritage1']) : ''; ?>" maxlength="50" required />
+                    </div>
+
+                    <div class="twenty-two">
+                    <label for="heritage2" class="label">Patrimonio de año 2021</label>
+                    <input id="heritage2" class="text" type="text" name="heritage2" placeholder="Patrimonio del año 2021" value="<?php echo isset($_POST['heritage2']) ? htmlspecialchars($_POST['heritage2']) : ''; ?>" maxlength="50" required />
+                    </div>
+
+                    <div class="twenty-three">
+                    <label for="heritage3" class="label">Patrimonio de año 2022</label>
+                    <input id="heritage3" class="text" type="text" name="heritage3"  placeholder="Patrimonio del año 2022" value="<?php echo isset($_POST['heritage3']) ? htmlspecialchars($_POST['heritage3']) : ''; ?>" maxlength="50" required />
+                    </div>
+                    
+                    <div class="twent-four">
+                    <label for="heritage4" class="label">Patrimonio de año 2023</label>
+                    <input id="heritage4" class="text" type="text" name="heritage4" placeholder="Patrimonio del año 2023"  value="<?php echo isset($_POST['heritage4']) ? htmlspecialchars($_POST['heritage4']) : ''; ?>" maxlength="50" required />
                     </div>
                     </div>  
             </div>

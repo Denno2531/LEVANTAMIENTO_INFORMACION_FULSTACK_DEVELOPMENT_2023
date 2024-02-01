@@ -16,6 +16,14 @@ if ($_POST['txtuserid'] == '') {
 	header('Location: /modules/emprendedor');
 	exit();
 }
+$sql_check_user = "SELECT * FROM emprendedor WHERE cedula = '" . $_POST['txtcurp'] . "'";
+$result_check_user = $conexion->query($sql_check_user);
+
+if (mysqli_num_rows($result_check_user) > 0) {
+    Error('Este beneficiario ya está registrado, favor validar por su cédula.');
+    header('Location: /modules/emprendedor');
+    exit();
+} else 
 
 $sql = "SELECT * FROM emprendedor WHERE user = '" . $_POST['txtuserid'] . "'";
 
@@ -30,9 +38,9 @@ if ($result = $conexion->query($sql)) {
 		$sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['txtpass']) . "', 'editor', 'empre', 'user.png','" . $date . "')";	
 			
 		if (mysqli_query($conexion, $sql_insert_user)) {
-			$sql_insert_emprendedor = "INSERT INTO emprendedor(user, name, surnames, date_of_birth,city,workinghours,education,socialnetworks,salesyear,heritage, gender, cedula, pass, phone, address, email,organization,nameorganization,state,startdate,socialsales, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['dateofbirth']) ."', '". trim($_POST['txtcity'])."', '". trim($_POST['txtworkinghours']). "', '". trim($_POST['selecteducation'])."', '". trim($_POST['selectsocialnetworks'])."', '". trim($_POST['inputsalesyear'])."', '". trim($_POST['inputsalesyear1'])."', '". trim($_POST['inputsalesyear2'])."', '". trim($_POST['inputsalesyear3'])."', '". trim($_POST['inputsalesyear4'])."', '". trim($_POST['inputheritage'])."', '". trim($_POST['inputheritage1'])."', '". trim($_POST['inputheritage2'])."', '". trim($_POST['inputheritage3'])."', '". trim($_POST['inputheritage4'])."', '". trim($_POST['selectgender']) . "', '" . trim($_POST['txtcurp']) . "', '" . trim($_POST['txtpass']) . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtrfc']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['selectorganization']) ."', '" . trim($_POST['txtnameorganization']) ."', '" . trim($_POST['selectstate']) ."', '" . trim($_POST['startdate']) ."', '" . trim($_POST['selectsocialsales']) . "','" . $date . "')";			
+			$sql_insert_administrative = "INSERT INTO emprendedor(user, name, surnames, date_of_birth,city,workinghours,education,socialnetworks,salesyear,salesyear1,salesyear2,salesyear3,salesyear4,heritage,heritage1,heritage2,heritage3,heritage4, gender, cedula, pass, phone, address, email,organization,nameorganization,state,startdate,socialsales, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['dateofbirth']) ."', '". trim($_POST['txtcity'])."', '". trim($_POST['txtworkinghours']). "', '". trim($_POST['selecteducation'])."', '". trim($_POST['selectsocialnetworks'])."', '". trim($_POST['txtsalesyear'])."', '". trim($_POST['txtsalesyear1'])."', '". trim($_POST['txtsalesyear2'])."', '". trim($_POST['txtsalesyear3'])."', '". trim($_POST['txtsalesyear4'])."', '". trim($_POST['txtheritage'])."', '". trim($_POST['txtheritage1'])."', '". trim($_POST['txtheritage2'])."', '". trim($_POST['txtheritage3'])."', '". trim($_POST['txtheritage4'])."', '". trim($_POST['selectgender']) . "', '" . trim($_POST['txtcurp']) . "', '" . trim($_POST['txtpass']) . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtrfc']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['selectorganization']) ."', '" . trim($_POST['txtnameorganization']) ."', '" . trim($_POST['selectstate']) ."', '" . trim($_POST['startdate']) ."', '" . trim($_POST['selectsocialsales']) . "','" . $date . "')";			
 
-			if (mysqli_query($conexion, $sql_insert_emprendedor)) {
+			if (mysqli_query($conexion, $sql_insert_administrative)) {
 
 				Info('Beneficiario agregado.');
 			} else {

@@ -24,7 +24,16 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
-		$_SESSION['empre_heritage'] = $row['heritage'];		
+		$_SESSION['empre_salesyear1'] = $row['salesyear1'];
+		$_SESSION['empre_salesyear2'] = $row['salesyear2'];
+		$_SESSION['empre_salesyear3'] = $row['salesyear3'];
+		$_SESSION['empre_salesyear4'] = $row['salesyear4'];
+		$_SESSION['empre_heritage'] = $row['heritage'];	
+		$_SESSION['empre_heritage1'] = $row['heritage1'];	
+		$_SESSION['empre_heritage2'] = $row['heritage2'];	
+		$_SESSION['empre_heritage3'] = $row['heritage3'];	
+		$_SESSION['empre_heritage4'] = $row['heritage4'];	
+
 				
 	}
 } 
@@ -137,22 +146,26 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>
 					</div>
-					<div class="five">
-                    <label for="inputsalesyear" class="label">Ventas por año</label>
-                    <input id="inputsalesyear" class="input" type="float" placeholder="Año 2019" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear" maxlength="50" required>
-                    <input id="inputsalesyear1" class="input" type="float" placeholder="Año 2020" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear1" maxlength="50" required>
-                    <input id="inputsalesyear2" class="input" type="float" placeholder="Año 2021" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear2" maxlength="50" required>
-                    <input id="inputsalesyear3" class="input" type="float" placeholder="Año 2022" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear3" maxlength="50" required>
-                    <input id="inputsalesyear4" class="input" type="float" placeholder="Año 2023" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear4" maxlength="50" required>
+					<div class="total-salesyear">
+                    <label for="salesyear" class="label">Ventas de año 2019</label>
+					<input id="salesyear" class="text" type="text" name="salesyear" value="<?php echo $_SESSION['empre_salesyear']; ?>" placeholder="Ventas del año 2019"  maxlength="50" required />
 
-					<div class="six">
-                    <label for="inputheritage" class="label">Patrimonio</label>
-                    <input id="inputheritage" class="input" type="float" placeholder="Año 2019"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage" maxlength="50" required>
-                    <input id="inputheritage1" class="input" type="float" placeholder="Año 2020"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage1" maxlength="50" required>
-                    <input id="inputheritage2" class="input" type="float" placeholder="Año 2021"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage2" maxlength="50" required>
-                    <input id="inputheritage3" class="input" type="float" placeholder="Año 2022"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage3" maxlength="50" required>
-                    <input id="inputheritage4" class="input" type="float" placeholder="Año 2023"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage4" maxlength="50" required>
-                    </div>
+                    
+                    <label for="salesyear1" class="label">Ventas de año 2020</label>
+					<input id="salesyear1" class="text" type="text" name="salesyear1" value="<?php echo $_SESSION['empre_salesyear1']; ?>" placeholder="Ventas del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="salesyear2" class="label">Ventas de año 2021</label>
+					<input id="salesyear2" class="text" type="text" name="salesyear2" value="<?php echo $_SESSION['empre_salesyear2']; ?>" placeholder="Ventas del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="salesyear3" class="label">Ventas de año 2022</label>
+					<input id="salesyear3" class="text" type="text" name="salesyear3" value="<?php echo $_SESSION['empre_salesyear3']; ?>" placeholder="Ventas del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="salesyear4" class="label">Ventas de año 2023</label>
+					<input id="salesyear4" class="text" type="text" name="salesyear4" value="<?php echo $_SESSION['empre_salesyear4']; ?>" placeholder="Ventas del año 2023"  maxlength="50" required />
+					
 					</div>
 					</div>
 				</div>
@@ -290,13 +303,35 @@ if ($result = $conexion->query($sql)) {
 						} 
 						?>
 					</select>
+					</div>
+					<div class="total-heritage">
+                    <label for="heritage" class="label">Patrimonio del año 2019</label>
+					<input id="heritage" class="text" type="text" name="heritage" value="<?php echo $_SESSION['empre_heritage']; ?>" placeholder="Patrimonio del año 2019"  maxlength="50" required />
+
+                    
+                    <label for="heritage1" class="label">Patrimonio del año 2020</label>
+					<input id="heritage1" class="text" type="text" name="heritage1" value="<?php echo $_SESSION['empre_heritage1']; ?>" placeholder="Patrimonio del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="heritage2" class="label">Patrimonio del año 2021</label>
+					<input id="heritage2" class="text" type="text" name="heritage2" value="<?php echo $_SESSION['empre_heritage2']; ?>" placeholder="Patrimonio del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="heritage3" class="label">Patrimonio del año 2022</label>
+					<input id="heritage3" class="text" type="text" name="heritage3" value="<?php echo $_SESSION['empre_heritage3']; ?>" placeholder="Patrimonio del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="heritage4" class="label">Patrimonio del año 2023</label>
+					<input id="heritage4" class="text" type="text" name="heritage4" value="<?php echo $_SESSION['empre_heritage4']; ?>" placeholder="Patrimonio del año 2023"  maxlength="50" required />
+					</div>
 
 					</div>
 					</div>
 					</div>
 				</div>
+				<button id="btnSave" class="btn icon" type="submit">save</button>
+
 			</div>
-			<button id="btnSave" class="btn icon" type="submit">save</button>
 		</form>
 	</div>
 </div>
