@@ -12,7 +12,7 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
 		$_SESSION['empre_curp'] = $row['cedula'];
-		$_SESSION['empre_rfc'] = $row['address'];
+		$_SESSION['empre_address'] = $row['address'];
 		$_SESSION['empre_phone'] = $row['phone'];
 		$_SESSION['empre_documentation'] = $row['email'];
 		$_SESSION['empre_organization'] = $row['organization'];
@@ -208,8 +208,8 @@ if ($result = $conexion->query($sql)) {
 					<label for="txtuserphone" class="label">Número de teléfono</label>
 					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
 
-					<label for="dateuseradmission" class="label">Correo Electrónico</label>
-					<input id="txtuseraddress" class="text" type="text" name="txtaddress" value="<?php echo $_SESSION['empre_documentation']; ?>" placeholder="Correo" maxlength="200" required />
+					<label for="dateuseraddress" class="label">Correo Electrónico</label>
+					<input id="txtuseraddress" class="text" type="text" name="txtaddress" value="<?php echo $_SESSION['empre_address']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
 					<select id="selectorganization" class="select" name="selectorganization" required>
