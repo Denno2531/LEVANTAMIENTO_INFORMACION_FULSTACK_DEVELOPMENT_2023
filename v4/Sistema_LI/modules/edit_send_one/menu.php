@@ -103,7 +103,7 @@ if ($result = $conexion->query($sql)) {
         <form action="" method="POST">
           <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
           <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />
-          <button class="btn-menu-editor" id="btnSave" value="form_documents" name="btn" type="submit">Ver</button>
+          <button class="btn-menu-editor" id="btnSave" value="from_certification" name="btn" type="submit">Ver</button>
         </form>
       </div>
 
