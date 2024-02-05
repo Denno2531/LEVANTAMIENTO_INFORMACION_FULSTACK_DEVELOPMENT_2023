@@ -44,6 +44,10 @@ $id_generate = 'empre-' . unique_id(5);
                             <!-- <button id="addHourBtn" class="btn icon"><i
                                 class="fas fa-plus-circle fa-lg fa-spin"></i></button> -->
                             </div>
+                            <div class="label" id="hourListContainer">
+                                 <br>
+                        ,        <ul id="hourList"></ul>
+                           </div>
                             <div class="three">
                     <label for="selecteducation" class="label">Nivel de educación</label>
                     <select id="selecteducation" class="select" name="selecteducation" required>
@@ -91,10 +95,7 @@ $id_generate = 'empre-' . unique_id(5);
                    
                     </div>
                     </div>
-                    <div class="label" id="hourListContainer">
-                        <br>
-                        <ul id="hourList"></ul>
-                    </div>
+                    
 
                 </div>
                 <div class="last">
@@ -105,8 +106,8 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="hombre">Masculino</option>
                         <option value="otro">Otro</option>                        
                     </select>
-                    <label for="txtusercurp" class="label">Cédula</label>
-                    <input id="txtusercurp" class="text" type="text" name="txtcurp" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
+                    <label for="txtusercedula" class="label">Cédula</label>
+                    <input id="txtusercedula" class="text" type="text" name="txtcedula" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
                     <label for="txtuserrfc" class="label">Nacionalidad</label>
                     <input id="txtuserrfc" class="text" type="text" name="txtrfc" value="" placeholder="Nacionalidad" maxlength="100"required />
                     <label for="txtuserphone" class="label">Número de teléfono</label>
@@ -133,8 +134,8 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Inactivo">Inactivo</option>                        
                     </select>
                 </div>
-                    <label for="startdate" class="label">Fecha de inicio</label>
-                    <input id="datebeneficiaries" class="date" type="date" name="startdate" value="<?php echo date('Y-m-d'); ?>" required /> 
+                    <label for="dateuserstartdate" class="label">Fecha de inicio</label>
+                    <input id="dateuserstardate" class="date" type="date" name="datestartdate" value="<?php echo date('Y-m-d'); ?>" required /> 
                     <div class="five">
                     <label for="selectsocialsales" class="label">Realiza ventas por redes sociales</label>
                     <select id="selectsocialsales" class="select" name="selectsocialsales" required >
