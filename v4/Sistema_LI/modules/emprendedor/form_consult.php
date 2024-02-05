@@ -7,12 +7,14 @@ if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['user_id'] = $row['user'];
 		$_SESSION['empre_cedula'] = $row['cedula'];
+		$_SESSION['empre_rfc'] = $row['rfc'];	
 		$_SESSION['empre_name'] = $row['name'];
 		$_SESSION['empre_surnames'] = $row['surnames'];
 		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
 		$_SESSION['empre_phone'] = $row['phone'];
+		$_SESSION['empre_organization'] = $row['organization'];
 		$_SESSION['empre_nameorganization'] = $row['nameorganization'];
 		$_SESSION['empre_state'] = $row['state'];
 		$_SESSION['empre_startdate'] = $row['startdate'];
@@ -31,7 +33,6 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_heritage2'] = $row['heritage2'];	
 		$_SESSION['empre_heritage3'] = $row['heritage3'];	
 		$_SESSION['empre_heritage4'] = $row['heritage4'];	
-		$_SESSION['empre_rfc'] = $row['rfc'];	
 
 
 				
@@ -212,41 +213,41 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectuserorganization" class="label">Organización</label>
-					<select id="selectuserorganization" class="select" name="selectorganization" required>
+					<select id="selectuserorganization" class="select" name="selectuserorganization" required>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
 								<option value="">Seleccione</option>
 								<option value="No">No pertenezco</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
 						} elseif ($_SESSION['empre_organization'] == 'No pertenezco') {
 							echo '
 								<option value="No">No pertenezco</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
 						} elseif ($_SESSION['empre_organization'] == 'UDELA') {
 							echo '
 								<option value="UDELA">UDELA</option>
 								<option value="No">No pertenezco</option>
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'Cooprede') {
+						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
 							echo '
-							    <option value="Cooprede>COOPREDE</option>	
+							    <option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
 								<option value="No">No pertenezco</option>
 								<option value="otro>Otro</option>							
 							';
-						}elseif ($_SESSION['empre_organization'] == 'Otro') {
+						}elseif ($_SESSION['empre_organization'] == 'otro') {
 							echo '
 								<option value="otro>Otro</option>	
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
 								<option value="No">No pertenezco</option>							
 							';
@@ -329,7 +330,7 @@ if ($result = $conexion->query($sql)) {
 					</div>
 					</div>
 				</div>
-				<button id="btnSave" class="btn icon" type="submit">save</button>
+				<button id="btnSave" class="btn icon" type="submit">done</button>
 
 			</div>
 		</form>

@@ -115,13 +115,13 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="txtuseremail" class="label">Correo Electrónico</label>
                     <input id="txtuseremail" class="text" type="text" name="txtuseremail" value="" placeholder="ejemplo@email.com" maxlength="200" required />
                     <div class="eight">
-                    <label for="selectorganization" class="label">Organización</label>
-                    <select id="selectorganization" class="select"  name="selectorganization" required >
+                    <label for="selectuserorganization" class="label">Organización</label>
+                    <select id="selectuserorganization" class="select"  name="selectuserorganization" required >
                     <option value="">Seleccione</option>
                         <option value="No">No pertenezco</option>
                         <option value="UDELA">UDELA</option>
-                        <option value="Cooprede">COOPREDE</option>
-                        <option value="otro">Otro</option>                        
+                        <option value="COOPREDE">COOPREDE</option>
+                        <option value="otro">otro</option>                        
                     </select>
                     </div>
                     <div class="twenty">

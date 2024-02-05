@@ -12,6 +12,7 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
 		$_SESSION['empre_cedula'] = $row['cedula'];
+		$_SESSION['empre_rfc'] = $row['rfc'];
 		$_SESSION['empre_phone'] = $row['phone'];
 		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_organization'] = $row['organization'];
@@ -33,7 +34,6 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_heritage2'] = $row['heritage2'];	
 		$_SESSION['empre_heritage3'] = $row['heritage3'];	
 		$_SESSION['empre_heritage4'] = $row['heritage4'];
-		$_SESSION['empre_rfc'] = $row['rfc'];
 
 
 	}
@@ -238,14 +238,14 @@ if ($result = $conexion->query($sql)) {
 								<option value="Cooprede>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'Cooprede') {
+						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
 							echo '
 							    <option value="Cooprede>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
 								<option value="No">No pertenezco</option>
 								<option value="otro>Otro</option>							
 							';
-						}elseif ($_SESSION['empre_organization'] == 'Otro') {
+						}elseif ($_SESSION['empre_organization'] == 'otro') {
 							echo '
 								<option value="otro>Otro</option>	
 								<option value="Cooprede>COOPREDE</option>	
@@ -255,6 +255,7 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>
+					</div>
 					<div class="twenty">
 					<label for="txtnameorganization" class="label">Nombre de empredimiento</label>
 					<input id="txtnameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
