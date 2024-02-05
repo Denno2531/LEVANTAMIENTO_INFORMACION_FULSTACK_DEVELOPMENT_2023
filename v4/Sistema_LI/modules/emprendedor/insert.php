@@ -6,6 +6,8 @@ include_once '../notif_info_msgbox.php';
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
 $_POST['txtuserid'] = trim($_POST['txtuserid']);
+$passhash = hash("SHA256",(trim($_POST['txtpass'])));
+
 
 if (empty($_POST['txtuserid'])) {
 	header('Location: /');
@@ -16,14 +18,14 @@ if ($_POST['txtuserid'] == '') {
 	header('Location: /modules/emprendedor');
 	exit();
 }
-$sql_check_user = "SELECT * FROM emprendedor WHERE cedula = '" . $_POST['txtcurp'] . "'";
+$sql_check_user = "SELECT * FROM emprendedor WHERE cedula = '" . $_POST['txtcedula'] . "'";
 $result_check_user = $conexion->query($sql_check_user);
 
 if (mysqli_num_rows($result_check_user) > 0) {
-    Error('Este beneficiario ya está registrado, favor validar por su cédula.');
+    Error('Este usuario ya está registrado, favor validar por su cédula.');
     header('Location: /modules/emprendedor');
     exit();
-} else 
+} else {
 
 $sql = "SELECT * FROM emprendedor WHERE user = '" . $_POST['txtuserid'] . "'";
 
@@ -34,11 +36,11 @@ if ($result = $conexion->query($sql)) {
 		exit();
 	} else {
 		$date = date('Y-m-d H:i:s');
-		$birth =  date('Y-m-d');
-		$sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['txtpass']) . "', 'editor', 'empre', 'user.png','" . $date . "')";	
+
+		$sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) .  "', '" . trim($_POST['txtuseremail']) . "', '" . $passhash ."', 'editor', 'empre', 'user.png','" . $date . "')";	
 			
 		if (mysqli_query($conexion, $sql_insert_user)) {
-			$sql_insert_administrative = "INSERT INTO emprendedor(user, name, surnames, date_of_birth,city,workinghours,education,socialnetworks,salesyear,salesyear1,salesyear2,salesyear3,salesyear4,heritage,heritage1,heritage2,heritage3,heritage4, gender, cedula, pass, phone, address, email,organization,nameorganization,state,startdate,socialsales, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) ."', '" . $passhash . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['dateofbirth']) ."', '". trim($_POST['txtcity'])."', '" . $birth ."', '". trim($_POST['txtworkinghours']). "', '". trim($_POST['selecteducation'])."', '". trim($_POST['selectsocialnetworks'])."', '". trim($_POST['txtsalesyear'])."', '". trim($_POST['txtsalesyear1'])."', '". trim($_POST['txtsalesyear2'])."', '". trim($_POST['txtsalesyear3'])."', '". trim($_POST['txtsalesyear4'])."', '". trim($_POST['txtheritage'])."', '". trim($_POST['txtheritage1'])."', '". trim($_POST['txtheritage2'])."', '". trim($_POST['txtheritage3'])."', '". trim($_POST['txtheritage4'])."', '". trim($_POST['selectgender']) . "', '" . trim($_POST['txtcurp']) . "', '" . trim($_POST['txtpass']) . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtrfc']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['selectorganization']) ."', '" . trim($_POST['txtnameorganization']) ."', '" . trim($_POST['selectstate']) ."', '" . trim($_POST['startdate']) ."', '" . trim($_POST['selectsocialsales']) . "','" . $date . "')";			
+			$sql_insert_administrative = "INSERT INTO emprendedor(user, name, surnames,city, date_of_birth,workinghours,education,socialnetworks,salesyear,salesyear1,salesyear2,salesyear3,salesyear4,heritage,heritage1,heritage2,heritage3,heritage4, gender, cedula, pass, phone,email,organization,nameorganization,state,startdate,socialsales, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) ."', '" . trim($_POST['txtsurnames']) . "', '". trim($_POST['txtcity'])."', '" . trim($_POST['dateofbirth']) ."', '". trim($_POST['txtworkinghours']). "', '". trim($_POST['selecteducation'])."', '". trim($_POST['selectsocialnetworks'])."', '". trim($_POST['txtsalesyear'])."', '". trim($_POST['txtsalesyear1'])."', '". trim($_POST['txtsalesyear2'])."', '". trim($_POST['txtsalesyear3'])."', '". trim($_POST['txtsalesyear4'])."', '". trim($_POST['txtheritage'])."', '". trim($_POST['txtheritage1'])."', '". trim($_POST['txtheritage2'])."', '". trim($_POST['txtheritage3'])."', '". trim($_POST['txtheritage4'])."', '". trim($_POST['selectgender']) . "', '" . trim($_POST['txtcedula']) . "', '" . $passhash . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtuseremail']) . "', '" . trim($_POST['selectorganization']) ."', '" . trim($_POST['txtnameorganization']) ."', '" . trim($_POST['selectstate']) ."', '" . trim($_POST['datestartdate']) ."', '" . trim($_POST['selectsocialsales']) . "','" . $date . "')";			
 
 			if (mysqli_query($conexion, $sql_insert_administrative)) {
 
@@ -56,6 +58,7 @@ if ($result = $conexion->query($sql)) {
 		header('Location: /modules/emprendedor');
 		exit();
 	}
+}
 }
 
 
