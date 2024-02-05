@@ -6,14 +6,12 @@ $sql = "SELECT * FROM emprendedor WHERE user = '" . $_POST['txtuserid'] . "'";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['user_id'] = $row['user'];
-		$_SESSION['empre_pass'] = $row['pass'];
+		$_SESSION['empre_cedula'] = $row['cedula'];
 		$_SESSION['empre_name'] = $row['name'];
 		$_SESSION['empre_surnames'] = $row['surnames'];
 		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
-		$_SESSION['empre_curp'] = $row['cedula'];	
-		$_SESSION['empre_address'] = $row['address'];
 		$_SESSION['empre_phone'] = $row['phone'];
 		$_SESSION['empre_nameorganization'] = $row['nameorganization'];
 		$_SESSION['empre_state'] = $row['state'];
@@ -201,8 +199,8 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>	
-					<label for="txtusercurp" class="label">Cédula</label>
-					<input id="txtusercurp" class="text" type="text" name="txtcurp" value="<?php echo $_SESSION['empre_curp']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
+					<label for="txtusercedula" class="label">Cédula</label>
+					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_cedula']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
 					<label for="txtuserrfc" class="label">Nacionalidad</label>
 					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad" required />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
