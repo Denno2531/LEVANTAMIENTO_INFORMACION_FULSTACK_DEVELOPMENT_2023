@@ -5,16 +5,14 @@ include_once 'security.php';
 <div class="form-options">
 	<div class="options">
 	<?php
-        if ($_SERVER['REQUEST_URI'] === '/modules/edit_send_one/') {
-			echo '<form action="" method="POST">';
-			echo '<button class="btn btn-add icon btn-disabled" name="btn" value="form_add" type="submit" title="Añadir archivo" >add</button>';
-			echo '</form>';
-	}else{
+
 			echo '<form action="" method="POST">';
 			echo '<button class="btn btn-add icon" name="btn" value="form_add" type="submit" title="Añadir archivo" >add</button>';
 			echo '</form>';
-	}
+
     ?>
+
+
 		<form action="" method="POST">
 			<button class="btn btn-disabled icon" name="btn" value="form_coding" type="submit" disabled>code</button>
 		</form>
