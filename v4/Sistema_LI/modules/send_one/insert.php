@@ -27,7 +27,7 @@ $nombrePDF=$_SESSION['send_archivo'];
         exit();
     } else {
 
-  $usuario = $_POST['userid'];
+    $usuario = $_POST['userid'];
 	$numeroDePDF = $_POST['num'];
 	$descripcion = $_POST['descripcion'];
 	$date = date('Y-m-d H:i:s');
