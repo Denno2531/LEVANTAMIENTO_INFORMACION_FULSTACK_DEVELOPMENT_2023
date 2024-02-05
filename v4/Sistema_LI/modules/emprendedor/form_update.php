@@ -33,6 +33,8 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_heritage2'] = $row['heritage2'];	
 		$_SESSION['empre_heritage3'] = $row['heritage3'];	
 		$_SESSION['empre_heritage4'] = $row['heritage4'];
+		$_SESSION['empre_rfc'] = $row['rfc'];
+
 
 	}
 }
@@ -59,11 +61,12 @@ if ($result = $conexion->query($sql)) {
 					<input id="dateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
 					<label for="txtcity" class="label">Ciudad</label>
 					<input id="txtcity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
+			
 					<div class="hour-picker">
 						<label for="txtworkinghours_start" class="text">Abierto desde:</label>
 						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
-						<label for="txtworkinghours_start" class="text">Hora de salida:</label>
-						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtuserhours_end">
+						<label for="txtworkinghours_end" class="text">Hora de salida:</label>
+						<input id="txtworkinghours_end" class="hour-input" type="time" name="txtworkinghours_end">		
 					</div>
 					<div class="three">
 					<label for="selecteducation" class="label">Nivel de educación</label>
@@ -201,7 +204,7 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>	
 					<label for="txtusercedula" class="label">Cédula</label>
-					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_curp']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
+					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_cedula']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
 					<label for="txtuserrfc" class="label">Nacionalidad</label>
 					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad" required />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
@@ -252,8 +255,10 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>
+					<div class="twenty">
 					<label for="txtnameorganization" class="label">Nombre de empredimiento</label>
 					<input id="txtnameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
+					</div>
 					<div class="second">
 					<label for="selectstate" class="label">Estado</label>
 					<select id="selectstate" class="select" name="selectstate" required>

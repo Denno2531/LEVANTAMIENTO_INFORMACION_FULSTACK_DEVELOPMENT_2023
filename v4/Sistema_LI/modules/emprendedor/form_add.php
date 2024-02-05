@@ -31,7 +31,7 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="txtcity" class="text" type="text" name="txtcity" value="" placeholder="ciudad" maxlength="50" required />
                     <div class="descri">   
                     <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
-                        <input id="txtworkinghours" class="text" type="hidden" name="txtworkinghours" value=""
+                        <input id="txtworkinghours" class="text" type="text" name="txtworkinghours" value=""
                         placeholder="Seleccione el horario" maxlength="20000" data-expandable />
                         <div class="hour-picker">
                             <div>
@@ -124,8 +124,10 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="otro">Otro</option>                        
                     </select>
                     </div>
+                    <div class="twenty">
                     <label for="txtnameorganization" class="label">Nombre de empredimiento</label>
                     <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" />
+                    </div>
                     <div class="second">
                     <label for="selectstate" class="label">Estado</label>
                     <select id="selectstate" class="select" name="selectstate" required>
