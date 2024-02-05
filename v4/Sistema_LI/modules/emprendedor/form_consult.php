@@ -31,6 +31,8 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_heritage2'] = $row['heritage2'];	
 		$_SESSION['empre_heritage3'] = $row['heritage3'];	
 		$_SESSION['empre_heritage4'] = $row['heritage4'];	
+		$_SESSION['empre_rfc'] = $row['rfc'];	
+
 
 				
 	}
@@ -58,7 +60,7 @@ if ($result = $conexion->query($sql)) {
 					<input id="userdateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
 					<label for="txtusercity" class="label">Ciudad</label>
 					<input id="txtusercity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
-					<div class="hour-picker">
+					<div class="descri">
 						<label for="txtuserworkinghours_start" class="text">Abierto desde:</label>
 						<input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
 						<label for="txtuserworkinghours_start" class="text">Hora de salida:</label>
