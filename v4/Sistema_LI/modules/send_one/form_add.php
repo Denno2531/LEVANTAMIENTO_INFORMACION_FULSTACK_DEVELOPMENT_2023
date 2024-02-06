@@ -37,7 +37,7 @@ $id_generate = 'S-' . unique_id(5);
                 </div>
                 <div class="description">
                     <label for="txtinfoqdescription" class="label">Descripción</label>
-                    <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Documentación</textarea>
+                    <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Adjunto archivo para revision</textarea>
                 </div>
                 <div>
                     <label for="txtusernum" class="label">Cargar Archivo</label>
