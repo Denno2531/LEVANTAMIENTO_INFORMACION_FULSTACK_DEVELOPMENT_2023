@@ -76,7 +76,7 @@ $nombrePDF=$_SESSION['send_archivo'];
         }
     
             
-            header('Location: /modules/send_one');
+            header('Location: /modules/certification');
             exit();
 
     }
