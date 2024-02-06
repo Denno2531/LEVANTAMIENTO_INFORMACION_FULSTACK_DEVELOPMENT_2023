@@ -118,9 +118,9 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="selectuserorganization" class="label">Organización</label>
                     <select id="selectuserorganization" class="select"  name="selectuserorganization" required >
                     <option value="">Seleccione</option>
-                        <option value="No">No pertenezco</option>
-                        <option value="UDELA">UDELA</option>
-                        <option value="COOPREDE">COOPREDE</option>
+                        <option value="no">no pertenezco</option>
+                        <option value="udela">UDELA</option>
+                        <option value="cooprede">COOPREDE</option>
                         <option value="otro">otro</option>                        
                     </select>
                     </div>

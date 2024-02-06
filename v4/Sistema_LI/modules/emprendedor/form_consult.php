@@ -215,41 +215,41 @@ if ($result = $conexion->query($sql)) {
 					<label for="selectuserorganization" class="label">Organización</label>
 					<select id="selectuserorganization" class="select" name="selectuserorganization" required>
 						<?php
-						if ($_SESSION['empre_organization'] == '') {
+						if ($_SESSION['empre_userorganization'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="No">No pertenezco</option>
-								<option value="UDELA">UDELA</option>
+								<option value="no">no pertenezco</option>
+								<option value="udela">udela</option>
+								<option value="cooprede>cooprede</option>	
+								<option value="otro>Otro</option>								
+							';
+						} elseif ($_SESSION['empre_userorganization'] == 'no pertenezco') {
+							echo '
+								<option value="no">no pertenezco</option>
+								<option value="udela">udela</option>
 								<option value="COOPREDE>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'No pertenezco') {
+						} elseif ($_SESSION['empre_userorganization'] == 'udela') {
 							echo '
-								<option value="No">No pertenezco</option>
-								<option value="UDELA">UDELA</option>
-								<option value="COOPREDE>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>
+								<option value="Cooprede>Cooprede</option>	
+								<option value="otro>otro</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'UDELA') {
+						} elseif ($_SESSION['empre_userorganization'] == 'cooprede') {
 							echo '
-								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="COOPREDE>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+							    <option value="cooprede>cooprede</option>	
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>
+								<option value="otro>otro</option>							
 							';
-						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
-							echo '
-							    <option value="COOPREDE>COOPREDE</option>	
-								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="otro>Otro</option>							
-							';
-						}elseif ($_SESSION['empre_organization'] == 'otro') {
+						}elseif ($_SESSION['empre_userorganization'] == 'otro') {
 							echo '
 								<option value="otro>Otro</option>	
-								<option value="COOPREDE>COOPREDE</option>	
-								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>							
+								<option value="cooprede>cooprede</option>	
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>							
 							';
 						}
 						?>
