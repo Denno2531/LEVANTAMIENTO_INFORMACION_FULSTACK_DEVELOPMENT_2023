@@ -109,7 +109,7 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="txtusercedula" class="label">Cédula</label>
                     <input id="txtusercedula" class="text" type="text" name="txtcedula" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
                     <label for="txtuserrfc" class="label">Nacionalidad</label>
-                    <input id="txtuserrfc" class="text" type="text" name="txtrfc" value="" placeholder="Nacionalidad" maxlength="100"required />
+                    <input id="txtuserrfc" class="text" type="text" name="txtuserrfc" value="" placeholder="Nacionalidad" maxlength="100"required />
                     <label for="txtuserphone" class="label">Número de teléfono</label>
                     <input id="txtuserphone" class="text" type="text" name="txtphone" value="" placeholder="09999XXXXX" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." maxlength="10" required />
                     <label for="txtuseremail" class="label">Correo Electrónico</label>

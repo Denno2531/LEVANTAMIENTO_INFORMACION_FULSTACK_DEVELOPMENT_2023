@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `emprendedor` (
   `surnames` varchar(60) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   `city` varchar(50) COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `workinghours` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
+  `workinghours` text COLLATE utf8mb3_spanish2_ci,
   `education` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `socialnetworks` varchar(50) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `salesyear` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,

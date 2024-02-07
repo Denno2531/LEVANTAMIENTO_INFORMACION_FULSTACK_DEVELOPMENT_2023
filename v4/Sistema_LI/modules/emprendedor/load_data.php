@@ -29,7 +29,6 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
 						$_SESSION['empre_date_of_birth'][$i] = $row['date_of_birth'];
 						$_SESSION['empre_city'][$i] = $row['city'];
-						$_SESSION['empre_workinghours'][$i] = $row['workinghours'];
 						$_SESSION['empre_education'][$i] = $row['education'];
 						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
 						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
@@ -53,7 +52,8 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
 						$_SESSION['empre_rfc'][$i] = $row['rfc'];
-
+						$_SESSION['empre_workinghours'] = $row['workinghours'];	
+						
 		
 
 
@@ -67,7 +67,6 @@ if (!empty($_POST['search'])) {
 				$_SESSION['empre_surname'] = array();
 				$_SESSION['empre_date_of_birth'] = array();
 				$_SESSION['empre_city'] = array();
-				$_SESSION['empre_workinghours'] = array();
 				$_SESSION['empre_education'] = array();
 				$_SESSION['empre_socialnetworks'] = array();
 				$_SESSION['empre_salesyear'] = array();
@@ -91,6 +90,10 @@ if (!empty($_POST['search'])) {
 				$_SESSION['empre_startdate'] = array();
 				$_SESSION['empre_socialsales'] = array();
 				$_SESSION['empre_rfc'] = array();
+				$_SESSION['empre_workinghours'] = array();
+			
+
+
 
 
 				$i = 0;
@@ -104,7 +107,6 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
 						$_SESSION['empre_date_of_birth'][$i] = $row['date_of_birth'];
 						$_SESSION['empre_city'][$i] = $row['city'];
-						$_SESSION['empre_workinghours'][$i] = $row['workinghours'];
 						$_SESSION['empre_education'][$i] = $row['education'];
 						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
 						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
@@ -127,7 +129,8 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_state'][$i] = $row['state'];
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
-						$_SESSION['empre_rfc'][$i] = $row['rfc'];
+						$_SESSION['empre_rfc'][$i] = $row['rfc'];	
+						$_SESSION['empre_workinghours'] = $row['workinghours'];	
 
 
 						$i += 1;

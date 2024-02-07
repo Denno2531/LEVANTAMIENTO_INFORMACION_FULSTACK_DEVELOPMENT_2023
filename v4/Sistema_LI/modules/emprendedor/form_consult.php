@@ -213,9 +213,9 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectuserorganization" class="label">Organización</label>
-					<select id="selectuserorganization" class="select" name="selectuserorganization" required>
+					<select id="selectuserorganization" class="select" name="selectorganization" required>
 						<?php
-						if ($_SESSION['empre_userorganization'] == '') {
+						if ($_SESSION['empre_organization'] == '') {
 							echo '
 								<option value="">Seleccione</option>
 								<option value="no">no pertenezco</option>
@@ -223,28 +223,28 @@ if ($result = $conexion->query($sql)) {
 								<option value="cooprede>cooprede</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_userorganization'] == 'no pertenezco') {
+						} elseif ($_SESSION['empre_organization'] == 'no pertenezco') {
 							echo '
 								<option value="no">no pertenezco</option>
 								<option value="udela">udela</option>
 								<option value="COOPREDE>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_userorganization'] == 'udela') {
+						} elseif ($_SESSION['empre_organization'] == 'udela') {
 							echo '
 								<option value="udela">udela</option>
 								<option value="no">no pertenezco</option>
 								<option value="Cooprede>Cooprede</option>	
 								<option value="otro>otro</option>								
 							';
-						} elseif ($_SESSION['empre_userorganization'] == 'cooprede') {
+						} elseif ($_SESSION['empre_organization'] == 'cooprede') {
 							echo '
 							    <option value="cooprede>cooprede</option>	
 								<option value="udela">udela</option>
 								<option value="no">no pertenezco</option>
 								<option value="otro>otro</option>							
 							';
-						}elseif ($_SESSION['empre_userorganization'] == 'otro') {
+						}elseif ($_SESSION['empre_organization'] == 'otro') {
 							echo '
 								<option value="otro>Otro</option>	
 								<option value="cooprede>cooprede</option>	
