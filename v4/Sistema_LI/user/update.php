@@ -44,7 +44,7 @@ if ($result = $conexion->query($sql)) {
 		$date = date('Y-m-d H:i:s');
 	
 		$sql_update = "UPDATE emprendedor SET name = '" . trim($_POST['txtname']) . "', surnames = '" . trim($_POST['txtsurnames']) .
-		 "', cedula = '" . trim($_POST['txtcurp']) .
+		 "', cedula = '" . trim($_POST['txtcedula']) .
 		 "', address = '" . trim($_POST['txtrfc']) . "', date_of_birth = '" . trim($_POST['dateofbirth']) .
 		  "', city = '" . trim($_POST['txtcity']) ."', workinghours = '" . trim($_POST['txtworkinghours']) .
 		  "', education = '" . trim($_POST['selecteducation']) ."', socialnetworks = '" . trim($_POST['selectsocialnetworks']) .
@@ -53,8 +53,8 @@ if ($result = $conexion->query($sql)) {
 		  "', salesyear4 = '" . trim($_POST['txtsalesyear4']) ."', heritage = '" . trim($_POST['txtheritage']) .
 		  "', heritage1 = '" . trim($_POST['txtheritage1']) ."', heritage2 = '" . trim($_POST['txtheritage2']) .
 		  "', heritage3 = '" . trim($_POST['txtheritage3']) ."', heritage4 = '" . trim($_POST['txtheritage4']) . 
-		  "', gender = '" . trim($_POST['selectGender']) . "', phone = '" . trim($_POST['txtphone']) . 
-		  "', email = '" . trim($_POST['txtaddress']) . "', pass = '" . trim($_POST['txtpass']) . 
+		  "', gender = '" . trim($_POST['selectgender']) . "', phone = '" . trim($_POST['txtphone']) . 
+		  "', email = '" . trim($_POST['txtemail']) . "', pass = '" . trim($_POST['txtpass']) . 
 		  "', organization = '" . trim($_POST['selectorganization']) ."', nameorganization = '" . trim($_POST['txtnameorganization']) .
 		  "', state = '" . trim($_POST['selectstate']) ."', startdate = '" . trim($_POST['startdate']) .
 		  "', socialsales = '" . trim($_POST['selectsocialsales']) . "', updated_at = '" . $date . 
