@@ -68,7 +68,7 @@ if ($resultado = $conexion->query($sql)) {
         ';
     }
     if (isset($_SESSION['total_certificados']) && $_SESSION['total_certificados'] != 0) {
-        echo '
+        echo '  
                 <div class="pages">
                     <ul>
         ';
