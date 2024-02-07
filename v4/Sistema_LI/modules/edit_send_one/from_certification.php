@@ -2,84 +2,71 @@
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 include_once '../conexion.php';
 
-// Directorio que deseas limpiar
-$directorio = '../certification/certificadopdf/';
+// Inicializar las variables de sesión
+$_SESSION['num'] = array();
+$_SESSION['send_archivo'] = array();
+$_SESSION['send_created'] = array();
+$_SESSION['send_updated'] = array();
 
-// Verificar si el directorio existe y es accesible
-if (is_dir($directorio) && is_writable($directorio)) {
-    // Abrir el directorio
-    if ($handle = opendir($directorio)) {
-        // Recorrer los archivos en el directorio
-        while (($archivo = readdir($handle)) !== false) {
-            // Excluir los directorios especiales . y ..
-            if ($archivo != "." && $archivo != "..") {
-                // Eliminar el archivo
-                unlink($directorio . $archivo);
-            }
+$sql = "SELECT * FROM certification";
+
+if ($result = $conexion->query($sql)) {
+    // Verificar si hay resultados
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Almacenar los datos en las variables de sesión
+            $_SESSION['num'][] = $row['num'];
+            $_SESSION['send_archivo'][] = $row['archivopdf'];
+            $_SESSION['send_created'][] = $row['created_at'];
+            $_SESSION['send_updated'][] = $row['updated_at'];
         }
-        // Cerrar el directorio
-        closedir($handle);
-        echo "Todos los archivos fueron eliminados del directorio.";
-    } else {
-        echo "No se pudo abrir el directorio.";
     }
-} else {
-    echo "El directorio no existe o no es accesible para escritura.";
 }
+
 ?>
 <div class="form-gridview">
     <table class="default">
-        <h2 class="titlecenter"> Certificado  </h2>
+        <h2 class="titlecenter">Certificado</h2>
         <?php 
-            echo '<h2 class="textList"> ' . $_POST['txtname'] . ' </h2>';
-            if ($result && $result->num_rows > 0) {
-                echo '<tr>
-                        <th class="center" style="width: 800px">Nombre del archivo</th> 
-                        <th class="center" style="width: 300px">Creado</th>
-                        <th class="center" style="width: 300px">Actualizado</th>
-                        <th class="center">Descargar</th>
-                        <th class="center">Editar</th>
-                      </tr>';
+        echo '<h2 class="textList">' . $_POST['txtname'] . '</h2>';
         
-
-            $path = '../certification/certificadopdf/' . $_POST["txtuserid"];
-            if(file_exists($path)){
-                $directorio = opendir($path);
-                while($archivo = readdir($directorio)){
-                    if(!is_dir($archivo)){
-                        echo '
-                            <tr>
-                                <td>' . $archivo . '</td>
-                                <td>' . $_SESSION["send_created"] . '</td>
-                                <td>' . $_SESSION["send_updated"] . '</td>
-                                <td> 
-                                    <div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
-                                    title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
-                                    name="btn" value="form_consult" type="submit"></button>
-                                </td>
-                                <td>
-                                    <form action="" method="POST">
-                                        <input style="display:none;" type="text" name="txtuserid" value="'.$archivo.'"/>
-                                        <button class="btnedit" name="btn" value="form_update" type="submit"></button>
-                                    </form>
-                                </td>													
-                            </tr>';  
-                            $i += 1;       
-                    }
-                }
+        // Verificar si hay archivos obtenidos de la base de datos
+        if (!empty($_SESSION['num'])) {
+            echo '<tr>
+                    <th class="center" style="width: 800px">Nombre del archivo</th> 
+                    <th class="center" style="width: 300px">Creado</th>
+                    <th class="center" style="width: 300px">Actualizado</th>
+                    <th class="center">Descargar</th>
+                    <th class="center">Editar</th>
+                  </tr>';
+            
+            // Iterar sobre los archivos obtenidos de la base de datos
+            for ($i = 0; $i < count($_SESSION['num']); $i++) {
+                echo '<tr>
+                        <td>' . $_SESSION['send_archivo'][$i] . '</td>
+                        <td>' . $_SESSION['send_created'][$i] . '</td>
+                        <td>' . $_SESSION['send_updated'][$i] . '</td>
+                        <td> 
+                            <a href="../certification/certificadopdf/' . $_POST["txtuserid"] . '/' . $_SESSION['send_archivo'][$i] . '" title="Ver archivo adjunto" class="btnview" target="_blank">
+                                <button class="btnview" name="btn" value="form_consult" type="submit"></button>
+                            </a>
+                        </td>
+                        <td>
+                            <form action="" method="POST">
+                                <input style="display:none;" type="text" name="txtuserid" value="'.$_SESSION['send_archivo'][$i].'"/>
+                                <button class="btnedit" name="btn" value="form_update" type="submit"></button>
+                            </form>
+                        </td>													
+                      </tr>';  
             }
-            }
+        } else {
+            echo '<tr><td colspan="5">No se encontraron archivos.</td></tr>';
+        }
         ?>
     </table>
     <br></br>
 </div>
 
-<div class="content-aside">
-	<?php
-	include_once '../notif_info.php';
-	include_once "../sections/options-disabled.php";
-	?>
-</div>
 
 
 <div class="content-aside">
