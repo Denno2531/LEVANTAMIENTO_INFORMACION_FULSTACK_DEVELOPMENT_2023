@@ -31,7 +31,7 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="txtcity" class="text" type="text" name="txtcity" value="" placeholder="ciudad" maxlength="50" required />
                     <div class="descri">   
                     <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
-                        <input id="txtworkinghours" class="text" type="hidden" name="txtworkinghours" value=""
+                        <input id="txtworkinghours" class="text" type="text" name="txtworkinghours" value=""
                         placeholder="Seleccione el horario" maxlength="20000" data-expandable />
                         <div class="hour-picker">
                             <div>
@@ -44,6 +44,10 @@ $id_generate = 'empre-' . unique_id(5);
                             <!-- <button id="addHourBtn" class="btn icon"><i
                                 class="fas fa-plus-circle fa-lg fa-spin"></i></button> -->
                             </div>
+                            <div class="label" id="hourListContainer">
+                                 <br>
+                        ,        <ul id="hourList"></ul>
+                           </div>
                             <div class="three">
                     <label for="selecteducation" class="label">Nivel de educación</label>
                     <select id="selecteducation" class="select" name="selecteducation" required>
@@ -63,28 +67,35 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="No">No</option>                        
                     </select>
                     </div>
-                    <div class="five">
-                    <label for="inputsalesyear" class="label">Ventas por año</label>
-                    <input id="inputsalesyear" class="input" placeholder="Año 2019"  name="inputsalesyear" required>
-                    <input id="inputsalesyear1" class="input" placeholder="Año 2020" name="inputsalesyear1" required>
-                    <input id="inputsalesyear2" class="input" placeholder="Año 2021" name="inputsalesyear2" required>
-                    <input id="inputsalesyear3" class="input" placeholder="Año 2022" name="inputsalesyear3" required>
-                    <input id="inputsalesyear4" class="input" placeholder="Año 2023" name="inputsalesyear4" required>
+                    
+                    <div class="twenty">
+                    <label for="salesyear" class="label">Ventas de año 2019</label>
+                    <input id="txtsalesyear" class="text" type="text" name="txtsalesyear" placeholder="Ventas del año 2019" value="" maxlength="50" required />
                     </div>
-                    <div class="six">
-                    <label for="inputheritage" class="label">Patrimonio</label>
-                    <input id="inputheritage" class="input" placeholder="Año 2019"  name="inputheritage" required>
-                    <input id="inputheritage1" class="input" placeholder="Año 2020" name="inputheritage1" required>
-                    <input id="inputheritage2" class="input" placeholder="Año 2021" name="inputheritage2" required>
-                    <input id="inputheritage3" class="input" placeholder="Año 2022" name="inputheritage3" required>
-                    <input id="inputheritage4" class="input" placeholder="Año 2023" name="inputheritage4" required>
+
+                    <div class="eleven">
+                    <label for="salesyear1" class="label">Ventas de año 2020</label>
+                    <input id="txtsalesyear1" class="text" type="text" name="txtsalesyear1" placeholder="Ventas del año 2020" value="" maxlength="50" required />
+                    </div>
+
+                    <div class="third">
+                    <label for="salesyear2" class="label">Ventas de año 2021</label>
+                    <input id="txtsalesyear2" class="text" type="text" name="txtsalesyear2" placeholder="Ventas del año 2021" value="" maxlength="50" required />
+                    </div>
+
+                    <div class="fourth">
+                    <label for="salesyear3" class="label">Ventas de año 2022</label>
+                    <input id="txtsalesyear3" class="text" type="text" name="txtsalesyear3" placeholder="Ventas del año 2022" value="" maxlength="50" required />
+                    </div>
+                    
+                    <div class="one">
+                    <label for="salesyear4" class="label">Ventas de año 2023</label>
+                    <input id="txtsalesyear4" class="text" type="text" name="txtsalesyear4" placeholder="Ventas del año 2023" value="" maxlength="50" required />
+                    </div>
+                   
                     </div>
                     </div>
-                    </div>
-                    <div class="label" id="hourListContainer">
-                        <br>
-                        <ul id="hourList"></ul>
-                    </div>
+                    
 
                 </div>
                 <div class="last">
@@ -95,26 +106,28 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="hombre">Masculino</option>
                         <option value="otro">Otro</option>                        
                     </select>
-                    <label for="txtusercurp" class="label">Cédula</label>
-                    <input id="txtusercurp" class="text" type="text" name="txtcurp" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
+                    <label for="txtusercedula" class="label">Cédula</label>
+                    <input id="txtusercedula" class="text" type="text" name="txtcedula" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
                     <label for="txtuserrfc" class="label">Nacionalidad</label>
                     <input id="txtuserrfc" class="text" type="text" name="txtrfc" value="" placeholder="Nacionalidad" maxlength="100"required />
                     <label for="txtuserphone" class="label">Número de teléfono</label>
                     <input id="txtuserphone" class="text" type="text" name="txtphone" value="" placeholder="09999XXXXX" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." maxlength="10" required />
-                    <label for="txtuseraddress" class="label">Correo Electrónico</label>
-                    <input id="txtuseraddress" class="text" type="email" name="txtaddress" value="" placeholder="ejemplo@email.com" maxlength="200" required />
+                    <label for="txtuseremail" class="label">Correo Electrónico</label>
+                    <input id="txtuseremail" class="text" type="text" name="txtuseremail" value="" placeholder="ejemplo@email.com" maxlength="200" required />
                     <div class="eight">
-                    <label for="selectorganization" class="label">Organización</label>
-                    <select id="selectorganization" class="select"  name="selectorganization" required >
+                    <label for="selectuserorganization" class="label">Organización</label>
+                    <select id="selectuserorganization" class="select"  name="selectuserorganization" required >
                     <option value="">Seleccione</option>
                         <option value="No">No pertenezco</option>
                         <option value="UDELA">UDELA</option>
-                        <option value="Cooprede">COOPREDE</option>
-                        <option value="otro">Otro</option>                        
+                        <option value="COOPREDE">COOPREDE</option>
+                        <option value="otro">otro</option>                        
                     </select>
                     </div>
+                    <div class="twenty">
                     <label for="txtnameorganization" class="label">Nombre de empredimiento</label>
                     <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" />
+                    </div>
                     <div class="second">
                     <label for="selectstate" class="label">Estado</label>
                     <select id="selectstate" class="select" name="selectstate" required>
@@ -123,8 +136,8 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Inactivo">Inactivo</option>                        
                     </select>
                 </div>
-                    <label for="startdate" class="label">Fecha de inicio</label>
-                    <input id="datebeneficiaries" class="date" type="date" name="startdate" value="<?php echo date('Y-m-d'); ?>" required /> 
+                    <label for="dateuserstartdate" class="label">Fecha de inicio</label>
+                    <input id="dateuserstardate" class="date" type="date" name="datestartdate" value="<?php echo date('Y-m-d'); ?>" required /> 
                     <div class="five">
                     <label for="selectsocialsales" class="label">Realiza ventas por redes sociales</label>
                     <select id="selectsocialsales" class="select" name="selectsocialsales" required >
@@ -132,6 +145,32 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Si">Si</option>
                         <option value="No">No</option>                        
                     </select>
+                    </div>
+                    
+
+                    <div class="twenty-one">
+                    <label for="heritage" class="label">Patrimonio de año 2019</label>
+                    <input id="txtheritage" class="text" type="text" name="txtheritage" placeholder="Patrimonio del año 2019" value="" maxlength="50" required />
+                    </div>
+
+                    <div class="tweny-two">
+                    <label for="heritage1" class="label">Patrimonio de año 2020</label>
+                    <input id="txtheritage1" class="text" type="text" name="txtheritage1" placeholder="Patrimonio del año 2020" value="" maxlength="50" required />
+                    </div>
+
+                    <div class="twenty-two">
+                    <label for="heritage2" class="label">Patrimonio de año 2021</label>
+                    <input id="txtheritage2" class="text" type="text" name="txtheritage2" placeholder="Patrimonio del año 2021" value="" maxlength="50" required />
+                    </div>
+
+                    <div class="twenty-three">
+                    <label for="heritage3" class="label">Patrimonio de año 2022</label>
+                    <input id="txtheritage3" class="text" type="text" name="txtheritage3" placeholder="Patrimonio del año 2022" value="" maxlength="50" required />
+                    </div>
+                    
+                    <div class="twent-four">
+                    <label for="heritage4" class="label">Patrimonio de año 2023</label>
+                    <input id="txtheritage4" class="text" type="text" name="txtheritage4" placeholder="Patrimonio del año 2023" value="" maxlength="50" required />
                     </div>
                     </div>  
             </div>

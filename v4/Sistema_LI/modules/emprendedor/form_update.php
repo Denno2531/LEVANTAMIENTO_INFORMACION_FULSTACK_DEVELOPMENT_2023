@@ -11,10 +11,10 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_surnames'] = $row['surnames'];
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
-		$_SESSION['empre_curp'] = $row['cedula'];
-		$_SESSION['empre_rfc'] = $row['address'];
+		$_SESSION['empre_cedula'] = $row['cedula'];
+		$_SESSION['empre_rfc'] = $row['rfc'];
 		$_SESSION['empre_phone'] = $row['phone'];
-		$_SESSION['empre_documentation'] = $row['email'];
+		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_organization'] = $row['organization'];
 		$_SESSION['empre_nameorganization'] = $row['nameorganization'];
 		$_SESSION['empre_state'] = $row['state'];
@@ -25,7 +25,16 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
-		$_SESSION['empre_heritage'] = $row['heritage'];
+		$_SESSION['empre_salesyear1'] = $row['salesyear1'];
+		$_SESSION['empre_salesyear2'] = $row['salesyear2'];
+		$_SESSION['empre_salesyear3'] = $row['salesyear3'];
+		$_SESSION['empre_salesyear4'] = $row['salesyear4'];
+		$_SESSION['empre_heritage'] = $row['heritage'];	
+		$_SESSION['empre_heritage1'] = $row['heritage1'];	
+		$_SESSION['empre_heritage2'] = $row['heritage2'];	
+		$_SESSION['empre_heritage3'] = $row['heritage3'];	
+		$_SESSION['empre_heritage4'] = $row['heritage4'];
+
 
 	}
 }
@@ -52,11 +61,12 @@ if ($result = $conexion->query($sql)) {
 					<input id="dateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
 					<label for="txtcity" class="label">Ciudad</label>
 					<input id="txtcity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
+			
 					<div class="hour-picker">
 						<label for="txtworkinghours_start" class="text">Abierto desde:</label>
 						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
-						<label for="txtworkinghours_start" class="text">Hora de salida:</label>
-						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtuserhours_end">
+						<label for="txtworkinghours_end" class="text">Hora de salida:</label>
+						<input id="txtworkinghours_end" class="hour-input" type="time" name="txtworkinghours_end">		
 					</div>
 					<div class="three">
 					<label for="selecteducation" class="label">Nivel de educación</label>
@@ -138,22 +148,26 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>
 					</div>
-					<div class="five">
-                    <label for="inputsalesyear" class="label">Ventas por año</label>
-                    <input id="inputsalesyear" class="input" type="float" placeholder="Año 2019" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear" maxlength="50" required>
-                    <input id="inputsalesyear1" class="input" type="float" placeholder="Año 2020" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear1" maxlength="50" required>
-                    <input id="inputsalesyear2" class="input" type="float" placeholder="Año 2021" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear2" maxlength="50" required>
-                    <input id="inputsalesyear3" class="input" type="float" placeholder="Año 2022" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear3" maxlength="50" required>
-                    <input id="inputsalesyear4" class="input" type="float" placeholder="Año 2023" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear4" maxlength="50" required>
+					<div class="total-salesyear">
+                    <label for="salesyear" class="label">Ventas de año 2019</label>
+					<input id="salesyear" class="text" type="text" name="txtsalesyear" value="<?php echo $_SESSION['empre_salesyear']; ?>" placeholder="Ventas del año 2019"  maxlength="50" required />
 
-					<div class="six">
-                    <label for="inputheritage" class="label">Patrimonio</label>
-                    <input id="inputheritage" class="input" type="float" placeholder="Año 2019"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage" maxlength="50" required>
-                    <input id="inputheritage1" class="input" type="float" placeholder="Año 2020"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage1" maxlength="50" required>
-                    <input id="inputheritage2" class="input" type="float" placeholder="Año 2021"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage2" maxlength="50" required>
-                    <input id="inputheritage3" class="input" type="float" placeholder="Año 2022"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage3" maxlength="50" required>
-                    <input id="inputheritage4" class="input" type="float" placeholder="Año 2023"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage4" maxlength="50" required>
-                    </div>
+                    
+                    <label for="salesyear1" class="label">Ventas de año 2020</label>
+					<input id="salesyear1" class="text" type="text" name="txtsalesyear1" value="<?php echo $_SESSION['empre_salesyear1']; ?>" placeholder="Ventas del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="salesyear2" class="label">Ventas de año 2021</label>
+					<input id="salesyear2" class="text" type="text" name="txtsalesyear2" value="<?php echo $_SESSION['empre_salesyear2']; ?>" placeholder="Ventas del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="salesyear3" class="label">Ventas de año 2022</label>
+					<input id="salesyear3" class="text" type="text" name="txtsalesyear3" value="<?php echo $_SESSION['empre_salesyear3']; ?>" placeholder="Ventas del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="salesyear4" class="label">Ventas de año 2023</label>
+					<input id="salesyear4" class="text" type="text" name="txtsalesyear4" value="<?php echo $_SESSION['empre_salesyear4']; ?>" placeholder="Ventas del año 2023"  maxlength="50" required />
+
 					</div>
 					</div>
 				</div>
@@ -189,15 +203,15 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>	
-					<label for="txtusercurp" class="label">Cédula</label>
-					<input id="txtusercurp" class="text" type="text" name="txtcurp" value="<?php echo $_SESSION['empre_curp']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
+					<label for="txtusercedula" class="label">Cédula</label>
+					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_cedula']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
 					<label for="txtuserrfc" class="label">Nacionalidad</label>
 					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad" required />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
 					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
 
-					<label for="dateuseradmission" class="label">Correo Electrónico</label>
-					<input id="txtuseraddress" class="text" type="text" name="txtaddress" value="<?php echo $_SESSION['empre_documentation']; ?>" placeholder="Correo" maxlength="200" required />
+					<label for="txtuseremail" class="label">Correo Electrónico</label>
+					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
 					<select id="selectorganization" class="select" name="selectorganization" required>
@@ -224,14 +238,14 @@ if ($result = $conexion->query($sql)) {
 								<option value="Cooprede>COOPREDE</option>	
 								<option value="otro>Otro</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'Cooprede') {
+						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
 							echo '
 							    <option value="Cooprede>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
 								<option value="No">No pertenezco</option>
 								<option value="otro>Otro</option>							
 							';
-						}elseif ($_SESSION['empre_organization'] == 'Otro') {
+						}elseif ($_SESSION['empre_organization'] == 'otro') {
 							echo '
 								<option value="otro>Otro</option>	
 								<option value="Cooprede>COOPREDE</option>	
@@ -241,8 +255,11 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>
+					</div>
+					<div class="twenty">
 					<label for="txtnameorganization" class="label">Nombre de empredimiento</label>
 					<input id="txtnameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
+					</div>
 					<div class="second">
 					<label for="selectstate" class="label">Estado</label>
 					<select id="selectstate" class="select" name="selectstate" required>
@@ -291,13 +308,33 @@ if ($result = $conexion->query($sql)) {
 						} 
 						?>
 					</select>
+					</div>
+					<div class="total-heritage">
+                    <label for="heritage" class="label">Patrimonio del año 2019</label>
+					<input id="heritage" class="text" type="text" name="txtheritage" value="<?php echo $_SESSION['empre_heritage']; ?>" placeholder="Patrimonio del año 2019"  maxlength="50" required />
 
+                    
+                    <label for="heritage1" class="label">Patrimonio del año 2020</label>
+					<input id="heritage1" class="text" type="text" name="txtheritage1" value="<?php echo $_SESSION['empre_heritage1']; ?>" placeholder="Patrimonio del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="heritage2" class="label">Patrimonio del año 2021</label>
+					<input id="heritage2" class="text" type="text" name="txtheritage2" value="<?php echo $_SESSION['empre_heritage2']; ?>" placeholder="Patrimonio del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="heritage3" class="label">Patrimonio del año 2022</label>
+					<input id="heritage3" class="text" type="text" name="txtheritage3" value="<?php echo $_SESSION['empre_heritage3']; ?>" placeholder="Patrimonio del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="heritage4" class="label">Patrimonio del año 2023</label>
+					<input id="heritage4" class="text" type="text" name="txtheritage4" value="<?php echo $_SESSION['empre_heritage4']; ?>" placeholder="Patrimonio del año 2023"  maxlength="50" required />
+					</div>
 					</div>
 					</div>
 					</div>
 				</div>
+				<button id="btnSave" class="btn icon" type="submit">save</button>
 			</div>
-			<button id="btnSave" class="btn icon" type="submit">save</button>
 		</form>
 	</div>
 </div>
