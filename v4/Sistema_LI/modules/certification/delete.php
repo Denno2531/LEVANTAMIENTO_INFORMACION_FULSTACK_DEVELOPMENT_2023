@@ -51,3 +51,4 @@ if (!empty($_POST['txtuserid'])) {
 
 header('Location: /modules/send_one');
 exit();
+?>

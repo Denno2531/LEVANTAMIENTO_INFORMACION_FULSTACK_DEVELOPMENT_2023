@@ -20,7 +20,7 @@ if (!empty($_POST['search'])) {
 
 	$i = 0;
 
-	$sql = "SELECT * FROM certifcation WHERE num LIKE '%" . $_POST['search'] . "%' OR archivo LIKE '%" . $_POST['search'] . "%' OR user LIKE '%" . $_POST['search'] . "%' OR num LIKE '%" . $_POST['search'] . "%' OR descripcion LIKE '%" . $_POST['search'] . "%' ORDER BY num";
+	$sql = "SELECT * FROM certification WHERE num LIKE '%" . $_POST['search'] . "%' OR archivo LIKE '%" . $_POST['search'] . "%' OR user LIKE '%" . $_POST['search'] . "%' OR num LIKE '%" . $_POST['search'] . "%' OR descripcion LIKE '%" . $_POST['search'] . "%' ORDER BY num";
 
 	if ($result = $conexion->query($sql)) {
 		while ($row = mysqli_fetch_array($result)) {
