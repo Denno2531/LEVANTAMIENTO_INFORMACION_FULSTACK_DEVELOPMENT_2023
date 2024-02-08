@@ -770,7 +770,7 @@ include_once 'load_data.php';
 							echo '
 								<option value="">Seleccione</option>
 								<option value="no">no pertenezco</option>
-								<option value="udela">udela</option>
+								<option value="UDELA">UDELA</option>
 								<option value="cooprede>cooprede</option>	
 								<option value="otro>Otro</option>								
 							';

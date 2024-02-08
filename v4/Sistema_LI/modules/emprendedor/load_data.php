@@ -25,10 +25,12 @@ if (!empty($_POST['search'])) {
 				if ($result = $conexion->query($sql)) {
 					while ($row = mysqli_fetch_array($result)) {
 						$_SESSION['user_id'][$i] = $row['user'];
+						$_SESSION['empre_pass'][$i] = $row['pass'];
 						$_SESSION['empre_name'][$i] = $row['name'];
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
 						$_SESSION['empre_date_of_birth'][$i] = $row['date_of_birth'];
 						$_SESSION['empre_city'][$i] = $row['city'];
+						$_SESSION['empre_workinghours'] = $row['workinghours'];	
 						$_SESSION['empre_education'][$i] = $row['education'];
 						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
 						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
@@ -42,17 +44,16 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_heritage3'][$i] = $row['heritage3'];
 						$_SESSION['empre_heritage4'][$i] = $row['heritage4'];
 						$_SESSION['empre_gender'][$i] = $row['gender'];
-						$_SESSION['empre_pass'][$i] = $row['pass'];
+						$_SESSION['empre_cedula'][$i] = $row['cedula'];
+						$_SESSION['empre_rfc'][$i] = $row['rfc'];	
 						$_SESSION['empre_phone'][$i] = $row['phone'];
 						$_SESSION['empre_email'][$i] = $row['email'];
-						$_SESSION['empre_cedula'][$i] = $row['cedula'];
 						$_SESSION['empre_organization'][$i] = $row['organization'];
 						$_SESSION['empre_nameorganization'][$i] = $row['nameorganization'];
 						$_SESSION['empre_state'][$i] = $row['state'];
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
-						$_SESSION['empre_rfc'][$i] = $row['rfc'];
-						$_SESSION['empre_workinghours'] = $row['workinghours'];	
+
 						
 		
 
@@ -63,10 +64,12 @@ if (!empty($_POST['search'])) {
 				$_SESSION['total_users'] = count($_SESSION['user_id']);
 			} else {
 				$_SESSION['user_id'] = array();
+				$_SESSION['empre_pass'] = array();
 				$_SESSION['empre_name'] = array();
 				$_SESSION['empre_surname'] = array();
 				$_SESSION['empre_date_of_birth'] = array();
 				$_SESSION['empre_city'] = array();
+				$_SESSION['empre_workinghours'] = array();
 				$_SESSION['empre_education'] = array();
 				$_SESSION['empre_socialnetworks'] = array();
 				$_SESSION['empre_salesyear'] = array();
@@ -80,17 +83,15 @@ if (!empty($_POST['search'])) {
 				$_SESSION['empre_heritage3'] = array();
 				$_SESSION['empre_heritage4'] = array();
 				$_SESSION['empre_gender'] = array();
-				$_SESSION['empre_pass'] = array();
+				$_SESSION['empre_cedula'] = array();
+				$_SESSION['empre_rfc'] = array();
 				$_SESSION['empre_phone'] = array();
 				$_SESSION['empre_email'] = array();
-				$_SESSION['empre_cedula'] = array();
 				$_SESSION['empre_organization'] = array();
 				$_SESSION['empre_nameorganization'] = array();
 				$_SESSION['empre_state'] = array();
 				$_SESSION['empre_startdate'] = array();
 				$_SESSION['empre_socialsales'] = array();
-				$_SESSION['empre_rfc'] = array();
-				$_SESSION['empre_workinghours'] = array();
 			
 
 
@@ -103,10 +104,12 @@ if (!empty($_POST['search'])) {
 				if ($result = $conexion->query($sql)) {
 					while ($row = mysqli_fetch_array($result)) {
 						$_SESSION['user_id'][$i] = $row['user'];
+						$_SESSION['empre_pass'][$i] = $row['pass'];
 						$_SESSION['empre_name'][$i] = $row['name'];
 						$_SESSION['empre_surname'][$i] = $row['surnames'];
 						$_SESSION['empre_date_of_birth'][$i] = $row['date_of_birth'];
 						$_SESSION['empre_city'][$i] = $row['city'];
+						$_SESSION['empre_workinghours'] = $row['workinghours'];	
 						$_SESSION['empre_education'][$i] = $row['education'];
 						$_SESSION['empre_socialnetworks'][$i] = $row['socialnetworks'];
 						$_SESSION['empre_salesyear'][$i] = $row['salesyear'];
@@ -120,17 +123,15 @@ if (!empty($_POST['search'])) {
 						$_SESSION['empre_heritage3'][$i] = $row['heritage3'];
 						$_SESSION['empre_heritage4'][$i] = $row['heritage4'];
 						$_SESSION['empre_gender'][$i] = $row['gender'];
-						$_SESSION['empre_pass'][$i] = $row['pass'];
+						$_SESSION['empre_cedula'][$i] = $row['cedula'];
+						$_SESSION['empre_rfc'][$i] = $row['rfc'];	
 						$_SESSION['empre_phone'][$i] = $row['phone'];
 						$_SESSION['empre_email'][$i] = $row['email'];
-						$_SESSION['empre_cedula'][$i] = $row['cedula'];
 						$_SESSION['empre_organization'][$i] = $row['organization'];
 						$_SESSION['empre_nameorganization'][$i] = $row['nameorganization'];
 						$_SESSION['empre_state'][$i] = $row['state'];
 						$_SESSION['empre_startdate'][$i] = $row['startdate'];
 						$_SESSION['empre_socialsales'][$i] = $row['socialsales'];
-						$_SESSION['empre_rfc'][$i] = $row['rfc'];	
-						$_SESSION['empre_workinghours'] = $row['workinghours'];	
 
 
 						$i += 1;
