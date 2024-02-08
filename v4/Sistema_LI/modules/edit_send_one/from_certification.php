@@ -54,7 +54,7 @@ if ($result = $conexion->query($sql)) {
                         <td>
                             <form action="" method="POST">
                                 <input style="display:none;" type="text" name="txtuserid" value="'.$_SESSION['send_archivo'][$i].'"/>
-                                <button class="btnedit" name="btn" value="form_update" type="submit"></button>
+                                <button class="btnedit" name="btn" value="form_updatecertification" type="submit"></button>
                             </form>
                         </td>													
                       </tr>';  
