@@ -68,12 +68,15 @@ if (strpos($url_actual, 'modules')) {
         <li><a class="<?php if ($output[1] == 'Justificaciones') {
                             echo 'active';
                         } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span>Justificaciones</a></li>
-         <li><a class="<?php if ($output[1] == 'Envio_1') {
+        <li><a class="<?php if ($output[1] == 'Envio_1') {
                             echo 'active';
                         } ?>" href="/modules/send_one"><span class="icon">recent_actors</span>Envio 1 y Record academico</a></li>
         <li><a class="<?php if ($output[1] == 'Envio_2') {
                             echo 'active';
                         } ?>" href="/modules/send_two"><span class="icon">recent_actors</span>Envio 2</a></li>
+        <li><a class="<?php if ($output[1] == 'Certificado') {
+                            echo 'active';
+                        } ?>" href="/modules/certification"><span class="icon">recent_actors</span>Certificados</a></li>
         
         
 </div>
@@ -100,6 +103,9 @@ if (strpos($url_actual, 'modules')) {
                 </li>
                 <li>
                     <a class="" href="" title="Envio_2"><span class="icon">recent_actors</span></a>
+                </li>
+                <li>
+                    <a class="" href="" title="Certificado"><span class="icon">recent_actors</span></a>
                 </li>
                 
             </ul>

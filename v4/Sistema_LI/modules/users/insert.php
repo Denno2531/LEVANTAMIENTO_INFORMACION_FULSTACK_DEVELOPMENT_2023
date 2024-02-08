@@ -5,42 +5,57 @@ include_once '../notif_info_msgbox.php';
 
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin.php');
 
-$_POST['txtuserid'] = trim($_POST['txtuserid']);
-$passhash = hash("SHA256",(trim($_POST['txtpass'])));
+// Se eliminan las líneas que modifican directamente $_POST['txtuserid'] y $_POST['txtpass']
+// para evitar problemas de seguridad y mantener los datos originales para cualquier posterior validación.
+
+// Se valida si el campo txtuserid está vacío.
 if (empty($_POST['txtuserid'])) {
-	header('Location: /');
-	exit();
-}
-if ($_POST['txtuserid'] == '') {
-	Error('Ingrese un ID correcto.');
-	header('Location: /modules/users');
-	exit();
+    header('Location: /');
+    exit();
 }
 
-$sql = "SELECT * FROM administratives WHERE user = '" . $_POST['txtuserid'] . "'";
+// Se elimina la comprobación redundante de txtuserid igual a cadena vacía.
 
-if ($result = $conexion->query($sql)) {
-	if ($row = mysqli_fetch_array($result)) {
-		Error('Este ID ya está en uso. Elige otro.');
-		header('Location: /modules/users');
-		exit();
-	} else {
-		$date = date('Y-m-d H:i:s');
-			$sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['txtemail']) . "', '" . $passhash . "', 'editor', 'editor', 'user.png','" . $date . "')";
-			if (mysqli_query($conexion, $sql_insert_user)) {
-				Info('Editor agregado correctamente.');
-			} else {
-				$sql_delete_users = "DELETE FROM users WHERE user = '" . $_POST['txtuserid'] . "'";
+// Se escapa la contraseña antes de hacer hash.
+$passhash = hash("SHA256", mysqli_real_escape_string($conexion, trim($_POST['txtpass'])));
 
-				if (mysqli_query($conexion, $sql_delete_users)) {
-					Error('Error al guardar.');
-				}
-			}
-		header('Location: /modules/users');
-		exit();
-	}
+// Se prepara la consulta SQL utilizando consultas preparadas.
+$sql = "SELECT * FROM administratives WHERE user = ?";
+if ($stmt = $conexion->prepare($sql)) {
+    // Se vincula el parámetro.
+    $stmt->bind_param("s", $_POST['txtuserid']);
+    // Se ejecuta la consulta.
+    $stmt->execute();
+    // Se obtiene el resultado.
+    $result = $stmt->get_result();
+    // Se verifica si se encontraron resultados.
+    if ($result->num_rows > 0) {
+        Error('Este ID ya está en uso. Elige otro.');
+        header('Location: /modules/users');
+        exit();
+    } else {
+        // Se obtiene la fecha actual.
+        $date = date('Y-m-d H:i:s');
+        // Se prepara la consulta de inserción de usuario.
+        $sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES(?, ?, ?, ?, ?, 'editor', 'editor', 'user.png', ?)";
+        if ($stmt = $conexion->prepare($sql_insert_user)) {
+            // Se vinculan los parámetros.
+            $stmt->bind_param("ssssss", $_POST['txtuserid'], $_POST['txtname'], $_POST['txtsurnames'], $_POST['txtemail'], $passhash, $date);
+            // Se ejecuta la consulta de inserción.
+            if ($stmt->execute()) {
+                Info('Editor agregado correctamente.');
+            } else {
+                Error('Error al guardar.');
+            }
+        } else {
+            Error('Error al preparar la consulta de inserción.');
+        }
+        header('Location: /modules/users');
+        exit();
+    }
+} else {
+    Error('Error al preparar la consulta.');
 }
-
 
 
 

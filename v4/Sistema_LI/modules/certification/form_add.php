@@ -9,7 +9,7 @@ if ($result = $conexion->query($sql)) {
         $_SESSION['user_id'] = $row['user'];
     }
 }
-		
+
 function unique_id($l = 10)
 {
     return substr(md5(uniqid(mt_rand(), true)), 0, $l);
@@ -18,6 +18,7 @@ function unique_id($l = 10)
 
 $id_generate = 'S-' . unique_id(5);
 ?>
+
 <div class="form-data">
     <div class="head">
         <h1 class="titulo">Agregar</h1>
@@ -37,11 +38,11 @@ $id_generate = 'S-' . unique_id(5);
                 </div>
                 <div class="description">
                     <label for="txtinfoqdescription" class="label">Descripción</label>
-                    <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Adjunto archivo para revision</textarea>
+                    <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Estimado ingeniero, me podria ayudar con el certificado de Vinculacion</textarea>
                 </div>
                 <div>
                     <label for="txtusernum" class="label">Cargar Archivo</label>
-                    <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx" required>
+                    <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx" >
                 </div>
             </div>
             
@@ -55,5 +56,6 @@ $id_generate = 'S-' . unique_id(5);
     ?>
 </div>
 <script src="/js/modules/students.js" type="text/javascript"></script>
+
 
 
