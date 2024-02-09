@@ -331,8 +331,9 @@ if ($result = $conexion->query($sql)) {
 					</div>
 					</div>
 					</div>
+					<button id="btnSave" class="btn icon" type="submit">done</button>
+
 				</div>
-				<button id="btnSave" class="btn icon" type="submit">done</button>
 
 			</div>
 		</form>
