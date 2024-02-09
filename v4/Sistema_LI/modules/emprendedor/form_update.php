@@ -21,7 +21,8 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_startdate'] = $row['startdate'];
 		$_SESSION['empre_socialsales'] = $row['socialsales'];
 		$_SESSION['empre_city'] = $row['city'];
-		$_SESSION['empre_workinghours'] = $row['workinghours'];
+		$_SESSION['empre_workinghours_start'] = $row['workinghours_start'];
+		$_SESSION['empre_workinghours_end'] = $row['workinghours_end'];
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
@@ -63,10 +64,10 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtcity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
 			
 					<div class="hour-picker">
-						<label for="txtworkinghours_start" class="text">Abierto desde:</label>
-						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
-						<label for="txtworkinghours_end" class="text">Hora de salida:</label>
-						<input id="txtworkinghours_end" class="hour-input" type="time" name="txtworkinghours_end">		
+						<label for="timeworkinghours_start" class="text">Abierto desde:</label>
+						<input id="timeworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start"value="<?php echo $_SESSION['empre_workinghours_start']; ?>" required/>
+						<label for="timeworkinghours_end" class="text">Hora de salida:</label>
+						<input id="timeworkinghours_end" class="hour-input" type="time" name="timeworkinghours_end"value="<?php echo $_SESSION['empre_workinghours_end']; ?>" required/>>		
 					</div>
 					<div class="three">
 					<label for="selecteducation" class="label">Nivel de educación</label>
