@@ -18,6 +18,8 @@ if (!empty($_POST['search'])) {
 	$_SESSION['user_id'] = array();
 	$_SESSION['empre_name'] = array();
 	$_SESSION['empre_surname'] = array();
+	$_SESSION['empre_nameorganization'] = array();
+
 
 	$i = 0;
 				$sql = "SELECT * FROM emprendedor WHERE user LIKE '%" . $_POST['search'] . "%' OR name LIKE '%" . $_POST['search'] . "%' OR surnames LIKE '%" . $_POST['search'] . "%' OR cedula LIKE '%" . $_POST['search'] . "%' ORDER BY name";

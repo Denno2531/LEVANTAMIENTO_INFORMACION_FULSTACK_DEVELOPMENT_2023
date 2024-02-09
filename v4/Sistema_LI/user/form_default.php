@@ -20,7 +20,7 @@ include_once 'load_data.php';
 			<div class="wrap">
 				<div class="first">
 					<div class="section-user-image">
-						<img src="<?php echo '/images/users/' . $_SESSION['user_image']; ?>" />
+						<img src="<?php echo '/images/users/user' . $_SESSION['user_image']; ?>" />
 						<?php
 						$date_time_start = isset($_SESSION['image_updated_at']) ? date_create($_SESSION['image_updated_at']) : date_create('2000-12-23 10:30:15');
 						$date_time_end = date_create(date('Y-m-d'));
