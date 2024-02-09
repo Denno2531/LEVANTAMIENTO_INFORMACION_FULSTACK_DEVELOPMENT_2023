@@ -20,7 +20,8 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_startdate'] = $row['startdate'];
 		$_SESSION['empre_socialsales'] = $row['socialsales'];
 		$_SESSION['empre_city'] = $row['city'];
-		$_SESSION['empre_workinghours'] = $row['workinghours'];
+		$_SESSION['empre_workinghours_start'] = $row['workinghours_start'];
+		$_SESSION['empre_workinghours_end'] = $row['workinghours_end'];
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
@@ -61,11 +62,11 @@ if ($result = $conexion->query($sql)) {
 					<input id="userdateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" disabled />	
 					<label for="txtusercity" class="label">Ciudad</label>
 					<input id="txtusercity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" disabled />	
-					<div class="descri">
-						<label for="txtuserworkinghours_start" class="text">Abierto desde:</label>
-						<input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
-						<label for="txtuserworkinghours_start" class="text">Hora de salida:</label>
-						<input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtuserhours_end">
+					<div class="hour-picker">
+						<label for="timeuserworkinghours_start" class="text">Abierto desde:</label>
+						<input id="timeuserworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start"value="<?php echo $_SESSION['empre_workinghours_start']; ?>" disabled/>
+						<label for="timeuserworkinghours_end" class="text">Hora de salida:</label>
+						<input id="timeuserworkinghours_end" class="hour-input" type="time" name="timeuserhours_end"value="<?php echo $_SESSION['empre_workinghours_end']; ?>" disabled/>
 					</div>
 					<div class="three">
 					<label for="selectusereducation" class="label">Nivel de educación</label>
@@ -254,9 +255,10 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>
-				
+					<div class="twenty">
 					<label for="txtusernameorganization" class="label">Nombre de empredimiento</label>
 					<input id="txtusernameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" disabled />
+					</div>
 					<div class="second">
 					<label for="seleuserctstate" class="label">Estado</label>
 					<select id="seleuserctstate" class="select" name="selectstate" disabled>

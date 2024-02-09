@@ -40,12 +40,13 @@ if ($result = $conexion->query($sql)) {
 		$sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) .  "', '" . trim($_POST['txtuseremail']) . "', '" . $passhash ."', 'editor', 'empre', 'user.png','" . $date . "')";	
 			
 		if (mysqli_query($conexion, $sql_insert_user)) {
-			$sql_insert_administrative = "INSERT INTO emprendedor(user, name, surnames,city, date_of_birth,workinghours,education,
-			socialnetworks,salesyear,salesyear1,salesyear2,salesyear3,salesyear4,heritage,heritage1,
+			$sql_insert_administrative = "INSERT INTO emprendedor(user, name, surnames,city, date_of_birth,workinghours_start,workinghours_end,
+			education,socialnetworks,salesyear,salesyear1,salesyear2,salesyear3,salesyear4,heritage,heritage1,
 			heritage2,heritage3,heritage4, gender, cedula,rfc, pass, phone,email,organization,nameorganization,
 			state,startdate,socialsales, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) .
 			"', '" . trim($_POST['txtsurnames']) . "', '". trim($_POST['txtcity'])."', '" . trim($_POST['dateofbirth']) .
-			"', '". trim($_POST['txtworkinghours']). "', '". trim($_POST['selecteducation']).
+			"', '". trim($_POST['timeworkinghours_start'])."', '". trim($_POST['timeworkinghours_end']).
+			"', '". trim($_POST['selecteducation']).
 			"', '". trim($_POST['selectsocialnetworks'])."', '". trim($_POST['txtsalesyear']).
 			"', '". trim($_POST['txtsalesyear1'])."', '". trim($_POST['txtsalesyear2']).
 			"', '". trim($_POST['txtsalesyear3'])."', '". trim($_POST['txtsalesyear4']).
