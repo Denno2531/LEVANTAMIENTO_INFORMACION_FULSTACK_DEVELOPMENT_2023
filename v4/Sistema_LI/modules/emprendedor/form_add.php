@@ -33,7 +33,7 @@ $id_generate = 'empre-' . unique_id(5);
                         <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
                             <div>
                                 <label for="timeworkinghours_start" class="text">Abierto desde:</label>
-                                <input id="timeserworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start">
+                                <input id="timeserworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start" required>
                             </div>
                             <div>
                               <label for="timeworkinghours_end" class="text">Cerrado:</label>
@@ -45,7 +45,7 @@ $id_generate = 'empre-' . unique_id(5);
                                  <br>
                                <ul id="hourList"></ul>
                            </div>
-                            <div class="three">
+                    <div class="three">
                     <label for="selecteducation" class="label">Nivel de educación</label>
                     <select id="selecteducation" class="select" name="selecteducation" required>
                         <option value="">Seleccione</option>
@@ -55,7 +55,7 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Tecnología">Tecnología</option>     
                         <option value="Universidad">Universidad</option>                        
                     </select>
-                    </div>
+                     </div>
                     <div class="four">
                     <label for="selectsocialnetworks" class="label">Utiliza redes sociales</label>
                     <select id="selectsocialnetworks" class="select" name="selectsocialnetworks" required>
@@ -123,7 +123,7 @@ $id_generate = 'empre-' . unique_id(5);
                     </div>
                     <div class="twenty">
                     <label for="txtnameorganization" class="label">Nombre de empredimiento</label>
-                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" />
+                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" required />
                     </div>
                     <div class="second">
                     <label for="selectstate" class="label">Estado</label>
