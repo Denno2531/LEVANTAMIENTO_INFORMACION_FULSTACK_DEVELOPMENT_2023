@@ -9,13 +9,16 @@ $id = $_POST['txtuserid'];
 $sql = "SELECT * FROM certification WHERE archivopdf = '" . $_POST['txtuserid'] . "'";
 
 if ($result = $conexion->query($sql)) {
-    if ($row = mysqli_fetch_array($result)) {
-      $_SESSION['user_id'] = $row['user'];
-      $_SESSION['numero'] = $row['num'];
-      $_SESSION['nombre'] = $row['archivopdf'];
-      $_SESSION['evidencia'] = $row['evidencepdf'];
-    }
+  if ($row = mysqli_fetch_array($result)) {
+    $_SESSION['user_id'] = $row['user'];
+    $_SESSION['numero'] = $row['num'];
+    $_SESSION['mensaje'] = $row['message'];
+    $_SESSION['nombre'] = $row['archivopdf'];
+    $_SESSION['evidencia'] = $row['evidencepdf'];
+    $_SESSION['coment'] = $row['message_student'];
   }
+}
+$id = $_SESSION['user_id'];
 //obtenemos los comentarios del estudiante
 $comenario_estudiante = $_SESSION['coment'];
 // Obtén el nombre del archivo desde la base de datos o alguna otra fuente
@@ -23,11 +26,13 @@ $nombre_del_archivo = $_SESSION['evidencia'];
 // Construye la URL completa al archivo PDF
 $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombre_del_archivo;
 
-?> 
+
+
+?>
 
 <div class="form-data">
   <div class="head">
-    <h1 class="titulo">Formulario de envío 1</h1>
+    <h1 class="titulo">Formulario de Justificación</h1>
   </div>
   <div class="body">
 
@@ -43,6 +48,13 @@ $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombr
             value="<?php echo $_SESSION['user_id']; ?>" maxlength="50">
           <input class="text" type="text" name="txt" value="<?php echo $_SESSION['user_id']; ?>" maxlength="50"
             disabled />
+        </div>
+        <div class="first">
+          <label for="txtestado" class="label">Estado</label>
+          <input id="txtestado" class="text" style=" display: none;" type="text" name="txtestado"
+            value="<?php echo $_SESSION['state']; ?>" maxlength="50" readonly />
+          <input class="text" type="text" name="txtestado" value="<?php echo $_SESSION['state']; ?>" required
+            readonly />
         </div>
         <div class="description">
           <label for="txtinfoqdescription" class="label">Comentario de documentación</label>
@@ -112,3 +124,15 @@ $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombr
 
 
 
+
+<?php
+
+# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+
+// Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 2022-2023
+
+// Ricardo Alejandro  Jaramillo Salgado, Michael Andres Espinosa Carrera, Steven Cardenas, Luis LLumiquinga
+
+# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+
+?>
