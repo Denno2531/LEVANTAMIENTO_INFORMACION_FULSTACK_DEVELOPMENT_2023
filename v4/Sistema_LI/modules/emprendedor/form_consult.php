@@ -214,7 +214,7 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" disabled />
 					<div class="eight">
 					<label for="selectuserorganization" class="label">Organización</label>
-					<select id="selectuserorganization" class="select" name="selectorganization" >
+					<select id="selectuserorganization" class="select" name="selectorganization" disabled>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
