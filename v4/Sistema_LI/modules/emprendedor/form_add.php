@@ -30,10 +30,8 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="txtcity" class="label">Ciudad</label>
                     <input id="txtcity" class="text" type="text" name="txtcity" value="" placeholder="ciudad" maxlength="50" required />
                     <div class="descri">   
-                    <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
-                        <input id="txtworkinghours" class="text" type="text" name="txtworkinghours" value=""
-                        placeholder="Seleccione el horario" maxlength="20000" data-expandable />
                         <div class="hour-picker">
+                        <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
                             <div>
                                 <label for="txtworkinghours_start" class="text">Abierto desde:</label>
                                 <input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtuserworkinghours_start">
@@ -109,19 +107,19 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="txtusercedula" class="label">Cédula</label>
                     <input id="txtusercedula" class="text" type="text" name="txtcedula" value="" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10"  required />
                     <label for="txtuserrfc" class="label">Nacionalidad</label>
-                    <input id="txtuserrfc" class="text" type="text" name="txtrfc" value="" placeholder="Nacionalidad" maxlength="100"required />
+                    <input id="txtuserrfc" class="text" type="text" name="txtrfc" value="" placeholder="Nacionalidad" maxlength="20"required />
                     <label for="txtuserphone" class="label">Número de teléfono</label>
                     <input id="txtuserphone" class="text" type="text" name="txtphone" value="" placeholder="09999XXXXX" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." maxlength="10" required />
                     <label for="txtuseremail" class="label">Correo Electrónico</label>
                     <input id="txtuseremail" class="text" type="text" name="txtuseremail" value="" placeholder="ejemplo@email.com" maxlength="200" required />
                     <div class="eight">
                     <label for="selectuserorganization" class="label">Organización</label>
-                    <select id="selectuserorganization" class="select"  name="selectuserorganization" required >
+                    <select id="selectuserorganization" class="select"  name="selectorganization" maxlength="30" required >
                     <option value="">Seleccione</option>
-                        <option value="No">No pertenezco</option>
+                        <option value="NO PERTENEZCO">NO PERTENEZCO</option>
                         <option value="UDELA">UDELA</option>
                         <option value="COOPREDE">COOPREDE</option>
-                        <option value="otro">otro</option>                        
+                        <option value="OTRO">OTRO</option>                        
                     </select>
                     </div>
                     <div class="twenty">

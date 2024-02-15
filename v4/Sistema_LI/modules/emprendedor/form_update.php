@@ -214,48 +214,48 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
-					<select id="selectorganization" class="select" name="selectorganization" required>
+					<select id="selectorganization" class="select" name="selectOrganization" required>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="No">No pertenezco</option>
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'No pertenezco') {
+						} elseif ($_SESSION['empre_organization'] == 'NO PERTENEZCO') {
 							echo '
-								<option value="No">No pertenezco</option>
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
 						} elseif ($_SESSION['empre_organization'] == 'UDELA') {
 							echo '
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
 						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
 							echo '
-							    <option value="Cooprede>COOPREDE</option>	
+							    <option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="otro>Otro</option>							
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
+								<option value="OTRO>OTRO</option>							
 							';
-						}elseif ($_SESSION['empre_organization'] == 'otro') {
+						}elseif ($_SESSION['empre_organization'] == 'OTRO') {
 							echo '
-								<option value="otro>Otro</option>	
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>							
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>							
 							';
 						}
 						?>
 					</select>
-					</div>
+					
 					<div class="twenty">
 					<label for="txtnameorganization" class="label">Nombre de empredimiento</label>
 					<input id="txtnameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
@@ -328,6 +328,7 @@ if ($result = $conexion->query($sql)) {
                     
                     <label for="heritage4" class="label">Patrimonio del año 2023</label>
 					<input id="heritage4" class="text" type="text" name="txtheritage4" value="<?php echo $_SESSION['empre_heritage4']; ?>" placeholder="Patrimonio del año 2023"  maxlength="50" required />
+					</div>
 					</div>
 					</div>
 					</div>

@@ -20,7 +20,7 @@ include_once 'load_data.php';
 			<div class="wrap">
 				<div class="first">
 					<div class="section-user-image">
-						<img src="<?php echo '/images/users/' . $_SESSION['user_image']; ?>" />
+						<img src="<?php echo '/images/users/user' . $_SESSION['user_image']; ?>" />
 						<?php
 						$date_time_start = isset($_SESSION['image_updated_at']) ? date_create($_SESSION['image_updated_at']) : date_create('2000-12-23 10:30:15');
 						$date_time_end = date_create(date('Y-m-d'));
@@ -609,6 +609,117 @@ include_once 'load_data.php';
 
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 					<input id="dateofbirth" class="date" type="text" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />		
+					<label for="txtusercity" class="label">Ciudad</label>
+					<input id="txtusercity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
+					
+					<div class="descri">
+						<label for="txtuserworkinghours_start" class="text">Abierto desde:</label>
+						<input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
+						<label for="txtuserworkinghours_start" class="text">Hora de salida:</label>
+						<input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtuserhours_end">
+				</div>
+				<div class="three">
+					<label for="selectusereducation" class="label">Nivel de educación</label>
+					<select id="selectusereducation" class="select" name="selecteducation" required>
+						<?php
+						if ($_SESSION['empre_education'] == '') {
+							echo '
+								<option value="">Seleccione</option>
+								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Escuela">Escuela</option>
+								<option value="Colegio">Colegio</option>	
+								<option value="Tecnología">Tecnología</option>
+								<option value="Universidad">Universidad</option>		
+							';
+						} elseif ($_SESSION['empre_education'] == 'Sin nivel academico') {
+							echo '
+								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Escuela">Escuela</option>
+								<option value="Colegio">Colegio</option>	
+								<option value="Tecnología">Tecnología</option>
+								<option value="Universidad">Universidad</option>								
+							';
+						} elseif ($_SESSION['empre_education'] == 'Escuela') {
+							echo '
+								<option value="Escuela">Escuela</option>
+								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Colegio">Colegio</option>	
+								<option value="Tecnología">Tecnología</option>
+								<option value="Universidad">Universidad</option>							
+							';
+						} elseif ($_SESSION['empre_education'] == 'Colegio') {
+							echo '
+							<option value="Colegio">Colegio</option>
+							<option value="Escuela">Escuela</option>
+							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Tecnología">Tecnología</option>
+							<option value="Universidad">Universidad</option>								
+							';
+						}elseif ($_SESSION['empre_education'] == 'Tecnología') {
+							echo '
+							<option value="Tecnología">Tecnología</option>
+							<option value="Colegio">Colegio</option>
+							<option value="Escuela">Escuela</option>
+							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Universidad">Universidad</option>								
+							';
+						}elseif ($_SESSION['empre_education'] == 'Universidad') {
+							echo '							
+							<option value="Universidad">Universidad</option>
+							<option value="Tecnología">Tecnología</option>
+							<option value="Colegio">Colegio</option>
+							<option value="Escuela">Escuela</option>
+							<option value="Sin nivel de educacion">Sin Formación</option>									
+							';
+						}
+						?>
+					</select>	
+					<div class="four">
+					<label for="selectusersocialnetworks" class="label">Utiliza redes sociales</label>
+					<select id="selectusersocialnetworks" class="select" name="selectsocialnetworks" required>
+						<?php
+						if ($_SESSION['empre_socialnetworks'] == '') {
+							echo '
+								<option value="">Seleccione</option>
+								<option value="Si">Si</option>
+								<option value="No">No</option>								
+							';
+						} elseif ($_SESSION['empre_socialnetworks'] == 'Si') {
+							echo '
+								<option value="Si">Si</option>
+								<option value="No">No</option>									
+							';
+						} elseif ($_SESSION['empre_socialnetworks'] == 'No') {
+							echo '
+								<option value="No">No</option>
+								<option value="Si">Si</option>								
+							';
+						} 
+						?>
+					</select>
+					</div>
+					<div class="total-salesyear">
+                    <label for="usersalesyear" class="label">Ventas de año 2019</label>
+					<input id="txtusersalesyear" class="text" type="text" name="txtsalesyear" value="<?php echo $_SESSION['empre_salesyear']; ?>" placeholder="Ventas del año 2019"  maxlength="50" required />
+
+                    
+                    <label for="usersalesyear1" class="label">Ventas de año 2020</label>
+					<input id="txtusersalesyear1" class="text" type="text" name="txtsalesyear1" value="<?php echo $_SESSION['empre_salesyear1']; ?>" placeholder="Ventas del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="usersalesyear2" class="label">Ventas de año 2021</label>
+					<input id="txtusersalesyear2" class="text" type="text" name="txtsalesyear2" value="<?php echo $_SESSION['empre_salesyear2']; ?>" placeholder="Ventas del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="usersalesyear3" class="label">Ventas de año 2022</label>
+					<input id="txtusersalesyear3" class="text" type="text" name="txtsalesyear3" value="<?php echo $_SESSION['empre_salesyear3']; ?>" placeholder="Ventas del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="usersalesyear4" class="label">Ventas de año 2023</label>
+					<input id="txtusersalesyear4" class="text" type="text" name="txtsalesyear4" value="<?php echo $_SESSION['empre_salesyear4']; ?>" placeholder="Ventas del año 2023"  maxlength="50" required />
+					
+					</div>
+					</div>
 				</div>
 				<div class="first">
 					<label for="selectgender" class="label">Género</label>
@@ -642,15 +753,130 @@ include_once 'load_data.php';
 						}
 						?>
 					</select>	
-					<label for="txtusercurp" class="label">Cédula</label>
-					<input id="txtusercurp" class="text" type="text" name="txtcurp" value="<?php echo $_SESSION['empre_curp']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
+					<label for="txtusercedula" class="label">Cédula</label>
+					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_cedula']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
 					<label for="txtuserrfc" class="label">Nacionalidad</label>
 					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad" required />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
 					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
 
 					<label for="dateuseradmission" class="label">Correo Electrónico</label>
-					<input id="txtuseraddress" class="text" type="text" name="txtaddress" value="<?php echo $_SESSION['empre_documentation']; ?>" placeholder="Correo" maxlength="200" required />
+					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
+					<div class="eight">
+					<label for="selectuserorganization" class="label">Organización</label>
+					<select id="selectuserorganization" class="select" name="selectorganization" required>
+						<?php
+						if ($_SESSION['empre_organization'] == '') {
+							echo '
+								<option value="">Seleccione</option>
+								<option value="no">no pertenezco</option>
+								<option value="UDELA">UDELA</option>
+								<option value="cooprede>cooprede</option>	
+								<option value="otro>Otro</option>								
+							';
+						} elseif ($_SESSION['empre_organization'] == 'no pertenezco') {
+							echo '
+								<option value="no">no pertenezco</option>
+								<option value="udela">udela</option>
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="otro>Otro</option>								
+							';
+						} elseif ($_SESSION['empre_organization'] == 'udela') {
+							echo '
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>
+								<option value="Cooprede>Cooprede</option>	
+								<option value="otro>otro</option>								
+							';
+						} elseif ($_SESSION['empre_organization'] == 'cooprede') {
+							echo '
+							    <option value="cooprede>cooprede</option>	
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>
+								<option value="otro>otro</option>							
+							';
+						}elseif ($_SESSION['empre_organization'] == 'otro') {
+							echo '
+								<option value="otro>Otro</option>	
+								<option value="cooprede>cooprede</option>	
+								<option value="udela">udela</option>
+								<option value="no">no pertenezco</option>							
+							';
+						}
+						?>
+					</select>
+					<label for="txtusernameorganization" class="label">Nombre de empredimiento</label>
+					<input id="txtusernameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
+					<div class="second">
+					<label for="seleuserctstate" class="label">Estado</label>
+					<select id="seleuserctstate" class="select" name="selectstate" required>
+						<?php
+						if ($_SESSION['empre_state'] == '') {
+							echo '
+								<option value="">Seleccione</option>
+								<option value="Activo">Activo</option>
+								<option value="Inactivo">Inactivo</option>								
+							';
+						} elseif ($_SESSION['empre_state'] == 'Activo') {
+							echo '
+								<option value="Activo">Activo</option>
+								<option value="Inactivo">Inactivo</option>									
+							';
+						} elseif ($_SESSION['empre_state'] == 'Inactivo') {
+							echo '
+								<option value="Inactivo">Inactivo</option>
+								<option value="Activo">Activo</option>								
+							';
+						} 
+						?>
+					</select>
+					<label for="userstartdate" class="label">Fecha de incio</label>
+					<input id="userstartdate" class="date" type="date" name="startdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
+					<div class="five">
+					<label for="selectusersocialsales" class="label">Realiza ventas por redes sociales</label>
+					<select id="selectusersocialsales" class="select" name="selectsocialsales" required>
+						<?php
+						if ($_SESSION['empre_socialsales'] == '') {
+							echo '
+								<option value="">Seleccione</option>
+								<option value="Si">Si</option>
+								<option value="No">No</option>								
+							';
+						} elseif ($_SESSION['empre_socialsales'] == 'Si') {
+							echo '
+								<option value="Si">Si</option>
+								<option value="No">No</option>									
+							';
+						} elseif ($_SESSION['empre_socialsales'] == 'No') {
+							echo '
+								<option value="No">No</option>
+								<option value="Si">Si</option>										
+							';
+						} 
+						?>
+					</select>
+					</div>
+					<div class="total-heritage">
+                    <label for="userheritage" class="label">Patrimonio del año 2019</label>
+					<input id="txtuserheritage" class="text" type="text" name="txtheritage" value="<?php echo $_SESSION['empre_heritage']; ?>" placeholder="Patrimonio del año 2019"  maxlength="50" required />
+
+                    
+                    <label for="userheritage1" class="label">Patrimonio del año 2020</label>
+					<input id="txtuserheritage1" class="text" type="text" name="txtheritage1" value="<?php echo $_SESSION['empre_heritage1']; ?>" placeholder="Patrimonio del año 2020"  maxlength="50" required />
+                  
+
+                    <label for="userheritage2" class="label">Patrimonio del año 2021</label>
+					<input id="txtuserheritage2" class="text" type="text" name="txtheritage2" value="<?php echo $_SESSION['empre_heritage2']; ?>" placeholder="Patrimonio del año 2021"  maxlength="50" required />
+                    
+ 
+                    <label for="userheritage3" class="label">Patrimonio del año 2022</label>
+					<input id="txtuserheritage3" class="text" type="text" name="txtheritage3" value="<?php echo $_SESSION['empre_heritage3']; ?>" placeholder="Patrimonio del año 2022"  maxlength="50" required />
+                    
+                    
+                    <label for="userheritage4" class="label">Patrimonio del año 2023</label>
+					<input id="txtuserheritage4" class="text" type="text" name="txtheritage4" value="<?php echo $_SESSION['empre_heritage4']; ?>" placeholder="Patrimonio del año 2023"  maxlength="50" required />
+					</div>
+
 				</div>
 			</div>
 		</form>
