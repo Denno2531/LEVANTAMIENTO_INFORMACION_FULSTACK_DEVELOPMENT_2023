@@ -23,7 +23,7 @@ if (!empty($_POST['page'])) {
 	$page = 1;
 }
 
-$max = 50;
+$max = 300;
 $inicio = ($page - 1) * $max;
 
 include_once 'load_data.php';
