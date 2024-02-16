@@ -27,19 +27,19 @@ if ($nombrePDF == $archivopdf) {
 } else {
 
     $usuario = $_POST['userid'];
-    $numeroDePDF = $_POST['num'];
-    $descripcion = $_POST['descripcion'];
-    $date = date('Y-m-d H:i:s');
-    $mensaje = "Sin comentarios";
-    $evidencia = "";
-    $name_not = $_SESSION['name_user'];
-    $mensaje_not = "ha subido el memo para el certificado: ";
-    $mensage_estudiante = "Sin comentarios";
+	$numeroDePDF = $_POST['num'];
+	$descripcion = $_POST['descripcion'];
+	$date = date('Y-m-d H:i:s');
+	$status="En revisión";
+	$mensaje="Sin comentarios";
+	$evidencia="";
+	$name_not=$_SESSION['name_user'];
+	$status_not="revisar";
+	$mensaje_not="ha subido a Envió 1 el documento: ";
+	$mensage_estudiante="Sin comentarios";
 
-    $status_not = ''; // Define $status_not
-
-    $sql_not = "INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";
-    $result_not = $conexion->query($sql_not);
+	$sql_not="INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";
+	$result_not = $conexion->query($sql_not);
 
     $sql = "INSERT INTO certification (user, num, archivopdf, descripcion, created_at, updated_at,message,evidencepdf) VALUES ('$usuario', '$numeroDePDF', '$archivopdf', '$descripcion', '$date', '$date', '$mensaje','$evidencia')";
     $resultado = $conexion->query($sql);
