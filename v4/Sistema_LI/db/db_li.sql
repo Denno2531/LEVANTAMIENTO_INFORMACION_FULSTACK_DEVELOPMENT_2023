@@ -99,11 +99,15 @@ CREATE TABLE IF NOT EXISTS `department` (
 -- Volcando estructura para tabla db_li.emprendedor
 CREATE TABLE IF NOT EXISTS `emprendedor` (
   `user` varchar(50) COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `pass` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
   `name` varchar(30) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `surnames` varchar(60) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   `city` varchar(50) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `workinghours` text COLLATE utf8mb3_spanish2_ci,
+  `workinghours_start` time DEFAULT NULL,
+  `workinghours_end` time DEFAULT NULL,
+  `Columna 9` text COLLATE utf8mb3_spanish2_ci,
   `education` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `socialnetworks` varchar(50) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `salesyear` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
@@ -119,7 +123,6 @@ CREATE TABLE IF NOT EXISTS `emprendedor` (
   `gender` varchar(30) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `cedula` varchar(18) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `rfc` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `pass` varchar(15) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `phone` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `address` varchar(200) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `email` varchar(30) COLLATE utf8mb3_spanish2_ci NOT NULL,

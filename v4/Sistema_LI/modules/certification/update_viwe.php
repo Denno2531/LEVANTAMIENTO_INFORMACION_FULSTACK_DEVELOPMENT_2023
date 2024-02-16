@@ -14,6 +14,7 @@ if (empty($_POST['txtnum'])) {
 $id = $_SESSION['user_id'];
 $date = date('Y-m-d H:i:s');
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Verificar si se ha cargado un archivo
 	if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
@@ -54,7 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Hubo un error al mover el archivo
             Error("Error al cargar el archivo.");
         }
-    } 
+    } else {
+        // No se cargó un archivo, solo actualiza la base de datos sin cambiar el archivo
+        $sql_update = "UPDATE certification SET message_student = '" . trim($_POST['comentario']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+
+        if (mysqli_query($conexion, $sql_update)) {
+            Info('Comentario del estudiante actualizado.');
+        } else {
+            Error('Error al actualizar.');
+        }
+    }
 }																		
 header('Location: /modules/certification');
 exit();
