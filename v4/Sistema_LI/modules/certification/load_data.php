@@ -33,7 +33,7 @@ if (!empty($_POST['search'])) {
 		}
 	}
 	$_SESSION['total_infoq'] = count($_SESSION['num']);
-}else {
+} else {
 	$_SESSION['user_id'] = array();
 	$_SESSION['num'] = array();
 	$_SESSION['send_archivo'] = array();
@@ -51,5 +51,5 @@ if (!empty($_POST['search'])) {
 			$i += 1;
 		}
 	}
-	$_SESSION['total_certification'] = count($_SESSION['num']);
+	$_SESSION['total_send'] = count($_SESSION['num']);
 }

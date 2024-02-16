@@ -1,3 +1,4 @@
+
 <?php
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
@@ -12,16 +13,18 @@ if ($result = $conexion->query($sql)) {
     $_SESSION['coment'] = $row['message_student'];
   }
 }
-
+//obtenemos los comentarios del estudiante
 $comenario_estudiante = $_SESSION['coment'];
 ?>
 <div class="form-data">
   <div class="head">
-    <h1 class="titulo">Actualizar</h1>
+    <h1 class="titulo">Actualizar Certificado</h1>
   </div>
   <div class="body">
-    <form name="form-update-students" action="updateinfo.php" method="POST" autocomplete="off" autocapitalize="on"
+
+    <form name="form-update-students" action="updatecertification.php" method="POST" autocomplete="off" autocapitalize="on"
       enctype="multipart/form-data">
+
       <div class="wrap">
         <div class="first">
           <label for="txtuserid" class="label">Usuario</label>
@@ -29,6 +32,14 @@ $comenario_estudiante = $_SESSION['coment'];
             value="<?php echo $_SESSION['user_id']; ?>" maxlength="50">
           <input class="text" type="text" name="txt" value="<?php echo $_SESSION['user_id']; ?>" maxlength="50"
             disabled />
+        </div>
+        <div class="first">
+          <label for="txtestado" class="label">Estado</label>
+            <select id="txtestado" class="select" name="txtestado" required>
+              <option value="En revisión" <?php if ($_SESSION['state'] === 'En revisión') echo 'selected'; ?>>En revisión</option>
+              <option value="Rechazado" <?php if ($_SESSION['state'] === 'Rechazado') echo 'selected'; ?>>Rechazado</option>
+              <option value="Aprobado" <?php if ($_SESSION['state'] === 'Aprobado') echo 'selected'; ?>>Aprobado</option>
+            </select>
         </div>
         <div class="first">
         <label for="txtinfoqdescription" class="label">Descripción</label>
@@ -40,6 +51,7 @@ $comenario_estudiante = $_SESSION['coment'];
           <textarea name="comentario" id="comentario" class="textarea" cols="30"
             rows="10" readonly><?php echo $comenario_estudiante; ?></textarea>
         </div>
+
         <div class="first">
           <label class="label">Nombre</label>
           <input id="txtname" class="text" style=" display: none;" type="text" name="txtname"
@@ -54,11 +66,14 @@ $comenario_estudiante = $_SESSION['coment'];
         </div>
         <div class="first">
           <label for="txtuserarchivo" class="label">Archivo</label>
-          <input type="file" class="update-file" id="archivo" name="archivo" accept="application/pdf">
+          <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx">
         </div>
 
 
       </div>
+
+
+
       <button id="btnSave" class="btn icon" name="btn" type="submit">save</button>
     </form>
   </div>
