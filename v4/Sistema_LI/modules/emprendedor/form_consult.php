@@ -75,15 +75,15 @@ if ($result = $conexion->query($sql)) {
 						if ($_SESSION['empre_education'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>		
 							';
-						} elseif ($_SESSION['empre_education'] == 'Sin nivel academico') {
+						} elseif ($_SESSION['empre_education'] == 'Sin Formación') {
 							echo '
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
@@ -92,7 +92,7 @@ if ($result = $conexion->query($sql)) {
 						} elseif ($_SESSION['empre_education'] == 'Escuela') {
 							echo '
 								<option value="Escuela">Escuela</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>							
@@ -101,7 +101,7 @@ if ($result = $conexion->query($sql)) {
 							echo '
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Tecnología">Tecnología</option>
 							<option value="Universidad">Universidad</option>								
 							';
@@ -110,7 +110,7 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Universidad">Universidad</option>								
 							';
 						}elseif ($_SESSION['empre_education'] == 'Universidad') {
@@ -119,7 +119,7 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>									
+							<option value="Sin Formación">Sin Formación</option>									
 							';
 						}
 						?>

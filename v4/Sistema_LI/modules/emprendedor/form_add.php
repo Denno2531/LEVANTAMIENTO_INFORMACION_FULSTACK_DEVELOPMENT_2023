@@ -49,7 +49,7 @@ $id_generate = 'empre-' . unique_id(5);
                     <label for="selecteducation" class="label">Nivel de educación</label>
                     <select id="selecteducation" class="select" name="selecteducation" required>
                         <option value="">Seleccione</option>
-                        <option value="Sin nivel de estudio">Sin Formación</option>
+                        <option value="Sin Formación">Sin Formación</option>
                         <option value="Escuela">Escuela</option>
                         <option value="Colegio">Colegio</option>
                         <option value="Tecnología">Tecnología</option>     

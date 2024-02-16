@@ -32,7 +32,7 @@ $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombr
 
 <div class="form-data">
   <div class="head">
-    <h1 class="titulo">Formulario de Justificación</h1>
+    <h1 class="titulo">Formulario de Certificado </h1>
   </div>
   <div class="body">
 
@@ -50,7 +50,7 @@ $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombr
             disabled />
         </div>
         <div class="first">
-          <label for="txtestado" class="label">Estado</label>
+          <label for="txtestado" class="label">Departamento</label>
           <input id="txtestado" class="text" style=" display: none;" type="text" name="txtestado"
             value="<?php echo $_SESSION['state']; ?>" maxlength="50" readonly />
           <input class="text" type="text" name="txtestado" value="<?php echo $_SESSION['state']; ?>" required
@@ -88,23 +88,6 @@ $url_archivo_pdf = '/modules/edit_send_one/certificadopdf/' . $id . '/' . $nombr
         <?php endif; ?>
       </div>
 
-      <div class="subtitle">
-        <h2>Actualizar documentación</h2>
-      </div>
-      <div class="wrap">
-        <div class="description">
-          <label for="txtcomentario" class="label">Comentarios del estudiante</label>
-          <textarea name="comentario" id="comentario" class="textarea" cols="30"
-            rows="10"><?php echo $comenario_estudiante; ?></textarea>
-        </div>
-        <div>
-          <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx">
-        </div>
-      </div>
-
-
-
-      <button id="btnSave" class="btn icon" name="btn" type="submit">save</button>
     </form>
   </div>
 </div>

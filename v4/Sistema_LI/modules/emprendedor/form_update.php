@@ -70,21 +70,21 @@ if ($result = $conexion->query($sql)) {
 						<input id="timeworkinghours_end" class="hour-input" type="time" name="timeworkinghours_end"value="<?php echo $_SESSION['empre_workinghours_end']; ?>" required/>>		
 					</div>
 					<div class="three">
-					<label for="selecteducation" class="label">Nivel de educación</label>
-					<select id="selecteducation" class="select" name="selecteducation" required>
+					<label for="selectusereducation" class="label">Nivel de educación</label>
+					<select id="selectusereducation" class="select" name="selecteducation" required>
 						<?php
 						if ($_SESSION['empre_education'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>		
 							';
-						} elseif ($_SESSION['empre_education'] == 'Sin nivel academico') {
+						} elseif ($_SESSION['empre_education'] == 'Sin Formación') {
 							echo '
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
@@ -93,7 +93,7 @@ if ($result = $conexion->query($sql)) {
 						} elseif ($_SESSION['empre_education'] == 'Escuela') {
 							echo '
 								<option value="Escuela">Escuela</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>							
@@ -102,7 +102,7 @@ if ($result = $conexion->query($sql)) {
 							echo '
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Tecnología">Tecnología</option>
 							<option value="Universidad">Universidad</option>								
 							';
@@ -111,7 +111,7 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Universidad">Universidad</option>								
 							';
 						}elseif ($_SESSION['empre_education'] == 'Universidad') {
@@ -120,7 +120,7 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>									
+							<option value="Sin Formación">Sin Formación</option>									
 							';
 						}
 						?>
@@ -174,7 +174,7 @@ if ($result = $conexion->query($sql)) {
 				</div>
 				<div class="last">
 					<label for="selectgender" class="label">Género</label>
-					<select id="selectgender" class="select" name="selectGender" required>
+					<select id="selectgender" class="select" name="selectgender" required>
 						<?php
 						if ($_SESSION['empre_gender'] == '') {
 							echo '
@@ -215,7 +215,7 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
-					<select id="selectorganization" class="select" name="selectOrganization" required>
+					<select id="selectorganization" class="select" name="selectorganization" required>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
@@ -285,7 +285,7 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>
 					<label for="startdate" class="label">Fecha de incio</label>
-					<input id="startdate" class="date" type="date" name="startdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
+					<input id="startdate" class="date" type="date" name="datestartdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
 					<div class="five">
 					<label for="selectsocialsales" class="label">Realiza ventas por redes sociales</label>
 					<select id="selectsocialsales" class="select" name="selectsocialsales" required>
@@ -334,8 +334,8 @@ if ($result = $conexion->query($sql)) {
 					</div>
 					</div>
 					</div>
+					<button id="btnSave" class="btn icon" type="submit">save</button>
 				</div>
-				<button id="btnSave" class="btn icon" type="submit">save</button>
 			</div>
 		</form>
 	</div>
