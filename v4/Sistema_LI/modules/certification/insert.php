@@ -33,7 +33,7 @@ if ($nombrePDF == $archivopdf) {
     $mensaje = "Sin comentarios";
     $evidencia = "";
     $name_not = $_SESSION['name_user'];
-    $mensaje_not = "ha subido a Envió 1 el documento: ";
+    $mensaje_not = "ha subido el memo para el certificado: ";
     $mensage_estudiante = "Sin comentarios";
 
     $status_not = ''; // Define $status_not
