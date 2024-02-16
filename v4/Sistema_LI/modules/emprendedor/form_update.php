@@ -212,10 +212,10 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
 
 					<label for="txtuseremail" class="label">Correo Electrónico</label>
-					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
+					<input id="txtuseremail" class="text" type="text" name="txtemail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
-					<select id="selectorganization" class="select" name="selectOrganization" required>
+					<select id="selectorganization" class="select" name="selectorganization" required>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
@@ -285,7 +285,7 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>
 					<label for="startdate" class="label">Fecha de incio</label>
-					<input id="startdate" class="date" type="date" name="startdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
+					<input id="startdate" class="date" type="date" name="datestartdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
 					<div class="five">
 					<label for="selectsocialsales" class="label">Realiza ventas por redes sociales</label>
 					<select id="selectsocialsales" class="select" name="selectsocialsales" required>
@@ -334,8 +334,8 @@ if ($result = $conexion->query($sql)) {
 					</div>
 					</div>
 					</div>
+					<button id="btnSave" class="btn icon" type="submit">save</button>
 				</div>
-				<button id="btnSave" class="btn icon" type="submit">save</button>
 			</div>
 		</form>
 	</div>
