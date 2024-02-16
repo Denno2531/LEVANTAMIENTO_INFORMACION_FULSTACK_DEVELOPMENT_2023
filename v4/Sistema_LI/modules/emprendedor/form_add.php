@@ -29,24 +29,23 @@ $id_generate = 'empre-' . unique_id(5);
                     <input id="dateuseradmission" class="date" type="date" name="dateofbirth" value="<?php echo date('Y-m-d'); ?>" required /> 
                     <label for="txtcity" class="label">Ciudad</label>
                     <input id="txtcity" class="text" type="text" name="txtcity" value="" placeholder="ciudad" maxlength="50" required />
-                    <div class="descri">   
                         <div class="hour-picker">
                         <label for="txtworkinghours" class="label">Seleccione el horario del empredimiento</label>
                             <div>
-                                <label for="txtworkinghours_start" class="text">Abierto desde:</label>
-                                <input id="txtuserworkinghours_start" class="hour-input" type="time" name="txtuserworkinghours_start">
+                                <label for="timeworkinghours_start" class="text">Abierto desde:</label>
+                                <input id="timeserworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start" required>
                             </div>
                             <div>
-                              <label for="txtworkinghours_end" class="text">Cerrado:</label>
-                              <input id="txtworkinghours_end" class="hour-input" type="time" name="txtuserworkinghours_end">
+                              <label for="timeworkinghours_end" class="text">Cerrado:</label>
+                              <input id="timeworkinghours_end" class="hour-input" type="time" name="timeworkinghours_end">
                             <!-- <button id="addHourBtn" class="btn icon"><i
                                 class="fas fa-plus-circle fa-lg fa-spin"></i></button> -->
                             </div>
                             <div class="label" id="hourListContainer">
                                  <br>
-                        ,        <ul id="hourList"></ul>
+                               <ul id="hourList"></ul>
                            </div>
-                            <div class="three">
+                    <div class="three">
                     <label for="selecteducation" class="label">Nivel de educación</label>
                     <select id="selecteducation" class="select" name="selecteducation" required>
                         <option value="">Seleccione</option>
@@ -56,7 +55,7 @@ $id_generate = 'empre-' . unique_id(5);
                         <option value="Tecnología">Tecnología</option>     
                         <option value="Universidad">Universidad</option>                        
                     </select>
-                    </div>
+                     </div>
                     <div class="four">
                     <label for="selectsocialnetworks" class="label">Utiliza redes sociales</label>
                     <select id="selectsocialnetworks" class="select" name="selectsocialnetworks" required>
@@ -92,7 +91,7 @@ $id_generate = 'empre-' . unique_id(5);
                     </div>
                    
                     </div>
-                    </div>
+                    
                     
 
                 </div>
@@ -124,7 +123,7 @@ $id_generate = 'empre-' . unique_id(5);
                     </div>
                     <div class="twenty">
                     <label for="txtnameorganization" class="label">Nombre de empredimiento</label>
-                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" />
+                    <input id="txtnameorganization" class="text" type="text" name="txtnameorganization" placeholder="Nombre de empredimiento" value="" maxlength="50" required />
                     </div>
                     <div class="second">
                     <label for="selectstate" class="label">Estado</label>
