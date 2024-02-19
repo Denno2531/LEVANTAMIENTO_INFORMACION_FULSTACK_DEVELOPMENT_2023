@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Info("Archivo cargado con éxito.");
             
             // Actualiza la base de datos con el nombre del archivo
-            $sql_update = "UPDATE infoq SET archivopdf = '" . $nombre_archivo . "', message_student = '" . trim($_POST['comentario']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+            $sql_update = "UPDATE infoq SET archivopdf = '" . $nombre_archivo . "', message_student = '" . trim($_POST['comentario']) . "', status = '" . trim($_POST['estado']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
             if (mysqli_query($conexion, $sql_update)) {
                 Info('Información actualizada.');
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // No se cargó un archivo, solo actualiza la base de datos sin cambiar el archivo
-        $sql_update = "UPDATE infoq SET message_student = '" . trim($_POST['comentario']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+        $sql_update = "UPDATE infoq SET message_student = '" . trim($_POST['comentario']) . "', status = '" . trim($_POST['estado']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
         if (mysqli_query($conexion, $sql_update)) {
             Info('Comentario del estudiante actualizado.');
