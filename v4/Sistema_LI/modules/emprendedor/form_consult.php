@@ -6,25 +6,36 @@ $sql = "SELECT * FROM emprendedor WHERE user = '" . $_POST['txtuserid'] . "'";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['user_id'] = $row['user'];
-		$_SESSION['empre_pass'] = $row['pass'];
+		$_SESSION['empre_cedula'] = $row['cedula'];
+		$_SESSION['empre_rfc'] = $row['rfc'];	
 		$_SESSION['empre_name'] = $row['name'];
 		$_SESSION['empre_surnames'] = $row['surnames'];
+		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
-		$_SESSION['empre_curp'] = $row['cedula'];	
-		$_SESSION['empre_rfc'] = $row['address'];
 		$_SESSION['empre_phone'] = $row['phone'];
-		$_SESSION['empre_documentation'] = $row['email'];
+		$_SESSION['empre_organization'] = $row['organization'];
 		$_SESSION['empre_nameorganization'] = $row['nameorganization'];
 		$_SESSION['empre_state'] = $row['state'];
 		$_SESSION['empre_startdate'] = $row['startdate'];
 		$_SESSION['empre_socialsales'] = $row['socialsales'];
 		$_SESSION['empre_city'] = $row['city'];
-		$_SESSION['empre_workinghours'] = $row['workinghours'];
+		$_SESSION['empre_workinghours_start'] = $row['workinghours_start'];
+		$_SESSION['empre_workinghours_end'] = $row['workinghours_end'];
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
-		$_SESSION['empre_heritage'] = $row['heritage'];		
+		$_SESSION['empre_salesyear1'] = $row['salesyear1'];
+		$_SESSION['empre_salesyear2'] = $row['salesyear2'];
+		$_SESSION['empre_salesyear3'] = $row['salesyear3'];
+		$_SESSION['empre_salesyear4'] = $row['salesyear4'];
+		$_SESSION['empre_heritage'] = $row['heritage'];	
+		$_SESSION['empre_heritage1'] = $row['heritage1'];	
+		$_SESSION['empre_heritage2'] = $row['heritage2'];	
+		$_SESSION['empre_heritage3'] = $row['heritage3'];	
+		$_SESSION['empre_heritage4'] = $row['heritage4'];	
+
+
 				
 	}
 } 
@@ -41,38 +52,38 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuserid" style="display: none;" type="text" name="txtuserid" value="<?php echo $_SESSION['user_id']; ?>" maxlength="50">				
 					<input class="text" type="text" name="txt" value="<?php echo $_SESSION['user_id']; ?>" disabled />
 					<label for="txtuserpass" class="label">Contraseña</label>
-					<input id="txtuserpass" class="text" type="text" name="txtpass" placeholder="XXXXXXXXX" pattern="[A-Za-z0-9]{8}" maxlength="8" required />
+					<input id="txtuserpass" class="text" type="text" name="txtpass" placeholder="XXXXXXXXX" pattern="[A-Za-z0-9]{8}" maxlength="8" disabled />
 					<label for="txtusername" class="label">Nombre</label>
-					<input id="txtusername" class="text" type="text" name="txtname" value="<?php echo $_SESSION['empre_name']; ?>" placeholder="Nombre" autofocus maxlength="30" required />
+					<input id="txtusername" class="text" type="text" name="txtname" value="<?php echo $_SESSION['empre_name']; ?>" placeholder="Nombre" autofocus maxlength="30" disabled />
 					<label for="txtusersurnames" class="label">Apellidos</label>
-					<input id="txtusersurnames" class="text" type="text" name="txtsurnames" value="<?php echo $_SESSION['empre_surnames']; ?>" placeholder="Apellidos" maxlength="60" required />
+					<input id="txtusersurnames" class="text" type="text" name="txtsurnames" value="<?php echo $_SESSION['empre_surnames']; ?>" placeholder="Apellidos" maxlength="60" disabled />
 
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
-					<input id="dateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
-					<label for="txtcity" class="label">Ciudad</label>
-					<input id="txtcity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" required />	
+					<input id="userdateofbirth" class="date" type="date" name="dateofbirth" value="<?php echo $_SESSION['empre_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" disabled />	
+					<label for="txtusercity" class="label">Ciudad</label>
+					<input id="txtusercity" class="text" type="text" name="txtcity" value="<?php echo $_SESSION['empre_city']; ?>" placeholder="ciudad" maxlength="50" disabled />	
 					<div class="hour-picker">
-						<label for="txtworkinghours_start" class="text">Abierto desde:</label>
-						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtworkinghours_start">
-						<label for="txtworkinghours_start" class="text">Hora de salida:</label>
-						<input id="txtworkinghours_start" class="hour-input" type="time" name="txtuserhours_end">
+						<label for="timeuserworkinghours_start" class="text">Abierto desde:</label>
+						<input id="timeuserworkinghours_start" class="hour-input" type="time" name="timeworkinghours_start"value="<?php echo $_SESSION['empre_workinghours_start']; ?>" disabled/>
+						<label for="timeuserworkinghours_end" class="text">Hora de salida:</label>
+						<input id="timeuserworkinghours_end" class="hour-input" type="time" name="timeuserhours_end"value="<?php echo $_SESSION['empre_workinghours_end']; ?>" disabled/>
 					</div>
 					<div class="three">
-					<label for="selecteducation" class="label">Nivel de educación</label>
-					<select id="selecteducation" class="select" name="selecteducation" required>
+					<label for="selectusereducation" class="label">Nivel de educación</label>
+					<select id="selectusereducation" class="select" name="selecteducation" disabled>
 						<?php
 						if ($_SESSION['empre_education'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>		
 							';
-						} elseif ($_SESSION['empre_education'] == 'Sin nivel academico') {
+						} elseif ($_SESSION['empre_education'] == 'Sin Formación') {
 							echo '
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Escuela">Escuela</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
@@ -81,7 +92,7 @@ if ($result = $conexion->query($sql)) {
 						} elseif ($_SESSION['empre_education'] == 'Escuela') {
 							echo '
 								<option value="Escuela">Escuela</option>
-								<option value="Sin nivel de educacion">Sin Formación</option>
+								<option value="Sin Formación">Sin Formación</option>
 								<option value="Colegio">Colegio</option>	
 								<option value="Tecnología">Tecnología</option>
 								<option value="Universidad">Universidad</option>							
@@ -90,7 +101,7 @@ if ($result = $conexion->query($sql)) {
 							echo '
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Tecnología">Tecnología</option>
 							<option value="Universidad">Universidad</option>								
 							';
@@ -99,7 +110,7 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>
+							<option value="Sin Formación">Sin Formación</option>
 							<option value="Universidad">Universidad</option>								
 							';
 						}elseif ($_SESSION['empre_education'] == 'Universidad') {
@@ -108,14 +119,14 @@ if ($result = $conexion->query($sql)) {
 							<option value="Tecnología">Tecnología</option>
 							<option value="Colegio">Colegio</option>
 							<option value="Escuela">Escuela</option>
-							<option value="Sin nivel de educacion">Sin Formación</option>									
+							<option value="Sin Formación">Sin Formación</option>									
 							';
 						}
 						?>
 					</select>	
 					<div class="four">
-					<label for="selectsocialnetworks" class="label">Utiliza redes sociales</label>
-					<select id="selectsocialnetworks" class="select" name="selectsocialnetworks" required>
+					<label for="selectusersocialnetworks" class="label">Utiliza redes sociales</label>
+					<select id="selectusersocialnetworks" class="select" name="selectsocialnetworks" disabled>
 						<?php
 						if ($_SESSION['empre_socialnetworks'] == '') {
 							echo '
@@ -137,28 +148,32 @@ if ($result = $conexion->query($sql)) {
 						?>
 					</select>
 					</div>
-					<div class="five">
-                    <label for="inputsalesyear" class="label">Ventas por año</label>
-                    <input id="inputsalesyear" class="input" type="float" placeholder="Año 2019" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear" maxlength="50" required>
-                    <input id="inputsalesyear1" class="input" type="float" placeholder="Año 2020" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear1" maxlength="50" required>
-                    <input id="inputsalesyear2" class="input" type="float" placeholder="Año 2021" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear2" maxlength="50" required>
-                    <input id="inputsalesyear3" class="input" type="float" placeholder="Año 2022" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear3" maxlength="50" required>
-                    <input id="inputsalesyear4" class="input" type="float" placeholder="Año 2023" value="<?php echo $_SESSION['empre_salesyear']; ?>" name="inputsalesyear4" maxlength="50" required>
+					<div class="total-salesyear">
+                    <label for="usersalesyear" class="label">Ventas de año 2019</label>
+					<input id="txtusersalesyear" class="text" type="text" name="txtsalesyear" value="<?php echo $_SESSION['empre_salesyear']; ?>" placeholder="Ventas del año 2019"  maxlength="50" disabled />
 
-					<div class="six">
-                    <label for="inputheritage" class="label">Patrimonio</label>
-                    <input id="inputheritage" class="input" type="float" placeholder="Año 2019"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage" maxlength="50" required>
-                    <input id="inputheritage1" class="input" type="float" placeholder="Año 2020"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage1" maxlength="50" required>
-                    <input id="inputheritage2" class="input" type="float" placeholder="Año 2021"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage2" maxlength="50" required>
-                    <input id="inputheritage3" class="input" type="float" placeholder="Año 2022"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage3" maxlength="50" required>
-                    <input id="inputheritage4" class="input" type="float" placeholder="Año 2023"  value="<?php echo $_SESSION['empre_heritage']; ?>" name="inputheritage4" maxlength="50" required>
-                    </div>
+                    
+                    <label for="usersalesyear1" class="label">Ventas de año 2020</label>
+					<input id="txtusersalesyear1" class="text" type="text" name="txtsalesyear1" value="<?php echo $_SESSION['empre_salesyear1']; ?>" placeholder="Ventas del año 2020"  maxlength="50" disabled />
+                  
+
+                    <label for="usersalesyear2" class="label">Ventas de año 2021</label>
+					<input id="txtusersalesyear2" class="text" type="text" name="txtsalesyear2" value="<?php echo $_SESSION['empre_salesyear2']; ?>" placeholder="Ventas del año 2021"  maxlength="50" disabled />
+                    
+ 
+                    <label for="usersalesyear3" class="label">Ventas de año 2022</label>
+					<input id="txtusersalesyear3" class="text" type="text" name="txtsalesyear3" value="<?php echo $_SESSION['empre_salesyear3']; ?>" placeholder="Ventas del año 2022"  maxlength="50" disabled />
+                    
+                    
+                    <label for="usersalesyear4" class="label">Ventas de año 2023</label>
+					<input id="txtusersalesyear4" class="text" type="text" name="txtsalesyear4" value="<?php echo $_SESSION['empre_salesyear4']; ?>" placeholder="Ventas del año 2023"  maxlength="50" disabled />
+					
 					</div>
 					</div>
 				</div>
 				<div class="last">
-					<label for="selectgender" class="label">Género</label>
-					<select id="selectgender" class="select" name="selectGender" required>
+					<label for="selectusergender" class="label">Género</label>
+					<select id="selectusergender" class="select" name="selectGender" disabled>
 						<?php
 						if ($_SESSION['empre_gender'] == '') {
 							echo '
@@ -188,63 +203,65 @@ if ($result = $conexion->query($sql)) {
 						}
 						?>
 					</select>	
-					<label for="txtusercurp" class="label">Cédula</label>
-					<input id="txtusercurp" class="text" type="text" name="txtcurp" value="<?php echo $_SESSION['empre_curp']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" required />
+					<label for="txtusercedula" class="label">Cédula</label>
+					<input id="txtusercedula" class="text" type="text" name="txtcedula" value="<?php echo $_SESSION['empre_cedula']; ?>" placeholder="Cédula de Identidad" pattern="[0-9]{10}" maxlength="10" disabled />
 					<label for="txtuserrfc" class="label">Nacionalidad</label>
-					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad" required />
+					<input id="txtuserrfc" class="text" type="text" name="txtrfc" value="<?php echo $_SESSION['empre_rfc']; ?>" placeholder="Nacionalidad"  disabled />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
-					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
+					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" disabled />
 
-					<label for="dateuseradmission" class="label">Correo Electrónico</label>
-					<input id="txtuseraddress" class="text" type="text" name="txtaddress" value="<?php echo $_SESSION['empre_documentation']; ?>" placeholder="Correo" maxlength="200" required />
+					<label for="txtuseremail" class="label">Correo Electrónico</label>
+					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" disabled />
 					<div class="eight">
-					<label for="selectorganization" class="label">Organización</label>
-					<select id="selectorganization" class="select" name="selectorganization" required>
+					<label for="selectuserorganization" class="label">Organización</label>
+					<select id="selectuserorganization" class="select" name="selectorganization" disabled>
 						<?php
 						if ($_SESSION['empre_organization'] == '') {
 							echo '
 								<option value="">Seleccione</option>
-								<option value="No">No pertenezco</option>
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'No pertenezco') {
+						} elseif ($_SESSION['empre_organization'] == 'NO PERTENEZCO') {
 							echo '
-								<option value="No">No pertenezco</option>
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
 								<option value="UDELA">UDELA</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
 						} elseif ($_SESSION['empre_organization'] == 'UDELA') {
 							echo '
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="Cooprede>COOPREDE</option>	
-								<option value="otro>Otro</option>								
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
+								<option value="COOPREDE>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>								
 							';
-						} elseif ($_SESSION['empre_organization'] == 'Cooprede') {
+						} elseif ($_SESSION['empre_organization'] == 'COOPREDE') {
 							echo '
-							    <option value="Cooprede>COOPREDE</option>	
+							    <option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>
-								<option value="otro>Otro</option>							
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>
+								<option value="OTRO>OTRO</option>							
 							';
-						}elseif ($_SESSION['empre_organization'] == 'Otro') {
+						}elseif ($_SESSION['empre_organization'] == 'OTRO') {
 							echo '
-								<option value="otro>Otro</option>	
-								<option value="Cooprede>COOPREDE</option>	
+								<option value="OTRO>OTRO</option>	
+								<option value="COOPREDE>COOPREDE</option>	
 								<option value="UDELA">UDELA</option>
-								<option value="No">No pertenezco</option>							
+								<option value="NO PERTENEZCO">NO PERTENEZCO</option>							
 							';
 						}
 						?>
 					</select>
-					<label for="txtnameorganization" class="label">Nombre de empredimiento</label>
-					<input id="txtnameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" required />
+					<div class="twenty">
+					<label for="txtusernameorganization" class="label">Nombre de empredimiento</label>
+					<input id="txtusernameorganization" class="text" type="text" name="txtnameorganization" value="<?php echo $_SESSION['empre_nameorganization']; ?>" placeholder="Nombre de empredimiento" autofocus maxlength="50" disabled />
+					</div>
 					<div class="second">
-					<label for="selectstate" class="label">Estado</label>
-					<select id="selectstate" class="select" name="selectstate" required>
+					<label for="seleuserctstate" class="label">Estado</label>
+					<select id="seleuserctstate" class="select" name="selectstate" disabled>
 						<?php
 						if ($_SESSION['empre_state'] == '') {
 							echo '
@@ -265,11 +282,11 @@ if ($result = $conexion->query($sql)) {
 						} 
 						?>
 					</select>
-					<label for="startdate" class="label">Fecha de incio</label>
-					<input id="startdate" class="date" type="date" name="startdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" required />	
+					<label for="userstartdate" class="label">Fecha de incio</label>
+					<input id="userstartdate" class="date" type="date" name="startdate" value="<?php echo $_SESSION['empre_startdate']; ?>" pattern="\d{4}-\d{2}-\d{2}" placeholder="aaaa-mm-dd" maxlength="10" disabled />	
 					<div class="five">
-					<label for="selectsocialsales" class="label">Realiza ventas por redes sociales</label>
-					<select id="selectsocialsales" class="select" name="selectsocialsales" required>
+					<label for="selectusersocialsales" class="label">Realiza ventas por redes sociales</label>
+					<select id="selectusersocialsales" class="select" name="selectsocialsales" disabled>
 						<?php
 						if ($_SESSION['empre_socialsales'] == '') {
 							echo '
@@ -290,13 +307,37 @@ if ($result = $conexion->query($sql)) {
 						} 
 						?>
 					</select>
+					</div>
+					<div class="total-heritage">
+                    <label for="userheritage" class="label">Patrimonio del año 2019</label>
+					<input id="txtuserheritage" class="text" type="text" name="txtheritage" value="<?php echo $_SESSION['empre_heritage']; ?>" placeholder="Patrimonio del año 2019"  maxlength="50" disabled />
+
+                    
+                    <label for="userheritage1" class="label">Patrimonio del año 2020</label>
+					<input id="txtuserheritage1" class="text" type="text" name="txtheritage1" value="<?php echo $_SESSION['empre_heritage1']; ?>" placeholder="Patrimonio del año 2020"  maxlength="50" disabled />
+                  
+
+                    <label for="userheritage2" class="label">Patrimonio del año 2021</label>
+					<input id="txtuserheritage2" class="text" type="text" name="txtheritage2" value="<?php echo $_SESSION['empre_heritage2']; ?>" placeholder="Patrimonio del año 2021"  maxlength="50" disabled />
+                    
+ 
+                    <label for="userheritage3" class="label">Patrimonio del año 2022</label>
+					<input id="txtuserheritage3" class="text" type="text" name="txtheritage3" value="<?php echo $_SESSION['empre_heritage3']; ?>" placeholder="Patrimonio del año 2022"  maxlength="50" disabled />
+                    
+                    
+                    <label for="userheritage4" class="label">Patrimonio del año 2023</label>
+					<input id="txtuserheritage4" class="text" type="text" name="txtheritage4" value="<?php echo $_SESSION['empre_heritage4']; ?>" placeholder="Patrimonio del año 2023"  maxlength="50" disabled />
+					</div>
 
 					</div>
 					</div>
 					</div>
+					</div>
+					<button id="btnSave" class="btn icon" type="submit">done</button>
+
 				</div>
+
 			</div>
-			<button id="btnSave" class="btn icon" type="submit">save</button>
 		</form>
 	</div>
 </div>

@@ -157,9 +157,3 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
         }
     ?>
 </div>
-
-
-
-
-<?php
-?>

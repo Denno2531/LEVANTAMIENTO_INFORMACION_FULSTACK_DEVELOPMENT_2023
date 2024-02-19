@@ -93,13 +93,15 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_pass'] = $row['pass'];
 		$_SESSION['empre_name'] = $row['name'];
 		$_SESSION['empre_surnames'] = $row['surnames'];
+		$_SESSION['empre_email'] = $row['email'];
 		$_SESSION['empre_gender'] = $row['gender'];
 		$_SESSION['empre_date_of_birth'] = $row['date_of_birth'];
-		$_SESSION['empre_curp'] = $row['cedula'];	
-		$_SESSION['empre_rfc'] = $row['address'];
+		$_SESSION['empre_cedula'] = $row['cedula'];	
 		$_SESSION['empre_phone'] = $row['phone'];
 		$_SESSION['empre_documentation'] = $row['email'];
 		$_SESSION['empre_nameorganization'] = $row['nameorganization'];
+		$_SESSION['empre_organization'] = $row['organization'];
+		$_SESSION['empre_rfc'] = $row['rfc'];
 		$_SESSION['empre_state'] = $row['state'];
 		$_SESSION['empre_startdate'] = $row['startdate'];
 		$_SESSION['empre_socialsales'] = $row['socialsales'];
@@ -108,7 +110,16 @@ if ($result = $conexion->query($sql)) {
 		$_SESSION['empre_socialnetworks'] = $row['socialnetworks'];
 		$_SESSION['empre_education'] = $row['education'];
 		$_SESSION['empre_salesyear'] = $row['salesyear'];
+		$_SESSION['empre_salesyear1'] = $row['salesyear1'];
+		$_SESSION['empre_salesyear2'] = $row['salesyear2'];
+		$_SESSION['empre_salesyear3'] = $row['salesyear3'];
+		$_SESSION['empre_salesyear4'] = $row['salesyear4'];
 		$_SESSION['empre_heritage'] = $row['heritage'];		
+		$_SESSION['empre_heritage1'] = $row['heritage1'];		
+		$_SESSION['empre_heritage2'] = $row['heritage2'];		
+		$_SESSION['empre_heritage3'] = $row['heritage3'];		
+		$_SESSION['empre_heritage4'] = $row['heritage4'];		
+
 
 		
 	}

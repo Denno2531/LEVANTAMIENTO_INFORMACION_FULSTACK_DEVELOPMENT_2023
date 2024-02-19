@@ -27,15 +27,15 @@ $url_actual = $_SERVER["REQUEST_URI"];
 
 if (strpos($url_actual, 'modules')) {
     $input = $url_actual;
-    preg_match('~modules/(.*?)/~', $input, $output);
+    preg_match('modules/(.*?)/', $input, $output);
     $output[1];
 } elseif (strpos($url_actual, 'attendance')) {
     $input = $url_actual;
-    preg_match('~/(.*?)/~', $input, $output);
+    preg_match('/(.*?)/', $input, $output);
     $output[1];
 } elseif (strpos($url_actual, 'user')) {
     $input = $url_actual;
-    preg_match('~/(.*?)/~', $input, $output);
+    preg_match('/(.*?)/', $input, $output);
     $output[1];
 } else {
     $output[1] = 'home';
@@ -44,7 +44,7 @@ if (strpos($url_actual, 'modules')) {
 <div class="nav-home">
     <span class="name_system">Levantamiento de Información</span>
     <div class="user">
-        <img class="image_user" src="/images/users/<?php echo $_SESSION['image']; ?>" />
+        <img class="image_user" src="/images/users/admin857.png<?php echo $_SESSION['image']; ?>" />
         <span class="name_user">
             <?php print $_SESSION['name'] . ' ' . $_SESSION['surnames']; ?>
         </span>

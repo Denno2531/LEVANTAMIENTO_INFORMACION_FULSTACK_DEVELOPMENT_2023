@@ -4,20 +4,22 @@ include_once '../conexion.php';
 
 $sql = "SELECT archivopdf, evidencepdf, descripcion FROM certification";
 if ($resultado = $conexion->query($sql)) {
-    if ($row = mysqli_fetch_array($resultado)) {
-        $_SESSION['send_description'] = $row['descripcion'];
-      
-        $_SESSION['evidencia'] = $row['evidencepdf'];
+    $_SESSION['certificados'] = [];
+    while ($row = mysqli_fetch_array($resultado)) {
+        $_SESSION['certificados'][] = [
+            'descripcion' => $row['descripcion'],
+            'evidencia' => $row['evidencepdf']
+        ];
     }
 }
-?>
 
+?>
 <div class="form-gridview">
     <table class="default">
-    <h2 class="titlecenter"> Certificado  </h2>
+        <h2 class="titlecenter"> Certificado  </h2>
 
         <?php
-        if (isset($_SESSION['total_certificados']) && $_SESSION['total_certificados'] != 0) {
+        if (!empty($_SESSION['certificados'])) {
             echo '
                     <tr>
                         <th class="center" style="width: 800px">Nombre del archivo</th>
@@ -27,37 +29,42 @@ if ($resultado = $conexion->query($sql)) {
                         <th class="center"><a class="icon">delete</a></th>
                     </tr>
             ';
-        }
-        $path = 'certificadopdf/' . $_SESSION["user"];
-        if (file_exists($path)) {
-            $directorio = opendir($path);
-            while ($archivo = readdir($directorio)) {
-                if (!is_dir($archivo)) {
-                    echo '
-                    <tr>
-                    <td>' . $archivo . '</td>
-                    <td>' . $_SESSION["send_description"] . '</td>    
-                    <td> 
-                        <div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
-                        title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
-                        name="btn" value="form_consult" type="submit"></button></td>
-                    <td>
-                        <form action="" method="POST">
-                            <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-                            <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
-                            <button class="btnedit" name="btn" value="form_view" type="submit"></button>
-                        </form>
-                    </td>
-                        <td>
-                            <form action="" method="POST">
-                                <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-                                <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
-                                <button class="btndelete" name="btn" value="form_delete" type="submit"></button>
-                            </form>
-                        </td>
-                    </tr>';
+
+            $path = 'certificadopdf/' . $_SESSION["user"];
+            if (file_exists($path)) {
+                $directorio = opendir($path);
+                while (($archivo = readdir($directorio)) && !feof($directorio)) {
+                    if (!is_dir($archivo)) {
+                        echo '
+                        <tr>
+                            <td>' . $archivo . '</td>
+                            <td>' . $_SESSION['certificados'][$archivo]['descripcion'] . '</td>   
+                            <td>
+                                <div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '\"
+                                title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview"
+                                name="btn" value="form_consult" type="submit"></button></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
+                                    <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['certificados'][$archivo]['evidencia'] . '"/>
+                                    <button class="btnedit" name="btn" value="form_view" type="submit"></button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
+                                    <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['certificados'][$archivo]['evidencia'] . '"/>
+                                    <button class="btndelete" name="btn" value="from_delete" type="submit"></button>
+                                </form>
+                            </td>
+                        </tr>
+                        ';
+                    }
                 }
+                closedir($directorio);
             }
+        } else {
+            echo '<tr><td colspan="5">No se encontraron certificados.</td></tr>';
         }
         ?>
     </table>
@@ -68,7 +75,7 @@ if ($resultado = $conexion->query($sql)) {
         ';
     }
     if (isset($_SESSION['total_certificados']) && $_SESSION['total_certificados'] != 0) {
-        echo '  
+        echo '
                 <div class="pages">
                     <ul>
         ';
@@ -86,6 +93,7 @@ if ($resultado = $conexion->query($sql)) {
     }
     ?>
 </div>
+
 <div class="content-aside">
     <?php
     include_once '../notif_info.php';
