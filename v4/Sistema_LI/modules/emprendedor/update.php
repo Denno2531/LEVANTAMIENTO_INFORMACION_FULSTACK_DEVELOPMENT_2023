@@ -35,9 +35,9 @@ try {
             }
 
             if (mysqli_query($conexion, $sql_update_emprendedor)) {
-                Info('Emprendedor actualizado.');
+                Info('Benefeciario actualizado.');
             } else {
-                Error('Error al actualizar emprendedor.');
+                Error('Error al actualizar beneficiario.');
             }
         } else {
             Error('Este ID de emprendedor no existe.');
