@@ -27,7 +27,7 @@ $url_actual = $_SERVER["REQUEST_URI"];
 
 if (strpos($url_actual, 'modules')) {
     $input = $url_actual;
-    preg_match('modules/(.*?)/', $input, $output);
+    preg_match('/modules\/(.*?)/', $input, $output); // Cambio del delimitador y agregado de escape para "/"
     $output[1];
 } elseif (strpos($url_actual, 'attendance')) {
     $input = $url_actual;
