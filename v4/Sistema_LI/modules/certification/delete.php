@@ -50,4 +50,3 @@ if (!empty($nombreArchivoEvidencia)) {
 
 header('Location: /modules/certification');
 exit();
-?>
