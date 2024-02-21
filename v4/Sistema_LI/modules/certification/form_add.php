@@ -16,7 +16,6 @@ function unique_id($l = 10)
 }
 
 
-$id_generate = 'S-' . unique_id(5);
 ?>
 
 <div class="form-data">
@@ -56,6 +55,7 @@ $id_generate = 'S-' . unique_id(5);
     ?>
 </div>
 <script src="/js/modules/students.js" type="text/javascript"></script>
+
 
 
 
