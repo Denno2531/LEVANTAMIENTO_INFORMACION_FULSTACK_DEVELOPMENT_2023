@@ -15,7 +15,7 @@ function unique_id($l = 10)
     return substr(md5(uniqid(mt_rand(), true)), 0, $l);
 }
 
-
+$id_generate = 'S-' . unique_id(5);
 ?>
 
 <div class="form-data">
