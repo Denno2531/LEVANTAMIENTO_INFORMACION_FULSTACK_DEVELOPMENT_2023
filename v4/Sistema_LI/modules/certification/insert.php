@@ -5,78 +5,61 @@ include_once '../notif_info_msgbox.php';
 
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
-$sql = "SELECT * FROM users WHERE user = '" . $_SESSION['user'] . "'";
-if ($result = $conexion->query($sql)) {
-    if ($row = mysqli_fetch_array($result)) {
-        $_SESSION['user_id'] = $row['user'];
-        $_SESSION['name_user'] = $row['name'];
-    }
-}
+// Verificar si se ha enviado un archivo
+if (isset($_FILES["archivo"])) {
+    $archivo = $_FILES["archivo"];
 
-$archivopdf = $_FILES["archivo"]["name"];
-$sql = "SELECT archivopdf FROM certification";
-$resultado = $conexion->query($sql);
-$row = mysqli_fetch_array($result);
-$_SESSION['send_archivo'] = $row['archivopdf'];
-
-$nombrePDF = $_SESSION['send_archivo'];
-if ($nombrePDF == $archivopdf) {
-    Info('Ya existe un archivo con el nombre.');
-    header('Location: /modules/certification');
-    exit();
-} else {
-
-    $usuario = $_POST['userid'];
-	$numeroDePDF = $_POST['num'];
-	$descripcion = $_POST['descripcion'];
-	$date = date('Y-m-d H:i:s');
-	$status="En revisión";
-	$mensaje="Sin comentarios";
-	$evidencia="";
-	$name_not=$_SESSION['name_user'];
-	$status_not="revisar";
-	$mensaje_not="ha subido a Certificado el documento: ";
-	$mensage_estudiante="Sin comentarios";
-
-	$sql_not="INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";
-	$result_not = $conexion->query($sql_not);
-
-    $sql = "INSERT INTO certification (user, num, archivopdf, descripcion, created_at, updated_at,message,evidencepdf) VALUES ('$usuario', '$numeroDePDF', '$archivopdf', '$descripcion', '$date', '$date', '$mensaje','$evidencia')";
-    $resultado = $conexion->query($sql);
-    $id = $_SESSION["user_id"];
-    echo "Mi id es: " . $id;
-
-    if ($_FILES["archivo"]["error"] > 0) {
+    // Verificar si hay un archivo válido
+    if ($archivo["error"] > 0) {
         Info("Error al cargar el archivo");
     } else {
         $permitidos = array("application/pdf");
         $limite_kb = 5000;
-        if (in_array($_FILES["archivo"]["type"], $permitidos) && $_FILES["archivo"]["size"] <= $limite_kb * 1024) {
-            $ruta = 'certificadopdf/' . $id . '/';
-            $archivo = $ruta . $_FILES["archivo"]["name"];
+
+        // Verificar tipo y tamaño del archivo
+        if (in_array($archivo["type"], $permitidos) && $archivo["size"] <= $limite_kb * 1024) {
+            $usuario = $_POST['userid'];
+            $numeroDePDF = $_POST['num'];
+            $descripcion = $_POST['descripcion'];
+            $date = date('Y-m-d H:i:s');
+            $status = "En revisión";
+            $mensaje = "Sin comentarios";
+            $evidencia = "";
+            $name_not = $_SESSION['name_user'];
+            $status_not = "revisar";
+            $mensaje_not = "ha subido a Certificado el documento: ";
+            $mensage_estudiante = "Sin comentarios";
+
+            // Insertar notificación
+            $sql_not = "INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";
+            $result_not = $conexion->query($sql_not);
+
+            // Guardar información en la base de datos
+            $archivo_destino = 'certificadopdf/' . $_SESSION["user_id"] . '/' . $archivo["name"];
+            $sql = "INSERT INTO certification (user, num, archivopdf, descripcion, created_at, updated_at, message, evidencepdf) VALUES ('$usuario', '$numeroDePDF', '$archivo_destino', '$descripcion', '$date', '$date', '$mensaje','$evidencia')";
+            $resultado = $conexion->query($sql);
+
+            // Crear directorio si no existe
+            $ruta = 'certificadopdf/' . $_SESSION["user_id"] . '/';
             if (!file_exists($ruta)) {
-                mkdir($ruta);
+                mkdir($ruta, 0777, true);
             }
-            if (!file_exists($archivo)) {
-                $resultado = @move_uploaded_file($_FILES["archivo"]["tmp_name"], $archivo);
-                if ($resultado) {
 
-                    Info("Archivo guardado correctamente");
-                } else {
-
-                    Info("Error al guardar el archivo");
-                }
+            // Mover el archivo al directorio
+            if (move_uploaded_file($archivo["tmp_name"], $archivo_destino)) {
+                Info("Archivo guardado correctamente");
             } else {
-
-                Info("El archivo ya existe");
+                Info("Error al guardar el archivo");
             }
         } else {
-
-            Info("Archivo no permitido, excede el tamaño");
+            Info("Archivo no permitido o excede el tamaño");
         }
     }
-
-    header('Location: /modules/certification');
-    exit();
+} else {
+    Info("No se ha enviado ningún archivo");
 }
+
+// Redireccionar a la página de certificación
+header('Location: /modules/certification');
+exit();
 ?>
