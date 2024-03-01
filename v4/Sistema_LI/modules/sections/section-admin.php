@@ -44,7 +44,7 @@ if (strpos($url_actual, 'modules')) {
 <div class="nav-home">
     <span class="name_system">Levantamiento de Información</span>
     <div class="user">
-        <img class="image_user" src="/images/users/admin857.png<?php echo $_SESSION['image']; ?>" />
+        <img class="image_user" src="/images/users/<?php echo $_SESSION['image']; ?>" />
         <span class="name_user">
             <?php print $_SESSION['name'] . ' ' . $_SESSION['surnames']; ?>
         </span>
