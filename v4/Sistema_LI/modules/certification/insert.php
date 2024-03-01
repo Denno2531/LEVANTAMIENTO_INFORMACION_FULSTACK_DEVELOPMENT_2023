@@ -35,7 +35,7 @@ if ($nombrePDF == $archivopdf) {
 	$evidencia="";
 	$name_not=$_SESSION['name_user'];
 	$status_not="revisar";
-	$mensaje_not="ha subido a Envió 1 el documento: ";
+	$mensaje_not="ha subido a Certificado el documento: ";
 	$mensage_estudiante="Sin comentarios";
 
 	$sql_not="INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";

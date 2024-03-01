@@ -22,13 +22,13 @@ $id_generate = 'stdt-' . unique_id(5);
                         value="<?php echo $id_generate; ?>" maxlength="50" required />
                     <input class="text" type="text" name="txt" value="<?php echo $id_generate; ?>" required disabled />
 
-                    <label for="txtusername" class="label">Nombre</label>
+                    <label for="txtusername" class="label">Nombres</label>
                     <input id="txtusername" class="text" type="text" name="txtname" value="" placeholder="Nombre"
                         maxlength="30" required autofocus />
                     <label for="txtusersurnames" class="label">Apellidos</label>
                     <input id="txtusersurnames" class="text" type="text" name="txtsurnames" placeholder="Apellidos"
                         value="" maxlength="60" required />
-                    <label for="txtuseremail" class="label">Correo</label>
+                    <label for="txtuseremail" class="label">Correo institucional</label>
                     <input id="txtuseremail" class="text" type="text" name="txtuseremail" value=""
                         placeholder="ejemplo@email.com" maxlength="200" required />
 

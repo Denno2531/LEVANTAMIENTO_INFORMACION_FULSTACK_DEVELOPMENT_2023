@@ -64,19 +64,19 @@ if (strpos($url_actual, 'modules')) {
                         } ?>" href="/home"><span class="icon">dashboard</span>Dashboard</a></li>        
         <li><a class="<?php if ($output[1] == 'Informes_Quincenales') {
                             echo 'active';
-                        } ?>" href="/modules/Informes_Quincenales"><span class="icon">recent_actors</span>Informes Quincenales</a></li>
+                        } ?>" href="/modules/Informes_Quincenales"><span class="icon">recent_actors</span> <strong>1.1 </strong><u>Informes Quincenales</u></a></li>
         <li><a class="<?php if ($output[1] == 'Justificaciones') {
                             echo 'active';
-                        } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span>Justificaciones</a></li>
+                        } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span><strong>1.2 </strong><u> Justificaciones</u></a></li>
         <li><a class="<?php if ($output[1] == 'Envio_1') {
                             echo 'active';
-                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span>Envio 1 y Record academico</a></li>
+                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span> <strong>1.3 </strong><u>Envio 1 y Record academico</u></a></li>
         <li><a class="<?php if ($output[1] == 'Envio_2') {
                             echo 'active';
-                        } ?>" href="/modules/send_two"><span class="icon">recent_actors</span>Envio 2</a></li>
+                        } ?>" href="/modules/send_two"><span class="icon">recent_actors</span><strong>1.4 </strong> <u>Envio 2</u></a></li>
         <li><a class="<?php if ($output[1] == 'Certificado') {
                             echo 'active';
-                        } ?>" href="/modules/certification"><span class="icon">recent_actors</span>Certificados</a></li>
+                        } ?>" href="/modules/certification"><span class="icon">recent_actors</span> <strong>1.5 </strong> <u>Certificados </u></a></li>
         
         
 </div>

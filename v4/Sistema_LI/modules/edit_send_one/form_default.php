@@ -128,7 +128,7 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
 <!-- Muestra Notificaciones -->
 <div class="content-aside">
     <?php
-        $start_index = max(0, $_SESSION['total_not'] - 25); // Comienza desde el índice que mostrará las últimas 25 notificaciones
+        $start_index = max(0, $_SESSION['total_not'] - 75); // Comienza desde el índice que mostrará las últimas 75 notificaciones
         for ($i = $start_index; $i < $_SESSION['total_not']; $i++) {
             mysqli_data_seek($result, $i);
             $row = mysqli_fetch_array($result);
@@ -155,5 +155,6 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
                 $sql_update = "DELETE FROM notify WHERE nombrepdf = '$notification_id'";
             }
         }
+		
     ?>
 </div>

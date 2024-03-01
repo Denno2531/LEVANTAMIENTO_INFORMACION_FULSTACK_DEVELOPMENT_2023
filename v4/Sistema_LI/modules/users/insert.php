@@ -56,7 +56,7 @@ if ($stmt = $conexion->prepare($sql)) {
 } else {
     Error('Error al preparar la consulta.');
 }
-
+?>
 
 
 # ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠

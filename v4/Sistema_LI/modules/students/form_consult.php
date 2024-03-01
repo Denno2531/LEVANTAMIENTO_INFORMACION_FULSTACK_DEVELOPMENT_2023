@@ -43,11 +43,11 @@ if ($result = $conexion->query($sql)) {
 					<label class="label">Usuario</label>
 					<input style="display: none;" type="text" name="btn" value="form_default" />
 					<input class="text" type="text" name="txt" value="<?php echo $_SESSION['user_id']; ?>" disabled />
-					<label class="label">Nombre</label>
+					<label class="label">Nombres</label>
 					<input class="text" type="text" name="txtname" value="<?php echo $_SESSION['student_name']; ?>" disabled />
 					<label class="label">Apellidos</label>
 					<input class="text" type="text" name="txtsurnames" value="<?php echo $_SESSION['student_surnames']; ?>" disabled />
-					<label class="label">Correo</label>
+					<label class="label">Correo institucional</label>
                     <input class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['email']; ?>" disabled />
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 					<input id="dateofbirth" class="date" type="text" name="dateofbirth" value="<?php echo $_SESSION['student_date_of_birth']; ?>" disabled />				

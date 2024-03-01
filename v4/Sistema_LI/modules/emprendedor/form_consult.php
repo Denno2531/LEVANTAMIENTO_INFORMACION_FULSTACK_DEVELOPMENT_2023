@@ -6,6 +6,7 @@ $sql = "SELECT * FROM emprendedor WHERE user = '" . $_POST['txtuserid'] . "'";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['user_id'] = $row['user'];
+		$_SESSION['empre_pass'] = $row['pass'];
 		$_SESSION['empre_cedula'] = $row['cedula'];
 		$_SESSION['empre_rfc'] = $row['rfc'];	
 		$_SESSION['empre_name'] = $row['name'];

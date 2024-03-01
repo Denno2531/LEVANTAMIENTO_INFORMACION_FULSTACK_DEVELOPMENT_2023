@@ -212,7 +212,7 @@ if ($result = $conexion->query($sql)) {
 					<input id="txtuserphone" class="text" type="text" name="txtphone" value="<?php echo $_SESSION['empre_phone']; ?>" pattern="[0-9]{10}" title="Ingresa un número de teléfono válido." placeholder="9998887766" maxlength="10" required />
 
 					<label for="txtuseremail" class="label">Correo Electrónico</label>
-					<input id="txtuseremail" class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
+					<input id="txtuseremail" class="text" type="text" name="txtemailupdate" value="<?php echo $_SESSION['empre_email']; ?>" placeholder="Correo" maxlength="200" required />
 					<div class="eight">
 					<label for="selectorganization" class="label">Organización</label>
 					<select id="selectorganization" class="select" name="selectorganization" required>
