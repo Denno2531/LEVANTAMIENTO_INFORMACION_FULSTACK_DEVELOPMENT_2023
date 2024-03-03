@@ -57,6 +57,13 @@ include_once 'load_data.php';
 			$(".loader").fadeOut("slow");
 		});
 	</script>
+	<script>
+         $( document ).ready(function() {
+             if (localStorage.getItem("pageloadcount")) { $("#landContainer").hide();
+         } 
+             localStorage.setItem("pageloadcount", "1");
+         });
+      </script>
 </head>
 
 <body>

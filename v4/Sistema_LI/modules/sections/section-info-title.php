@@ -1,4 +1,5 @@
 <?php
+
 include_once 'security.php';
 
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
@@ -70,7 +71,7 @@ if (strpos($url_actual, 'modules')) {
     </span>
 </div>
 
-<div >
+<div id="landContainer">
     <div style="text-align:center; margin: 120px 0;">             
         <h1>Bienvenido a la plataforma de</h1>
         <h1>Levantamiento de Información</h1>
