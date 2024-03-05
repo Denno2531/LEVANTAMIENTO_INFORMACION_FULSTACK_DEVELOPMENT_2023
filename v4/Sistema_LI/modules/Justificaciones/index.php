@@ -26,7 +26,7 @@ if (!empty($_POST['page'])) {
 }
 
 
-$max = 50;
+$max = 150;
 $inicio = ($page - 1) * $max;
 
 
