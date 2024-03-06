@@ -1,54 +1,43 @@
-
 <?php
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 include_once '../conexion.php';
 
-$max = 10;
+// Debes definir el valor de $max antes de usarlo en el cálculo de $tpages
+$max = 10; // Aquí debes proporcionar el valor apropiado
 
+// Verificar si se ha enviado un término de búsqueda
 if (!empty($_POST['search'])) {
     $search = mysqli_real_escape_string($conexion, $_POST['search']);
-
+    
+    // Consulta SQL para buscar el término en varias columnas
     $sql = "SELECT * FROM infoq WHERE num LIKE '%$search%' OR archivo LIKE '%$search%' OR user LIKE '%$search%' OR description LIKE '%$search%' ORDER BY num";
 
     $result = mysqli_query($conexion, $sql);
 
-    $_SESSION['user_id'] = [];
-    $_SESSION['num'] = [];
-    $_SESSION['justificaciones_archivo'] = [];
-    $_SESSION['justificaciones_description'] = [];
-    $_SESSION['send_estado'] = [];
-    $_SESSION['send_created'] = [];
-    $_SESSION['send_updated'] = [];
-
+    $_SESSION['infoq_data'] = [];
+    
+    // Almacenar los resultados en el arreglo de sesión
     while ($row = mysqli_fetch_array($result)) {
-        $_SESSION['user_id'][] = $row['user'];
-        $_SESSION['num'][] = $row['num'];
-        $_SESSION['justificaciones_archivo'][] = $row['archivopdf'];
-        $_SESSION['justificaciones_description'][] = $row['descripcion'];
-        $_SESSION['send_estado'][] = $row['estado'];
-        $_SESSION['send_created'][] = $row['created_at'];
-        $_SESSION['send_updated'][] = $row['updated_at'];
+        $_SESSION['infoq_data'][] = $row;
     }
 
-    $_SESSION['total_infoq'] = count($_SESSION['num']);
+    $_SESSION['total_infoq'] = count($_SESSION['infoq_data']);
 } elseif (!empty($_POST['txtuserid'])) {
     $userid = mysqli_real_escape_string($conexion, $_POST['txtuserid']);
-
+    
+     // Consulta SQL para obtener los informes del usuario específico
     $sql = "SELECT * FROM infoq WHERE user='$userid' ORDER BY num LIMIT $max";
 
     $result = mysqli_query($conexion, $sql);
 
-    $_SESSION['user_id'] = [];
-    $_SESSION['num'] = [];
-    $_SESSION['justificaciones_archivo'] = [];
-
+    $_SESSION['infoq_data'] = []; // Arreglo para almacenar los datos de los informes encontrados
+    
+    // Almacenar los resultados en el arreglo de sesión
     while ($row = mysqli_fetch_array($result)) {
-        $_SESSION['user_id'][] = $row['user'];
-        $_SESSION['num'][] = $row['num'];
-        $_SESSION['justificaciones_archivo'][] = $row['archivopdf'];
+        $_SESSION['infoq_data'][] = $row;
     }
 
-    $_SESSION['total_infoq'] = count($_SESSION['num']);
+    $_SESSION['total_infoq'] = count($_SESSION['infoq_data']);
 }
 
 ?>
@@ -73,20 +62,16 @@ if (!empty($_POST['search'])) {
                 echo '<th class="center"><a class="icon">delete</a></th>';
             }
             echo '</tr>';
-        }
 
-        $path = '../Informes_Quincenales/informesquincenalespdf/' . $_POST["txtuserid"];
-        if (file_exists($path)) {
-            $directorio = opendir($path);
-            while ($archivo = readdir($directorio)) {
-                if (!is_dir($archivo)) {
-
-                    echo '
+            foreach ($_SESSION['infoq_data'] as $row) {
+                $path = '../Informes_Quincenales/informesquincenalespdf/' . $row['user'];
+                $archivo = $row['archivopdf'];
+                echo '
                     <tr>
                         <td>' . $archivo . '</td>
-                        <td>' . $_SESSION["send_estado"] . '</td>
-                        <td>' . $_SESSION["send_created"] . '</td>
-                        <td>' . $_SESSION["send_updated"] . '</td>
+                        <td>' . $row['estado'] . '</td>
+                        <td>' . $row['created_at'] . '</td>
+                        <td>' . $row['updated_at'] . '</td>
                         <td> 
                             <div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
                             title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
@@ -99,7 +84,6 @@ if (!empty($_POST['search'])) {
                             </form>
                         </td>                                                    
                     </tr>';
-                }
             }
         }
         ?>
@@ -110,8 +94,6 @@ if (!empty($_POST['search'])) {
     }
     ?>
 </div>
-
-
 
 <div class="content-aside">
     <?php
