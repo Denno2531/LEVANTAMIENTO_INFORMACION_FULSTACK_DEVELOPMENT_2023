@@ -113,10 +113,6 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
 		}
 		?>
 
-
-	
-
-	
 </div>
 <div class="content-aside">
 	<?php
@@ -128,33 +124,71 @@ de ver detalles de un estudiante y cerrar notificaciones no deseadas. -->
 <!-- Muestra Notificaciones -->
 <div class="content-aside">
     <?php
-        $start_index = max(0, $_SESSION['total_not'] - 75); // Comienza desde el índice que mostrará las últimas 75 notificaciones
-        for ($i = $start_index; $i < $_SESSION['total_not']; $i++) {
-            mysqli_data_seek($result, $i);
-            $row = mysqli_fetch_array($result);
-            echo '<div class="box-notification-doc">
-                <div class="btn-modal">
-                    <form action="" method="post">
-                        <input type="hidden" name="notification_id" value="' . $row["nombrepdf"] . '">
-                        <button class="close-button" type="submit" name="close_notification">X</button>
-                    </form>
-                </div> 
-                <p>' . $row["name"] . ', ' . $row["mensaje"] . ' ' . $row["nombrepdf"] . '</p>
-            </div>';
-        }
-
-        if (isset($_POST['close_notification'])) {
-            // Obtén el ID de la notificación desde el formulario
-            $notification_id = $_POST['notification_id'];
-
-            // Ejecuta la consulta SQL para actualizar el estado de la notificación a lo que necesites
-            $sql_update = "DELETE FROM notify WHERE nombrepdf = '$notification_id'";
-
-            // Ejecuta la consulta de actualización
-            if ($conexion->query($sql_update)) {
-                $sql_update = "DELETE FROM notify WHERE nombrepdf = '$notification_id'";
-            }
-        }
-		
+    // Invertir el bucle para mostrar las notificaciones más recientes primero
+    $start_index = max(0, $_SESSION['total_not'] - 75);
+    for ($i = $_SESSION['total_not'] - 1; $i >= $start_index; $i--) {
+        mysqli_data_seek($result, $i);
+        $row = mysqli_fetch_array($result);
+        echo '<div class="box-notification-doc">
+            <div class="btn-modal">
+                <form action="" method="post" class="close-notification-form">
+                    <input type="hidden" name="notification_id" value="' . $row["nombrepdf"] . '">
+                    <button class="close-button" type="submit" name="close_notification">X</button>
+                </form>
+            </div> 
+            <p>' . $row["name"] . ', ' . $row["mensaje"] . ' ' . $row["nombrepdf"] . '</p>
+        </div>';
+    }
     ?>
 </div>
+
+<script>
+    // JavaScript para eliminar la notificación sin recargar la página
+	// Borra de la interfaz - Se borra de la base de datos en segundo plano.
+    document.querySelectorAll('.close-notification-form').forEach(form => {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch('', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Verificar si la eliminación en la base de datos fue exitosa
+                // antes de eliminar la notificación del DOM
+                return response.text(); // Leer la respuesta del servidor
+            } else {
+                throw new Error('La eliminación de la notificación falló');
+            }
+        })
+        .then(data => {
+            // Eliminar la notificación del DOM después de confirmar que la eliminación en la base de datos fue exitosa
+            form.closest('.box-notification-doc').remove();
+        })
+        .catch(error => console.error(error));
+    });
+});
+</script>
+
+<?php
+// Cierra/elimina notificaciones mostradas anteriormente
+if (isset($_POST['close_notification'])) {
+    // Obtén el ID de la notificación desde el formulario
+    $notification_id = $_POST['notification_id'];
+
+    // Ejecuta la consulta SQL para eliminar la notificación de la base de datos
+    $sql_delete = "DELETE FROM notify WHERE nombrepdf = '$notification_id'";
+
+    // Ejecuta la consulta de eliminación
+    if ($conexion->query($sql_delete)) {
+        // Respondemos con un código HTTP 200 OK para indicar que la operación fue exitosa
+        http_response_code(200);
+        exit(); // Termina la ejecución del script PHP después de eliminar la notificación
+    } else {
+        // Si hay un error en la consulta SQL, respondemos con un código de error
+        http_response_code(500);
+        exit();
+    }
+}
+?>
