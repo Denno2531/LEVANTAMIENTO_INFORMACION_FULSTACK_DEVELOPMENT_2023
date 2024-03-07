@@ -11,6 +11,15 @@ if ($resultado = $conexion->query($sql)) {
 }
 
 ?>
+
+<script>
+		//Script que limita la carga del logo UNHCR ACNUR a únicamente la página de bienvenida del sitio desde modo administrador, editor y estudiante
+         $( document ).ready(function() {
+             if (localStorage.getItem("pageloadcount")) { $("#landContainer").hide();
+         } 
+             localStorage.setItem("pageloadcount", "1");
+         });
+    </script>
 <div class="form-gridview">
 	<table class="default">
 		<?php
