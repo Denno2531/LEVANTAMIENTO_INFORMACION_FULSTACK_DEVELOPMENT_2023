@@ -1,6 +1,7 @@
 <?php
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin.php');
 ?>
+<!--Creación de tabla donde se muestran los administradores existentes (Desde modo administrador)-->
 <div class="form-gridview">
 	<table class="default">
 		<?php
@@ -48,11 +49,13 @@ require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin.php');
 		?>
 	</table>
 	<?php
+	//Si no existen administradores se muestra una imagen indicando que no se encontró datos.
 	if ($_SESSION['total_users'] == 0) {
 		echo '
 				<img src="/images/404.svg" class="data-not-found" alt="404">
 		';
 	}
+	//Si existen administradores se cargan de la base de datos
 	if ($_SESSION['total_users'] != 0) {
 		echo '
 				<div class="pages">
