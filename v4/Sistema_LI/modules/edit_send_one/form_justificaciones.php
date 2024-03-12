@@ -84,13 +84,6 @@ if ( !empty($_POST['search'])){
 									<button class="btnedit" name="btn" value="form_updatejustificacion" type="submit"></button>
 								</form>
 							</td>
-							<td>
-								<form action="" method="POST">
-									<input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-									<input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
-									<button class="btndelete" name="btn" value="form_delete" type="submit"></button>
-								</form>
-							</td>
 						</tr>';       
 				}
 		}
