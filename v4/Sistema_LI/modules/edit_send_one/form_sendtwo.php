@@ -6,11 +6,11 @@ $sql = "SELECT * FROM send_two";
 
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
-	  $_SESSION['send_estado'] = $row['estado'];
-	  $_SESSION['send_created'] = $row['created_at'];
-	  $_SESSION['send_updated'] = $row['updated_at'];
+		$_SESSION['send_estado'] = $row['estado'];
+		$_SESSION['send_created'] = $row['created_at'];
+		$_SESSION['send_updated'] = $row['updated_at'];
 	}
-  }
+}
 // Debes definir el valor de $max antes de usarlo en el cálculo de $tpages
 $max = 10; // Aquí debes proporcionar el valor apropiado
 
@@ -72,10 +72,10 @@ if (!empty($_POST['search'])) {
 
 <div class="form-gridview">
 	<table class="default">
-	<h2 class="titlecenter"> Envío 2  </h2>
-		<?php 
-			echo '<h2 class="textList"> ' .$_POST['txtname'].' </h2>'
-		?>
+		<h2 class="titlecenter"> Envío 2 </h2>
+		<?php
+		echo '<h2 class="textList"> ' . $_POST['txtname'] . ' </h2>'
+			?>
 		<?php
 		if ($_SESSION['total_send'] != 0) {
 			echo '
@@ -95,14 +95,14 @@ if (!empty($_POST['search'])) {
 			echo '	
 					</tr>
 			';
-		}	
-			$path = '../send_two/sendtwopdf/' . $_POST["txtuserid"];
-                if(file_exists($path)){
-                    $directorio= opendir($path);
-                    while($archivo=readdir($directorio)){
-                        if(!is_dir($archivo)){
-                            
-													echo '
+		}
+		$path = '../send_two/sendtwopdf/' . $_POST["txtuserid"];
+		if (file_exists($path)) {
+			$directorio = opendir($path);
+			while ($archivo = readdir($directorio)) {
+				if (!is_dir($archivo)) {
+
+					echo '
 													<tr>
 														<td>' . $archivo . '</td>
 														<td>' . $_SESSION["send_estado"] . '</td>
@@ -115,17 +115,17 @@ if (!empty($_POST['search'])) {
 														</td>
 														<td>
 															<form action="" method="POST">
-																<input style="display:none;" type="text" name="txtuserid" value="'.$archivo.'"/>
+																<input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
 																<button class="btnedit" name="btn" value="form_updatetwo" type="submit"></button>
 															</form>
 														</td>													
-													</tr>';         
-                        }
-                    }
-                }
+													</tr>';
+				}
+			}
+		}
 		?>
 	</table>
-<br></br>
+	<br></br>
 
 
 </div>
