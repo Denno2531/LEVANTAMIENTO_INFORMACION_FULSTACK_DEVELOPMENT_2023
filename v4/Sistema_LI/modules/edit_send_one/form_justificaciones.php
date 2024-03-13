@@ -39,63 +39,60 @@ if (!empty($_POST['search'])) {
 }
 ?>
 
-<div class="form-gridview">
-    <table class="default">
-        <h2 class="titlecenter">Justificaciones</h2>
-        <?php
-        echo '<h2 class="textList">' . $_POST['txtname'] . '</h2>';
-        ?>
-        <?php
-        if ($_SESSION['total_justificaciones'] != 0) {
-            
-            echo '
-                <tr>
-                    <th class="center" style="width: 800px">Nombre del archivo</th>
-                    <th class="center" style="width: 70px">Estado</th>
-                    <th class="center" style="width: 300px">Creado</th>
-                    <th class="center" style="width: 300px">Actualizado</th>
-                    
-                    <th class="center"><a class="icon">download</a></th>
-                    <th class="center"><a class="icon">edit</a></th>
-                </tr>';
-                    
-            foreach ($_SESSION['justificaciones_data'] as $row) {
-                $path = '../Justificaciones/justificacionespdf/' . $row['user'];
-                $archivo = $row['archivopdf'];
-                echo '
-                    <tr>
-                        <td>' . $archivo . '</td>
-                        <td>' . $row['estado'] . '</td>
-                        <td>' . $row['created_at'] . '</td>
-                        <td>' . $row['updated_at'] . '</td>
-                        <td>
-                            <div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
-                                title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
-                                name="btn" value="form_consult" type="submit"></button></td>
-                        <td>
-                            <form action="" method="POST">
-                                <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-                                <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
-                                <button class="btnedit" name="btn" value="form_updatejustificacion" type="submit"></button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="" method="POST">
-                                <input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-                                <input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
-                                <button class="btndelete" name="btn" value="form_delete" type="submit"></button>
-                            </form>
-                        </td>
-                    </tr>';       
-            }
-        }
-        ?>
-    </table>
-    <?php
-    if ($_SESSION['total_justificaciones'] == 0) {
-        echo '<img src="/images/404.svg" class="data-not-found" alt="404">';
-    }
-    ?>
+<div class= "form-gridview">
+	<table class="default">
+		<h2 class="titlecenter"> justificaciones </h2>
+		<?php
+		echo '<h2 class= "textList">' . $_POST['txtname']. '</h2'
+		?>
+		<?php
+		if($_SESSION['total_justificaciones'] !=0) {
+			
+			echo '
+				<tr>
+					<th class="center" style="width: 800px">Nombre del archivo</th>
+					<th class="center" style="width: 70px">Estado</th>
+					<th class="center" style="width: 300px">Creado</th>
+					<th class="center" style="width: 300px">Actualizado</th>
+					
+					<th class="center"><a class="icon">download</a></th>
+					<th class="center"><a class="icon">edit</a></th>
+				';
+				if($_SESSION['permission'] != 'edit'){
+					// echo 'th class="center"><a class="icon">delete</th>';
+				}
+				echo '<tr>';
+					
+				foreach($_SESSION['justificaciones_data'] as $row) {
+					$path = '../Justificaciones/justificacionespdf/' . $row['user'];
+					$archivo = $row['archivopdf'];
+					echo'
+						<tr>
+							<td>' . $archivo . '</td>
+							<td>' . $row['estado'] . '</td>
+							<td>' . $row['created_at'] . '</td>
+							<td>' . $row['updated_at'] . '</td>
+							<td>
+								<div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
+									title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
+									name="btn" value="form_consult" type="submit"></button></td>
+							<td>
+								<form action="" method="POST">
+									<input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
+									<input style="display:none;" type="text" name="txtevidencefile" value="' . $_SESSION['evidencia'] . '"/>
+									<button class="btnedit" name="btn" value="form_updatejustificacion" type="submit"></button>
+								</form>
+							</td>
+						</tr>';       
+				}
+		}
+		?>
+	</table>
+	<?php
+	if($_SESSION['total_justificaciones'] == 0) {
+		echo '<img src="/images/404.svg" class="data-not-found" alt="404">';
+	}
+	?>
 </div>
 
 <div class="content-aside">
