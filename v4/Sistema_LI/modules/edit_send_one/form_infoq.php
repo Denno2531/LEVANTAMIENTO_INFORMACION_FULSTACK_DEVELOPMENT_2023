@@ -68,7 +68,7 @@ if (!empty($_POST['search'])) {
                 $archivo = $row['archivopdf'];
                 echo '
                     <tr>
-                        <td>' . $archivo . '</td>
+                        <td style="word-break: break-all;">' . $archivo . '</td>
                         <td>' . $row['estado'] . '</td>
                         <td>' . $row['created_at'] . '</td>
                         <td>' . $row['updated_at'] . '</td>

@@ -57,23 +57,23 @@ $_SESSION['total_sendtwo'] = count($_SESSION['sendtwo_data']);
                 if (!is_dir($archivo)) {
 
                     echo '
-													<tr>
-														<td>' . $archivo . '</td>
-														<td>' . $_SESSION["send_estado"] . '</td>
-														<td>' . $_SESSION["send_created"] . '</td>
-														<td>' . $_SESSION["send_updated"] . '</td>
-														<td> 
-															<div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
-															title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
-															name="btn" value="form_consult" type="submit"></button>
-														</td>
-														<td>
-															<form action="" method="POST">
-																<input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
-																<button class="btnedit" name="btn" value="form_updatetwo" type="submit"></button>
-															</form>
-														</td>													
-													</tr>';
+			    			<tr>
+			    				<td>' . $archivo . '</td>
+			    				<td>' . $_SESSION["send_estado"] . '</td>
+			    				<td>' . $_SESSION["send_created"] . '</td>
+			    				<td>' . $_SESSION["send_updated"] . '</td>
+			    				<td> 
+			    					<div data="' . $path . '/' . $archivo . '"><a href="' . $path . '/' . $archivo . '"
+			    					title="Ver archivo adjunto" class="btnview" target="_blank"><button class="btnview" 
+			    					name="btn" value="form_consult" type="submit"></button>
+			    				</td>
+			    				<td>
+			    					<form action="" method="POST">
+			    						<input style="display:none;" type="text" name="txtuserid" value="' . $archivo . '"/>
+			    						<button class="btnedit" name="btn" value="form_updatetwo" type="submit"></button>
+			    					</form>
+			    				</td>													
+			    			</tr>';
                 }
             }
         }
