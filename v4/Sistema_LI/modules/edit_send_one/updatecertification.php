@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ruta_temporal = $_FILES["archivo"]["tmp_name"];
 
         // Define la carpeta donde deseas guardar el archivo
-        $carpeta_destino = 'certificadopdf/' . $id . '/';
+        $carpeta_destino = 'editjustificacion/' . $id . '/';
 
         // Verifica si la carpeta de destino existe y créala si no
         if (!file_exists($carpeta_destino)) {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Info("Archivo cargado con éxito.");
             
             // Actualiza la base de datos con el nombre del archivo
-            $sql_update = "UPDATE certification SET message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+            $sql_update = "UPDATE justificaciones SET estado = '" . trim($_POST['txtestado']) . "', message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
             if (mysqli_query($conexion, $sql_update)) {
                 Info('Documento actualizado.');
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // No se cargó un archivo, solo actualiza la base de datos sin cambiar el archivo
-        $sql_update = "UPDATE certification SET message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+        $sql_update = "UPDATE justificaciones SET estado = '" . trim($_POST['txtestado']) . "', message = '" . trim($_POST['descripcion']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
         if (mysqli_query($conexion, $sql_update)) {
             Info('Documento actualizado (sin cambios en el archivo).');
