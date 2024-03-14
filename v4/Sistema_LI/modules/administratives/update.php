@@ -17,6 +17,7 @@ if ($_POST['txtuserid'] == '') {
 	exit();
 }
 
+//Conexión con la base de datos para actualizar información de un usuario específico existente en la base de datos
 $sql = "SELECT * FROM administratives WHERE user = '" . $_POST['txtuserid'] . "'";
 
 if ($result = $conexion->query($sql)) {
