@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ruta_temporal = $_FILES["archivo"]["tmp_name"];
 
         // Define la carpeta donde deseas guardar el archivo
-        $carpeta_destino = 'editjustificacion/' . $id . '/';
+        $carpeta_destino = 'certificadopdf/' . $id . '/';
 
         // Verifica si la carpeta de destino existe y créala si no
         if (!file_exists($carpeta_destino)) {
@@ -40,8 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // El archivo se ha cargado exitosamente
             Info("Archivo cargado con éxito.");
             
+            $date = date('Y-m-d H:i:s');
             // Actualiza la base de datos con el nombre del archivo
-            $sql_update = "UPDATE justificaciones SET estado = '" . trim($_POST['txtestado']) . "', message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+            $sql_update = "UPDATE certification SET message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "',  updated_at = '". $date ."' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
             if (mysqli_query($conexion, $sql_update)) {
                 Info('Documento actualizado.');
@@ -53,8 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Error("Error al cargar el archivo.");
         }
     } else {
+        $date = date('Y-m-d H:i:s');
         // No se cargó un archivo, solo actualiza la base de datos sin cambiar el archivo
-        $sql_update = "UPDATE justificaciones SET estado = '" . trim($_POST['txtestado']) . "', message = '" . trim($_POST['descripcion']) . "' WHERE num = '" . trim($_POST['txtnum']) . "'";
+        $sql_update = "UPDATE certification SET message = '" . trim($_POST['descripcion']) . "', evidencepdf = '" . $nombre_archivo . "', updated_at = '". $date ."' WHERE num = '" . trim($_POST['txtnum']) . "'";
 
         if (mysqli_query($conexion, $sql_update)) {
             Info('Documento actualizado (sin cambios en el archivo).');
