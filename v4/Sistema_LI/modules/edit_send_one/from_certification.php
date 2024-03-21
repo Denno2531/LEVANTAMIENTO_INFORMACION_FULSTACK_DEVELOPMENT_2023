@@ -78,6 +78,6 @@ if (!empty($_POST['search'])) {
 <div class="content-aside">
     <?php
     include_once '../notif_info.php';
-    include_once "../sections/options-disabled.php";
+    include_once "../sections/options-editor.php";
     ?>
 </div>
