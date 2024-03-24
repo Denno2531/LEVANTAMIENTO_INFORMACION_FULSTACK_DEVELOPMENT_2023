@@ -61,19 +61,19 @@ if (strpos($url_actual, 'modules')) {
     <ul>
         <li><a class="<?php if ($output[1] == 'home') {
                             echo 'active';
-                        } ?>" href="/home"><span class="icon">dashboard</span>Dashboard</a></li>
+                        } ?>" href="/home"><span class="icon">dashboard</span>Dashboard</a></li>        
         <!-- <li><a class="<?php if ($output[1] == 'careers') {
-                                echo 'active';
-                            } ?>" href="/modules/careers"><span class="icon">school</span>Carreras</a></li>
+                            echo 'active';
+                        } ?>" href="/modules/careers"><span class="icon">school</span>Carreras</a></li>
         <li><a class="<?php if ($output[1] == 'subjects') {
                             echo 'active';
                         } ?>" href="/modules/subjects"><span class="icon">library_books</span>Asignaturas</a></li> -->
-        <li><a class="<?php if ($output[1] == 'edit_send_one') {
+          <li><a class="<?php if ($output[1] == 'edit_send_one') {
                             echo 'active';
-                        } ?>" href="/modules/edit_send_one"><span class="icon">library_books</span>Documentación</a></li>
-        <li><a class="<?php if ($output[1] == 'reportes_estudiantes') {
-                            echo 'active';
-                        } ?>" href="/modules/reportes_estudiantes"><span class="icon">library_books</span>Reportes Estudiantes</a></li>
+                        } ?>" href="/modules/edit_send_one"><span class="icon">library_books</span>Documentación</a></li>  
+  
+        
+        
 </div>
 <div class="menu-mobile">
     <header>
@@ -82,31 +82,29 @@ if (strpos($url_actual, 'modules')) {
             <ul>
                 <li>
                     <a class="<?php if ($output[1] == 'home') {
-                                    echo 'active-menu';
-                                } ?>" href="/home"><span class="icon">dashboard</span><span class="text">Dashboard</span></a>
+                        echo 'active-menu';
+                    } ?>" href="/home"><span class="icon">dashboard</span><span class="text">Dashboard</span></a>
                 </li>
-                <!--  <li>
+                <li>
                     <a class="<?php if ($output[1] == 'careers') {
-                                    echo 'active-menu';
-                                } ?>" href="/modules/careers"><span class="icon">school</span><span class="text">Carreras</span></a>
+                        echo 'active-menu';
+                    } ?>" href="/modules/careers"><span class="icon">school</span><span
+                            class="text">Carreras</span></a>
                 </li>
                 <li>
                     <a class="<?php if ($output[1] == 'subjects') {
-                                    echo 'active-menu';
-                                } ?>" href="/modules/subjects"><span class="icon">library_books</span><span class="text">Asignaturas</span></a>
-                </li>-->
-                <li>
-                    <a class="<?php if ($output[1] == 'edit_send_one') {
-                                    echo 'active-menu';
-                                } ?>" href="/modules/edit_send_one"><span class="icon">library_books</span><span class="text">Documentación</span></a>
+                        echo 'active-menu';
+                    } ?>" href="/modules/subjects"><span class="icon">library_books</span><span
+                            class="text">Asignaturas</span></a>
                 </li>
                 <li>
-                    <a class="<?php if ($output[1] == 'reportes_estudiantes') {
-                                    echo 'active-menu';
-                                } ?>" href="/modules/reportes_estudiantes"><span class="icon">library_books</span><span class="text">Reportes Estudiantes</span></a>
+                    <a class="<?php if ($output[1] == 'subjects') {
+                        echo 'active-menu';
+                    } ?>" href="/modules/edit_send_one"><span class="icon">library_books</span><span
+                            class="text">Documentación</span></a>
                 </li>
-
-
+                
+                
             </ul>
         </nav>
     </header>
@@ -119,8 +117,8 @@ if (strpos($url_actual, 'modules')) {
             <ul>
                 <li class="first-item">
                     <a class="<?php if ($output[1] == 'user') {
-                                    echo 'active-user';
-                                } ?>" href="/users"><span class="icon">settings</span><span class="text">Configuración</span></a>
+                        echo 'active-user';
+                    } ?>" href="/users"><span class="icon">settings</span><span class="text">Configuración</span></a>
                 </li>
                 <li>
                     <a href="/modules/logout"><span class="icon">logout</span><span class="text">Cerrar
