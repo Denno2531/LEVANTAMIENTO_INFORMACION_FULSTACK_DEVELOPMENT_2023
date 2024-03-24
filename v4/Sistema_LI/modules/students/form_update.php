@@ -47,15 +47,15 @@ if ($result = $conexion->query($sql)) {
 					<label for="txtusername" class="label">Nombre</label>
 					<input id="txtusername" class="text" type="text" name="txtname"
 						value="<?php echo $_SESSION['student_name']; ?>" placeholder="Nombre" autofocus maxlength="30"
-						disabled/>
+						required />
 					<label for="txtusersurnames" class="label">Apellidos</label>
 					<input id="txtusersurnames" class="text" type="text" name="txtsurnames"
 						value="<?php echo $_SESSION['student_surnames']; ?>" placeholder="Apellidos" maxlength="60"
-						disabled />
+						required />
 					<label for="txtuseremail" class="label">Correo</label>
 					<input id="txtuseremail" class="text" type="email" name="txtemailupdate"
 						value="<?php echo $_SESSION['email']; ?>" placeholder="ejemplo@email.com" maxlength="200"
-						autofocus disabled />
+						autofocus />
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 					<input id="dateofbirth" class="date" type="date" name="dateofbirth"
 						value="<?php echo $_SESSION['student_date_of_birth']; ?>" pattern="\d{4}-\d{2}-\d{2}"
@@ -200,15 +200,15 @@ if ($result = $conexion->query($sql)) {
 					<label for="txtusercedula" class="label">Cédula</label>
 					<input id="txtusercedula" class="text" type="text" name="txtcedula"
 						value="<?php echo $_SESSION['student_cedula']; ?>" placeholder="Cédula de Identidad"
-						pattern="[0-9]{10}" maxlength="10" required disabled/>
+						pattern="[0-9]{10}" maxlength="10" required />
 					<label for="txtuserpass" class="label">Contraseña</label>
-					<input id="txtuserpass" class="text" type="password" name="txtpass"
-						placeholder="************ "
+					<input id="txtuserpass" class="text" type="text" name="txtpass"
+						placeholder="XXXXXXXXX"
 						pattern="[A-Za-z0-9]{8}" maxlength="8" />
 					<label for="txtuserid" class="label">ID</label>
 					<input id="txtuserid" class="text" type="text" name="txtid"
 						value="<?php echo $_SESSION['student_id']; ?>" placeholder="L00XXXXXXX" pattern="[A-Za-z0-9]{9}"
-						maxlength="9" onkeyup="this.value = this.value.toUpperCase()" disabled />
+						maxlength="9" onkeyup="this.value = this.value.toUpperCase()" required />
 					<label for="txtuserphone" class="label">Número de teléfono</label>
 					<input id="txtuserphone" class="text" type="text" name="txtphone"
 						value="<?php echo $_SESSION['student_phone']; ?>" pattern="[0-9]{10}"
@@ -496,6 +496,9 @@ if ($result = $conexion->query($sql)) {
 					<br>
 					<ul id="dateList"></ul>
 				</div>
+				<label for="dateuserfinish" class="label">Fecha estimada de salida</label>
+<input id="dateuserfinish" class="date" type="date" name="datefinish" readonly />
+
 			</div>
 			<button id="btnSave" class="btn icon" type="submit">save</button>
 		</form>
@@ -620,6 +623,52 @@ if ($result = $conexion->query($sql)) {
 
 	});
 </script>
+
+<script>
+    $(document).ready(function() {
+        function calcularFechaEstimada() {
+            var admissionDate = new Date($("#dateuseradmission").val());
+            var horasRequeridas = parseInt($("#txttotalhours_hidden").val());
+            var diasLaborablesPorSemana = 5; // Supongamos que se trabaja de lunes a viernes
+            var horasPorDia = 3; // Supongamos que se trabaja 3 horas diarias
+
+            // Calcula el número total de horas necesarias
+            var horasTotales = horasRequeridas / horasPorDia;
+
+            // Calcula el número total de días necesarios, redondeando hacia arriba
+            var diasTotales = Math.ceil(horasTotales / diasLaborablesPorSemana) * 7;
+
+            // Calcula la fecha estimada de salida sumando los días necesarios a la fecha de admisión
+            var fechaEstimada = new Date(admissionDate);
+            fechaEstimada.setDate(fechaEstimada.getDate() + diasTotales);
+
+            // Ajusta la fecha estimada para que sea un día hábil si es necesario
+            while (fechaEstimada.getDay() === 0 || fechaEstimada.getDay() === 6) {
+                fechaEstimada.setDate(fechaEstimada.getDate() + 1);
+            }
+
+            var dia = fechaEstimada.getDate();
+            var mes = fechaEstimada.getMonth() + 1;
+            var año = fechaEstimada.getFullYear();
+
+            // Formatea la fecha como 'yyyy-mm-dd' para establecerla en el campo de fecha de salida
+            $("#dateuserfinish").val(año + "-" + (mes < 10 ? "0" : "") + mes + "-" + (dia < 10 ? "0" : "") + dia);
+        }
+
+        // Calcula la fecha estimada al cargar la página
+        calcularFechaEstimada();
+
+        // Actualiza la fecha estimada cuando cambia la fecha de admisión o las horas requeridas
+        $("#dateuseradmission, #txttotalhours_hidden").change(function() {
+            calcularFechaEstimada();
+        });
+    });
+</script>
+
+
+
+
+
 
 <script src="/js/modules/students.js" type="text/javascript"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">

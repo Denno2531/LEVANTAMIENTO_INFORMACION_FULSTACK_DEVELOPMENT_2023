@@ -23,7 +23,7 @@ if (!empty($_POST['page'])) {
 	$page = 1;
 }
 
-$max = 50;
+$max = 150;
 $inicio = ($page - 1) * $max;
 
 include_once 'load_data.php';
@@ -53,6 +53,13 @@ include_once 'load_data.php';
 			$(".loader").fadeOut("slow");
 		});
 	</script>
+	<script>
+         $( document ).ready(function() {
+             if (localStorage.getItem("pageloadcount")) { $("#landContainer").hide();
+         } 
+             localStorage.setItem("pageloadcount", "1");
+         });
+    </script>
 </head>
 
 <body>

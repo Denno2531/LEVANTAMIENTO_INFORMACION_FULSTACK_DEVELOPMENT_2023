@@ -15,7 +15,7 @@ if (empty($nombreArchivo)) {
 }
 
 // Verificar si el archivo existe y eliminarlo
-$rutaArchivo = $_SESSION['raiz'] . '/modules/certificadopdf/' . $_SESSION["user"] . '/' . $nombreArchivo;
+$rutaArchivo = $_SESSION['raiz'] . '/modules/certification/certificadopdf/' . $_SESSION["user"] . '/' . $nombreArchivo;
 if (file_exists($rutaArchivo)) {
     if (unlink($rutaArchivo)) {
         Info('Archivo del usuario eliminado.');

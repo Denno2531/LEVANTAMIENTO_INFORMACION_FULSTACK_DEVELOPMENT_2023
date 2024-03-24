@@ -11,6 +11,18 @@ if ($resultado = $conexion->query($sql)) {
 }
 
 ?>
+
+<!--Script que limita la carga del logo UNHCR ACNUR a únicamente la página de bienvenida 
+del sitio desde modo estudiante-->
+<script>
+         $( document ).ready(function() {
+             if (localStorage.getItem("pageloadcount")) { $("#landContainer").hide();
+         } 
+             localStorage.setItem("pageloadcount", "1");
+         });
+</script>
+
+<!--Creación de tabla en donde se van a mostrar los informes quincenales (En caso estos existan)-->
 <div class="form-gridview">
 	<table class="default">
 		<?php
@@ -25,6 +37,8 @@ if ($resultado = $conexion->query($sql)) {
 					</tr>
 			';
 		}
+		//Carga del o los informes quincenales del estudiante.
+		//El estudiante puede descargar, visualizar el estado o eliminar un archivo.
 		$path = 'informesquincenalespdf/' . $_SESSION["user"];
 		if (file_exists($path)) {
             $directorio = opendir($path);
@@ -59,11 +73,14 @@ if ($resultado = $conexion->query($sql)) {
         ?>
 	</table>
 	<?php
+	/*Si el usuario no cuenta con informes quincenales se muestra imagen ded error
+	indicando que no se encontró documentos subidos de ese usuario.*/
 	if ($_SESSION['total_infoq'] == 0) {
 		echo '
 				<img src="/images/404.svg" class="data-not-found" alt="404">
 		';
 	}
+	//Si existen informes quincenales estos se cargan
 	if ($_SESSION['total_infoq'] != 0) {
 		echo '
 				<div class="pages">
