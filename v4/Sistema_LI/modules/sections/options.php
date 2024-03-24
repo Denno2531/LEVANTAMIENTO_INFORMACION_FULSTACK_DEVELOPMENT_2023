@@ -8,6 +8,10 @@ include_once 'security.php';
             echo '<form action="" method="POST">';
             echo '<button id="btnAddOptions" class="btn btn-add btn-disabled icon" name="btn" value="form_add" type="submit">add</button>';
             echo '</form>';
+        }else if($_SERVER['REQUEST_URI'] === '/modules/reportes_estudiantes/'){
+            echo '<form action="" method="POST">';
+            echo '<button id="btnAddOptions" class="btn btn-add btn-disabled icon" name="btn" value="form_add" type="submit">add</button>';
+            echo '</form>';
         }else{
             echo '<form action="" method="POST">';
             echo '<button id="btnAddOptions" class="btn btn-add icon" name="btn" value="form_add" type="submit">add</button>';
