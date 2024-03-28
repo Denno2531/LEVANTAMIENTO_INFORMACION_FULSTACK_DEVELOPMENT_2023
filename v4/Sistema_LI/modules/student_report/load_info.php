@@ -1,7 +1,10 @@
+
 <?php
 
+// Incluye el archivo que verifica el acceso de roles de administrador y editor
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
-//funcion para imprimir un console.log desde php
+
+// Función para imprimir un console.log desde PHP
 function console($datos)
 {
 	$console = $datos;
@@ -10,10 +13,11 @@ function console($datos)
 	}
 	echo "<script>console.log('Console: " . $console . "');</script>";
 }
-//cargando datos de reportes
+
+// Cargando datos de reportes
 for ($i = 0; $i < min(8, $_SESSION['total_users']); $i++) {
 
-	//Reportes de send_one
+	// Reportes de send_one
 	$sql_one = "SELECT * FROM send_one";
 	if ($result_one = $conexion->query($sql_one)) {
 		$j = 0;
@@ -33,7 +37,7 @@ for ($i = 0; $i < min(8, $_SESSION['total_users']); $i++) {
 		}
 	}
 
-	//reportes de informes quinceanales
+	// Reportes de informes quinceanales
 	$sql_infoq = "SELECT * FROM infoq";
 	if ($result_infoq = $conexion->query($sql_infoq)) {
 		$j = 0;
@@ -53,7 +57,7 @@ for ($i = 0; $i < min(8, $_SESSION['total_users']); $i++) {
 		}
 	}
 
-	//reportes de send_two
+	// Reportes de send_two
 	$sql_two = "SELECT * FROM send_two";
 	if ($result_two = $conexion->query($sql_two)) {
 		$j = 0;
@@ -74,8 +78,11 @@ for ($i = 0; $i < min(8, $_SESSION['total_users']); $i++) {
 	}
 }
 
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-	// Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 202450
-	// Betty Lizeth Rodriguez Salas[SaoriCoder]
-	//Angelus Infernus
-	# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+// ⚠⚠⚠ NO ELIMINES ⚠⚠⚠
+// Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 202450
+// Betty Lizeth Rodriguez Salas[SaoriCoder]
+// Angelus Infernus
+// ⚠⚠⚠ NO ELIMINES ⚠⚠⚠
+
+?>
+
