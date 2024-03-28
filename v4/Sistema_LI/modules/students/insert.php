@@ -2,6 +2,7 @@
 include_once '../security.php';
 include_once '../conexion.php';
 include_once '../notif_info_msgbox.php';
+include_once '../mail.php';
 
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
@@ -40,9 +41,28 @@ if (mysqli_num_rows($result_check_user) > 0) {
             $sql_insert_user = "INSERT INTO users(user, name, surnames, email, pass, permissions, rol, image, created_at) VALUES('" . trim($_POST['txtuserid']) . "','" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['txtuseremail']) . "', '" . $passhash . "', 'editor', 'student', 'user.png','" . $date . "')";
 
             if (mysqli_query($conexion, $sql_insert_user)) {
+
                 $sql_insert_teacher = "INSERT INTO students(user, name, surnames, email, cedula, pass, id, sede, date_of_birth, phone, address, career, horas, asistencia, horario, documentation, estado, departamento, jerarquia, jornada, created_at, admission_date, finish_date) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "','" . trim($_POST['txtuseremail']) . "', '" . trim($_POST['txtcedula']) . "', '" . $passhash . "', '" . trim($_POST['txtid']) . "','" . trim($_POST['selectSede']) . "', '" . $birth . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['selectCareer']) . "', '" . trim($_POST['txttotalhours_hidden']) . "','" . trim($_POST['txtuserdates']) . "', '" . trim($_POST['txtuserhours']) . "', '" . trim($_POST['selectDocumentation']) . "','" . trim($_POST['selectEstado']) . "','" . trim($_POST['selectDepartamento']) . "','" . trim($_POST['selectJerarquia']) . "','" . trim($_POST['selectJornada']) . "','" . $date . "', '" . trim($_POST['dateadmission']) . "',  '" . trim($_POST['datefinish']) . "')";
 
                 if (mysqli_query($conexion, $sql_insert_teacher)) {
+
+                    // Envio de correo electronico
+                    $to = $_POST['txtusermail'];
+                    $subject = 'Registro de Usuario';
+                    $message = 'Hola ' . $_POST['txtname'] . 'tu usuario es:' . $_POST['txtuserid'] . 'tu contraseña es: ' . $_POST['txtpass'];
+                    $headers = 'From: ' . SMTP_USERNAME;
+                    
+                    // Configurar opciones de SMTP
+                    ini_set('SMTP', SMTP_SERVER);
+                    ini_set('smtp_port', SMTP_PORT);
+                    ini_set('sendmail_from', SMTP_USERNAME);
+
+                    if (mail($to, $subject, $message, $headers)) {
+                        Info('Alumno agregado. Correo enviado.');
+                    } else {
+                        Error('Alumno agregado. Error al enviar el correo.');
+                    }                    
+
                     Info('Alumno agregado.');
                 } else {
                     $sql_delete_users = "DELETE FROM users WHERE user = '" . trim($_POST['txtuserid']) . "'";
