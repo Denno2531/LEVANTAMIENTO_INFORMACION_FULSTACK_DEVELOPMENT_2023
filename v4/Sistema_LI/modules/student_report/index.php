@@ -88,12 +88,6 @@ include_once '../students/load_data.php';
 <script src="/js/controls/buttons.js" type="text/javascript"></script>
 
 </html>
-
-
-
-
-
-
 <?php
 
 # ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠

@@ -12,7 +12,6 @@ if ($result_not = $conexion->query($sql_cont)) {
 	}
 }
 
-
 $sql = "SELECT * FROM notify WHERE estado='revisar'";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
@@ -173,7 +172,7 @@ if ($result = $conexion->query($sql)) {
 	// Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 202450
 
 	// Betty Lizeth Rodriguez Salas[SaoriCoder]
-	
+	//Angelus Infernus
 	# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
 
 </div>
