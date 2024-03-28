@@ -1,5 +1,5 @@
 <?php
-require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
+require_once ($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
 include_once 'load_data.php';
 
@@ -21,9 +21,9 @@ include_once 'load_data.php';
 			<div class="wrap">
 				<div class="first">
 					<div class="section-user-image">
-						<img src="<?php echo '/images/users/user' . $_SESSION['user_image']; ?>" />
+						<img src="<?php echo '/images/users/' . $_SESSION['user_image']; ?>" />
 						<?php
-						$date_time_start = isset($_SESSION['image_updated_at']) ? date_create($_SESSION['image_updated_at']) : date_create('2000-12-23 10:30:15');
+						$date_time_start = isset ($_SESSION['image_updated_at']) ? date_create($_SESSION['image_updated_at']) : date_create('2000-12-23 10:30:15');
 						$date_time_end = date_create(date('Y-m-d'));
 						$interval = date_diff($date_time_start, $date_time_end);
 						$days = intval($interval->format('%a'));
@@ -49,8 +49,17 @@ include_once 'load_data.php';
 								<?php echo $_SESSION['name'] . ' ' . $_SESSION['surnames']; ?>
 							</span>
 							<span class="user-rol">
-								<?php echo $_SESSION['user_rol']; ?>
+								<?php
+								if ($_SESSION['user_rol'] == "student") {
+									echo "Estudiante";
+								} else if ($_SESSION['user_rol'] == "admin") {
+									echo "Administrador";
+								} else {
+									echo $_SESSION['user_rol'];
+								}
+								?>
 							</span>
+
 						</div>
 					</div>
 				</div>
@@ -464,13 +473,17 @@ include_once 'load_data.php';
 											disabled><?php echo $_SESSION['student_asistencia']; ?></textarea>
 									</div>
 
+
 								</div>
+								<div style="margin-left: 0px;">
+									<label for="dateuserfinish" class="label">Fecha estimada de salida</label>
+									<input id="dateuserfinish" class="date" type="date" name="datefinish" readonly
+										style="width: 400px;" />
+								</div>
+
+
+
 							</form>
-
-
-
-
-
 
 
 						<?php } else if ($_SESSION['user_rol'] === 'teacher') { ?>
@@ -1070,8 +1083,8 @@ include_once 'load_data.php';
 														title="Ingresa un número de teléfono válido." maxlength="10" required />
 													<label for="txtuserpass" class="label">Contraseña</label>
 													<input id="txtuserpass" class="text" type="text" name="txtpass"
-														value="<?php echo $_SESSION['administratives_pass']; ?>"
-														placeholder="XXXXXXXXX" pattern="[A-Za-z0-9]{8}" maxlength="8" required />
+														value="<?php echo $_SESSION['administratives_pass']; ?>" placeholder="XXXXXXXXX"
+														pattern="[A-Za-z0-9]{8}" maxlength="8" required />
 													<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 													<input id="dateofbirth" class="date" type="text" name="dateofbirth"
 														value="<?php echo $_SESSION['administratives_date_of_birth']; ?>"
@@ -1157,19 +1170,72 @@ include_once 'load_data.php';
 						<?php } ?>
 
 						<button id="btnSave" class="btn icon" type="submit">save</button>
+
 					</div>
+
 				</div>
+
+
+
 				<label class="label">Debes volver a iniciar sesión para ver los cambios reflejados</label>
 				<div class="footer">
+
 					<span class="user-permissions">
-						<?php echo $_SESSION['user_type']; ?>
+						<?php
+						if ($_SESSION['user_rol'] == "student") {
+							echo "Estudiante";
+						} else if ($_SESSION['user_rol'] == "admin") {
+							echo "Administrador";
+						} else {
+							echo $_SESSION['user_rol'];
+						}
+						?>
 					</span>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
+<script>
+	$(document).ready(function () {
+		function calcularFechaEstimada() {
+			var admissionDate = new Date($("#dateuseradmission").val());
+			var horasRequeridas = parseInt($("#txttotalhours_hidden").val());
+			var diasLaborablesPorSemana = 5; // Supongamos que se trabaja de lunes a viernes
+			var horasPorDia = 3; // Supongamos que se trabaja 3 horas diarias
 
+			// Calcula el número total de horas necesarias
+			var horasTotales = horasRequeridas / horasPorDia;
+
+			// Calcula el número total de días necesarios, redondeando hacia arriba
+			var diasTotales = Math.ceil(horasTotales / diasLaborablesPorSemana) * 7;
+
+			// Calcula la fecha estimada de salida sumando los días necesarios a la fecha de admisión
+			var fechaEstimada = new Date(admissionDate);
+			fechaEstimada.setDate(fechaEstimada.getDate() + diasTotales);
+
+			// Ajusta la fecha estimada para que sea un día hábil si es necesario
+			while (fechaEstimada.getDay() === 0 || fechaEstimada.getDay() === 6) {
+				fechaEstimada.setDate(fechaEstimada.getDate() + 1);
+			}
+
+			var dia = fechaEstimada.getDate();
+			var mes = fechaEstimada.getMonth() + 1;
+			var año = fechaEstimada.getFullYear();
+
+			// Formatea la fecha como 'yyyy-mm-dd' para establecerla en el campo de fecha de salida
+			$("#dateuserfinish").val(año + "-" + (mes < 10 ? "0" : "") + mes + "-" + (dia < 10 ? "0" : "") + dia);
+		}
+
+		// Calcula la fecha estimada al cargar la página
+		calcularFechaEstimada();
+
+		// Actualiza la fecha estimada cuando cambia la fecha de admisión o las horas requeridas
+		$("#dateuseradmission, #txttotalhours_hidden").change(function () {
+			calcularFechaEstimada();
+		});
+	});
+</script>
 <?php
 include_once '../modules/notif_info.php';
 ?>

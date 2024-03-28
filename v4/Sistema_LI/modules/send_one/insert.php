@@ -38,13 +38,14 @@ $nombrePDF=$_SESSION['send_archivo'];
 	$status_not="revisar";
 	$mensaje_not="ha subido a Envió 1 el documento: ";
 	$mensage_estudiante="Sin comentarios";
+	$doctype= $_POST['selectdoctype'];
 
 
 
 	$sql_not="INSERT INTO notify (user, name, mensaje, nombrepdf, estado) VALUES ('$usuario','$name_not','$mensaje_not','$archivopdf','$status_not')";
 	$result_not = $conexion->query($sql_not);
 
-	$sql = "INSERT INTO send_one (user, num, archivopdf, descripcion, created_at, updated_at,estado,message,evidencepdf,message_student ) VALUES ('$usuario', '$numeroDePDF', '$archivopdf', '$descripcion', '$date', '$date', '$status', '$mensaje','$evidencia','$mensage_estudiante')";
+	$sql = "INSERT INTO send_one (user, num, archivopdf, descripcion, created_at, updated_at,estado,message,evidencepdf,message_student,doc_type ) VALUES ('$usuario', '$numeroDePDF', '$archivopdf', '$descripcion', '$date', '$date', '$status', '$mensaje','$evidencia','$mensage_estudiante','$doctype')";
 	$resultado = $conexion->query($sql);
     $id = $_SESSION["user_id"];
     echo "Mi id es: " . $id;

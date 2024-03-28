@@ -41,6 +41,9 @@ if(!empty($_POST['search'])){
 <div class="form-gridview">
     <table class="default">
         <h2 class="titlecenter">Envío 1</h2>
+		<?php
+        echo '<h2 class="textList"> ' . $_POST['txtname'] . ' </h2>'
+        ?>
         <?php if ($_SESSION['total_sendone'] != 0) : ?>
             <tr>
                 <th class="center" style="width: 800px">Nombre del archivo</th>
