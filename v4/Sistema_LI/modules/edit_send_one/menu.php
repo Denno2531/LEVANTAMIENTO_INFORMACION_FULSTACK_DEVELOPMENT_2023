@@ -43,8 +43,7 @@ if ($result = $conexion->query($sql)) {
     ?>
     <div class="info-student">
       <div class="user">
-        <a href="/images/users/<?php echo $_SESSION['user_foto']; ?>" download
-          title="Haz clic para descargar la imagen">
+        <a href="/images/users/<?php echo $_SESSION['user_foto']; ?>" title="Haz clic para ver la imagen en tamaño completo" target="_blank">
           <img class="image_user" src="/images/users/<?php echo $_SESSION['user_foto']; ?>" />
         </a>
       </div>
