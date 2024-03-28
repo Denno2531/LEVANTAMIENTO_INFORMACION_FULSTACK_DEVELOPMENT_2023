@@ -39,6 +39,15 @@ $id_generate = 'Q-' . unique_id(5);
                     <label for="txtinfoqdescription" class="label">Descripción</label>
                     <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Enviado para su revisión</textarea>
                 </div>
+                <div>
+                    <label for= "doctype" class="label">Tipo de Documento</label>
+                    <select id="" class="select">
+                        <option value="">Seleccione</option>
+                        <option value="Acta 1">Primer Informe Quincenal</option>
+                        <option value="Acta 2">Segundo Informe Quincenal</option>
+                        <option value="Acta 3">Tercer Informe Quincenal</option>
+                    </select>
+                <div>
                 <div class="first">
                     <label for="txtuserarchivo" class="label">Cargar Archivo</label>
                     <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx" required>

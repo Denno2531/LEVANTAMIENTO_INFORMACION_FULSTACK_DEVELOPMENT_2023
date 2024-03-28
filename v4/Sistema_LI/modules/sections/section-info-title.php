@@ -30,20 +30,21 @@ if (strpos($url_actual, 'modules')) {
         $_SESSION['title_form_section'] = 'Carreras';
     } elseif ($name_page[1] == 'emprendedor') {
         $_SESSION['title_form_section'] = 'Beneficiario';
-    }elseif ($name_page[1] == 'Informes_Quincenales') {
+    } elseif ($name_page[1] == 'Informes_Quincenales') {
         $_SESSION['title_form_section'] = 'Informes Quincenales';
-    }elseif ($name_page[1] == 'Justificaciones') {
+    } elseif ($name_page[1] == 'Justificaciones') {
         $_SESSION['title_form_section'] = 'Justificaciones';
-    }elseif ($name_page[1] == 'send_one') {
+    } elseif ($name_page[1] == 'send_one') {
         $_SESSION['title_form_section'] = 'Envío 1';
-    }elseif ($name_page[1] == 'edit_send_one') {
+    } elseif ($name_page[1] == 'edit_send_one') {
         $_SESSION['title_form_section'] = 'Documentación';
-    }elseif ($name_page[1] == 'send_two') {
+    } elseif ($name_page[1] == 'send_two') {
         $_SESSION['title_form_section'] = 'Envío 2';
-    }elseif ($name_page[1] == 'certification') {
+    } elseif ($name_page[1] == 'certification') {
         $_SESSION['title_form_section'] = 'Certificación';
+    } elseif ($name_page[1] == 'student_report') {
+        $_SESSION['title_form_section'] = 'Reportes Estudiantiles';
     }
-
 } elseif (strpos($url_actual, 'user')) {
     $name_page[1] = 'user';
 
@@ -66,13 +67,13 @@ if (strpos($url_actual, 'modules')) {
     </span>
 </div>
 <div class="info-school-period">
-    <span class="school-period">        
-        <a  href="https://prowessec.com/" target="_blank">PROWESS.EC</a>
+    <span class="school-period">
+        <a href="https://prowessec.com/" target="_blank">PROWESS.EC</a>
     </span>
 </div>
 
 <div id="landContainer">
-    <div style="text-align:center; margin: 120px 0;">             
+    <div style="text-align:center; margin: 120px 0;">
         <h1>Bienvenido a la plataforma de</h1>
         <h1>Levantamiento de Información</h1>
         <br>

@@ -1,5 +1,5 @@
 <?php
-require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
+require_once ($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
 function unique_id($l = 10)
 {
@@ -8,6 +8,7 @@ function unique_id($l = 10)
 
 
 $id_generate = 'stdt-' . unique_id(5);
+
 ?>
 <div class="form-data">
     <div class="head">
@@ -28,7 +29,7 @@ $id_generate = 'stdt-' . unique_id(5);
                     <label for="txtusersurnames" class="label">Apellidos</label>
                     <input id="txtusersurnames" class="text" type="text" name="txtsurnames" placeholder="Apellidos"
                         value="" maxlength="60" required />
-                    <label for="txtuseremail" class="label">Correo institucional</label>
+                    <label for="txtuseremail" class="label">Correo Institucional</label>
                     <input id="txtuseremail" class="text" type="text" name="txtuseremail" value=""
                         placeholder="ejemplo@email.com" maxlength="200" required />
 
@@ -63,7 +64,7 @@ $id_generate = 'stdt-' . unique_id(5);
                         if ($resultado = $conexion->query($resp)) {
                             while ($row = mysqli_fetch_array($resultado)) {
                                 echo
-                                '
+                                    '
                                     <option value="' . $row['id_department'] . '">' . $row['name'] . '</option>
 								';
                             }
@@ -131,68 +132,69 @@ $id_generate = 'stdt-' . unique_id(5);
                     </select>
                 </div>
 
-                    <?php
-// Función para calcular la fecha de salida
-function calcularFechaSalida($fechaAdmision, $horasRequeridas)
-{
-    // Convertir la fecha de admisión en un objeto DateTime
-    $fecha = new DateTime($fechaAdmision);
+                <?php
+                // Función para calcular la fecha de salida
+                function calcularFechaSalida($fechaAdmision, $horasRequeridas)
+                {
+                    // Convertir la fecha de admisión en un objeto DateTime
+                    $fecha = new DateTime($fechaAdmision);
 
-    // Inicializar un contador de horas y días
-    $horasAcumuladas = 0;
-    $diasAcumulados = 0;
+                    // Inicializar un contador de horas y días
+                    $horasAcumuladas = 0;
+                    $diasAcumulados = 0;
 
-    // Bucle para sumar horas hasta alcanzar el requisito
-    while ($horasAcumuladas < $horasRequeridas) {
-        // Verificar si el día actual es un fin de semana (sábado o domingo)
-        if ($fecha->format('N') >= 6) {
-            $fecha->modify('+1 day'); // Saltar al siguiente día
-            continue;
-        }
+                    // Bucle para sumar horas hasta alcanzar el requisito
+                    while ($horasAcumuladas < $horasRequeridas) {
+                        // Verificar si el día actual es un fin de semana (sábado o domingo)
+                        if ($fecha->format('N') >= 6) {
+                            $fecha->modify('+1 day'); // Saltar al siguiente día
+                            continue;
+                        }
 
-        // Agregar 3 horas al contador de horas
-        $horasAcumuladas += 3;
+                        // Agregar 3 horas al contador de horas
+                        $horasAcumuladas += 3;
 
-        // Verificar si se ha alcanzado el requisito de horas
-        if ($horasAcumuladas >= $horasRequeridas) {
-            break;
-        }
+                        // Verificar si se ha alcanzado el requisito de horas
+                        if ($horasAcumuladas >= $horasRequeridas) {
+                            break;
+                        }
 
-        // Saltar al siguiente día
-        $fecha->modify('+1 day');
-        $diasAcumulados++;
-    }
+                        // Saltar al siguiente día
+                        $fecha->modify('+1 day');
+                        $diasAcumulados++;
+                    }
 
-    // Devolver la fecha estimada de salida
-    return $fecha->format('Y-m-d');
-}
+                    // Devolver la fecha estimada de salida
+                    return $fecha->format('Y-m-d');
+                }
 
-$fechaAdmision = ''; // Inicializa la fecha de admisión
-$horasRequeridas = 0; // Inicializa las horas requeridas
+                $fechaAdmision = ''; // Inicializa la fecha de admisión
+                $horasRequeridas = 0; // Inicializa las horas requeridas
+                
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset ($_POST['dateadmission']) && isset ($_POST['txthreq'])) {
+                    // Verifica si el formulario se ha enviado y si se proporcionó la fecha de admisión y las horas requeridas
+                    $fechaAdmision = $_POST['dateadmission'];
+                    $horasRequeridas = $_POST['txthreq'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && isset($_POST['txthreq'])) {
-    // Verifica si el formulario se ha enviado y si se proporcionó la fecha de admisión y las horas requeridas
-    $fechaAdmision = $_POST['dateadmission'];
-    $horasRequeridas = $_POST['txthreq'];
+                    // Calcular la fecha de salida
+                    $fechaSalida = calcularFechaSalida($fechaAdmision, $horasRequeridas);
+                }
 
-    // Calcular la fecha de salida
-    $fechaSalida = calcularFechaSalida($fechaAdmision, $horasRequeridas);
-}
+                ?>
+                <div>
+                    <label for="dateuseradmission" class="label">Fecha de admisión</label>
+                    <input id="dateuseradmission" class="date" type="date" name="dateadmission"
+                        value="<?php echo date('Y-m-d'); ?>" required />
+                    <label for="txthreq" class="label">Horas Requeridas</label>
+                    <input id="txthreq" type="text" name="txthreq" value="0" min="0" required />
 
-?>
-<div>
-<label for="dateuseradmission" class="label">Fecha de admisión</label>
-<input id="dateuseradmission" class="date" type="date" name="dateadmission" value="<?php echo date('Y-m-d'); ?>" required />
-<label for="txthreq" class="label">Horas Requeridas</label>
-<input id="txthreq" type="text" name="txthreq" value="0" min="0" required />
-
-<label for="dateuserout" class="label">Fecha estimada de salida</label>
-<input id="dateuserout" class="date" type="date" name="datefinish" value="" readonly required />
+                    <label for="dateuserout" class="label">Fecha estimada de salida</label>
+                    <input id="dateuserout" class="date" type="date" name="datefinish" value="" readonly required />
 
 
 
-</div>
-                 <!--
+                </div>
+                <!--
                     <div class="last">
                     <label class="label" for="txthours">
                         <label for="txttotalhours_hidden" class="label" placeholder="Suma de las horas">Horas de
@@ -223,22 +225,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && i
                 </div>
                   -->
                 <div>
-                <div class="description">
+                    <div class="description">
                         <label for="txtuserhours" class="label">Seleccione sus Horarios</label>
                         <input id="txtuserhours" class="text" type="hidden" name="txtuserhours" value=""
-                        placeholder="Seleccione el horario" maxlength="20000" data-expandable />
+                            placeholder="Seleccione el horario" maxlength="20000" data-expandable />
                         <div class="hour-picker">
                             <div>
                                 <label for="txtuserhours_start" class="text">Hora de entrada:</label>
                                 <input id="txtuserhours_start" class="hour-input" type="time" name="txtuserhours_start">
                             </div>
                             <div>
-                              <label for="txtuserhours_end" class="text">Hora de salida:</label>
-                              <input id="txtuserhours_end" class="hour-input" type="time" name="txtuserhours_end">
-                            <!-- <button id="addHourBtn" class="btn icon"><i
+                                <label for="txtuserhours_end" class="text">Hora de salida:</label>
+                                <input id="txtuserhours_end" class="hour-input" type="time" name="txtuserhours_end">
+                                <!-- <button id="addHourBtn" class="btn icon"><i
                                 class="fas fa-plus-circle fa-lg fa-spin"></i></button> -->
                             </div>
-                            </div>
+                        </div>
 
                     </div>
 
@@ -260,8 +262,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && i
                 </div>
             </div>
 
-
-
             <button id="btnSave" class="btn icon" type="submit">save</button>
         </form>
     </div>
@@ -271,6 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && i
     include_once "../sections/options-disabled.php";
     ?>
 </div>
+
 <script>
     $(document).ready(function () {
         $("#txtuserdates").datepicker({
@@ -379,30 +380,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && i
     function calcularFechaSalida() {
         var fechaAdmision = new Date(document.getElementById("dateuseradmission").value);
         var horasRequeridas = parseInt(document.getElementById("txthreq").value); // Obtiene las horas requeridas
-        
+
         // Bucle para sumar horas laborables hasta alcanzar el requisito
         while (horasRequeridas > 0) {
             fechaAdmision.setDate(fechaAdmision.getDate() + 1);
-            
+
             // Verificar si el día actual no es sábado (6) ni domingo (0)
             if (fechaAdmision.getDay() !== 6 && fechaAdmision.getDay() !== 0) {
                 horasRequeridas -= 3;
             }
         }
-        
+
         // Formatear la fecha de salida
         var year = fechaAdmision.getFullYear();
         var month = (fechaAdmision.getMonth() + 1).toString().padStart(2, '0');
         var day = fechaAdmision.getDate().toString().padStart(2, '0');
         var fechaSalida = year + '-' + month + '-' + day;
-        
+
         // Actualizar el campo de fecha de salida
         document.getElementById("dateuserout").value = fechaSalida;
     }
-    
+
     // Escuchar cambios en la fecha de admisión
     document.getElementById("txthreq").addEventListener("input", calcularFechaSalida);
 </script>
+
 
 
 
@@ -417,6 +419,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dateadmission']) && i
 
 
 <?php
+
 
 # ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
 
