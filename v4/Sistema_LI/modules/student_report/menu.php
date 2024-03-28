@@ -1,9 +1,12 @@
 <?php
+// Incluye el archivo que verifica el acceso de roles de administrador y editor
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
+// Obtiene los datos del formulario
 $name = $_POST['txtname'];
 $id = $_POST['txtuserid'];
 
+// Consulta SQL para obtener la información del estudiante
 $sql = "SELECT students.*, careers.name AS career_name, users.image AS user_image , department.name AS user_department
 FROM students
 INNER JOIN careers ON students.career = careers.career
@@ -11,8 +14,10 @@ INNER JOIN users ON students.user = users.user
 INNER JOIN department ON department.id_department = students.departamento 
 WHERE students.user ='" . $id. "'";
 
+// Ejecuta la consulta SQL
 if ($result = $conexion->query($sql)) {
   if ($row = mysqli_fetch_array($result)) {
+    // Almacena los datos del estudiante en variables de sesión
     $_SESSION['user_email'] = $row['email'];
     $_SESSION['user_foto'] = $row['user_image'];
     $_SESSION['user_id'] = $row['id'];
@@ -29,16 +34,21 @@ if ($result = $conexion->query($sql)) {
 
 ?>
 
+<!-- Sección de contenido lateral -->
 <div class="content-aside">
   <?php
+  // Incluye archivos de información y opciones
   include_once '../notif_info.php';
   include_once "../sections/options.php";
   ?>
 </div>
+
+<!-- Sección principal con la información del estudiante -->
 <div class="form-gridview">
   <h2 class="title-info">Información del Estudiante</h2>
   <div class="contenedor-info">
       <?php
+      // Imprime el nombre del estudiante
       echo '<h2 class="information_student"> ' . $_POST['txtname'] . ' </h2>';
       ?>
       <div class="info-student">
@@ -48,6 +58,7 @@ if ($result = $conexion->query($sql)) {
           </a>
         </div>
       </div>
+      <!-- Muestra la jerarquía, departamento y otros detalles del estudiante -->
       <h2 class="information_student">Jerarquía: <?php echo $_SESSION['user_jerarquia']; ?></h2>
       <h2 class="information_student">Departamento: <?php echo $_SESSION['user_departamento']; ?></h2>
       <h2 class="information_student">Id: <?php echo $_SESSION['user_id']; ?></h2> 
@@ -60,9 +71,12 @@ if ($result = $conexion->query($sql)) {
       
   </div>
 </div>
+
+<!-- Sección de opciones adicionales -->
 <div class="form-gridview">
   <table class="default">
     <div class="textList">
+      <!-- Opciones para ver informes quincenales, envío 1 y envío 2 -->
       <div class="item downLeft rounded-blue-box">
         <h2>Informes Quincenales</h2>
         <form action="" method="POST">
@@ -98,3 +112,5 @@ if ($result = $conexion->query($sql)) {
 	// Betty Lizeth Rodriguez Salas[SaoriCoder]
   //Angelus Infernus
 	# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+
+?>
