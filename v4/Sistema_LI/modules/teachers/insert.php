@@ -6,7 +6,7 @@ include_once '../notif_info_msgbox.php';
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
 $_POST['txtuserid'] = trim($_POST['txtuserid']);
-$passhash = hash("SHA256",(trim($_POST['txtpass'])));
+$passhash = hash("SHA256", (trim($_POST['txtpass'])));
 
 if (empty($_POST['txtuserid'])) {
 	header('Location: /');
@@ -18,7 +18,7 @@ if ($_POST['txtuserid'] == '') {
 	exit();
 }
 
-$sql = "SELECT * FROM teachers WHERE user = '" . $_POST['txtuserid'] . "'|| cedula = '". $_POST['txtcedula'] ."'";
+$sql = "SELECT * FROM teachers WHERE user = '" . $_POST['txtuserid'] . "'|| cedula = '" . $_POST['txtcedula'] . "'";
 
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
@@ -34,7 +34,13 @@ if ($result = $conexion->query($sql)) {
 			$sql_insert_teacher = "INSERT INTO teachers(user, name, surnames, cedula, pass, id, gender, date_of_birth, phone, address, level_studies, email, career, created_at) VALUES ('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['txtcedula']) . "', '" . $passhash . "','" . trim($_POST['txtid']) . "', '" . trim($_POST['selectgender']) . "', '" . trim($_POST['dateofbirth']) . "', '" . trim($_POST['txtphone']) . "', '" . trim($_POST['txtaddress']) . "', '" . trim($_POST['selectlevelstudies']) . "', '" . trim($_POST['txtemail']) . "', '" . trim($_POST['selectCareer']) . "', '" . $date . "')";
 
 			if (mysqli_query($conexion, $sql_insert_teacher)) {
-				Info('Personal docente agregado.');
+				$email = $_POST['txtemail'];
+				if (empty($email)) {
+					Info('Error al enviar el correo');
+				} else {
+					include_once '../email/mail.php';
+					Info('Exito al guardar, Correo enviado correctamente.');
+				}
 			} else {
 				$sql_delete_users = "DELETE FROM users WHERE user = '" . trim($_POST['txtuserid']) . "'";
 

@@ -43,7 +43,13 @@ if ($stmt = $conexion->prepare($sql)) {
             $stmt->bind_param("ssssss", $_POST['txtuserid'], $_POST['txtname'], $_POST['txtsurnames'], $_POST['txtemail'], $passhash, $date);
             // Se ejecuta la consulta de inserción.
             if ($stmt->execute()) {
-                Info('Editor agregado correctamente.');
+                $email = $_POST['txtemail'];
+                if (empty($email)) {
+                    Info('Error al enviar el correo');
+                } else {
+                    include_once '../email/mail.php';
+                    Info('Exito al guardar, Correo enviado correctamente.');
+                }
             } else {
                 Error('Error al guardar.');
             }
@@ -63,7 +69,6 @@ if ($stmt = $conexion->prepare($sql)) {
 
 // Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 2022-2023
 
-// Ricardo Alejandro  Jaramillo Salgado, Michael Andres Espinosa Carrera, Steven Cardenas, Luis LLumiquinga
+// Ricardo Alejandro Jaramillo Salgado, Michael Andres Espinosa Carrera, Steven Cardenas, Luis LLumiquinga
 
 # ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-

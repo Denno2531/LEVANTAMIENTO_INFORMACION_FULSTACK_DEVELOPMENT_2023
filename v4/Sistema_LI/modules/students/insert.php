@@ -2,21 +2,19 @@
 include_once '../security.php';
 include_once '../conexion.php';
 include_once '../notif_info_msgbox.php';
-include_once '../mail.php';
-
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
 $_POST['txtuserid'] = trim($_POST['txtuserid']);
-$passhash = hash("SHA256",(trim($_POST['txtpass'])));
+$passhash = hash("SHA256", (trim($_POST['txtpass'])));
 
 if (empty($_POST['txtuserid'])) {
-	header('Location: /');
-	exit();
+    header('Location: /');
+    exit();
 }
 if ($_POST['txtuserid'] == '') {
-	Error('Ingrese un ID correcto.');
-	header('Location: /modules/students');
-	exit();
+    Error('Ingrese un ID correcto.');
+    header('Location: /modules/students');
+    exit();
 }
 
 $sql_check_user = "SELECT * FROM students WHERE cedula = '" . $_POST['txtcedula'] . "'";
@@ -46,24 +44,13 @@ if (mysqli_num_rows($result_check_user) > 0) {
 
                 if (mysqli_query($conexion, $sql_insert_teacher)) {
 
-                    // Envio de correo electronico
-                    $to = $_POST['txtusermail'];
-                    $subject = 'Registro de Usuario';
-                    $message = 'Hola ' . $_POST['txtname'] . 'tu usuario es:' . $_POST['txtuserid'] . 'tu contraseña es: ' . $_POST['txtpass'];
-                    $headers = 'From: ' . SMTP_USERNAME;
-                    
-                    // Configurar opciones de SMTP
-                    ini_set('SMTP', SMTP_SERVER);
-                    ini_set('smtp_port', SMTP_PORT);
-                    ini_set('sendmail_from', SMTP_USERNAME);
-
-                    if (mail($to, $subject, $message, $headers)) {
-                        Info('Alumno agregado. Correo enviado.');
+                    $email = $_POST['txtuseremail'];
+                    if (empty($email)) {
+                        Info('Error al enviar el correo');
                     } else {
-                        Error('Alumno agregado. Error al enviar el correo.');
-                    }                    
-
-                    Info('Alumno agregado.');
+                        include_once '../email/mail.php';
+                        Info('Exito al guardar, Correo enviado correctamente.');
+                    }
                 } else {
                     $sql_delete_users = "DELETE FROM users WHERE user = '" . trim($_POST['txtuserid']) . "'";
 
