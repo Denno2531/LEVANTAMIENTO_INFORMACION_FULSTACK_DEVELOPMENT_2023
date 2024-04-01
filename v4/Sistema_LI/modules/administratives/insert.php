@@ -6,7 +6,7 @@ include_once '../notif_info_msgbox.php';
 require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin.php');
 
 $_POST['txtuserid'] = trim($_POST['txtuserid']);
-$passhash = hash("SHA256",(trim($_POST['txtpass'])));
+$passhash = hash("SHA256", (trim($_POST['txtpass'])));
 
 if (empty($_POST['txtuserid'])) {
 	header('Location: /');
@@ -36,7 +36,13 @@ if ($result = $conexion->query($sql)) {
 			$sql_insert_administratives = "INSERT INTO administratives(user, name, surnames, date_of_birth, cedula, id, carrer, sede, email, celular, pass, created_at) VALUES('" . trim($_POST['txtuserid']) . "', '" . trim($_POST['txtname']) . "', '" . trim($_POST['txtsurnames']) . "', '" . trim($_POST['dateofbirth']) . "', '" . trim($_POST['txtcedula']) . "', '" . trim($_POST['txtid']) . "', '" . trim($_POST['selectCareer']) . "', '" . trim($_POST['selectSede']) . "', '" . trim($_POST['txtemail']) . "', '" . trim($_POST['txtcelular']) . "', '" . $passhash . "', '" . $date . "')";
 
 			if (mysqli_query($conexion, $sql_insert_administratives)) {
-				Info('Administrador agregado correctamente.');
+				$email = $_POST['txtemail'];
+				if (empty($email)) {
+					Info('Error al enviar el correo');
+				} else {
+					include_once '../email/mail.php';
+					Info('Exito al guardar, Correo enviado correctamente.');
+				}
 			} else {
 				$sql_delete_users = "DELETE FROM users WHERE user = '" . $_POST['txtuserid'] . "'";
 
@@ -62,4 +68,3 @@ if ($result = $conexion->query($sql)) {
 // Ricardo Alejandro  Jaramillo Salgado, Michael Andres Espinosa Carrera, Steven Cardenas, Luis LLumiquinga
 
 # ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
