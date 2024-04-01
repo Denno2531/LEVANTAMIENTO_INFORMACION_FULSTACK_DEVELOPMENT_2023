@@ -120,7 +120,7 @@ body.login {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url(../images/loader_user.gif) 50% 50% no-repeat #44475a;
+  background: url(../images/loader_user.gif) 50% 50% no-repeat #2a2d33;
   border-radius: 0.4em;
   opacity: 1;
 }
@@ -130,13 +130,13 @@ body.login {
 -------------------------------------------*/
 
 .header {
-  width: 72%;
+  width: 75%;
   float: right;
   height: 50px;
   margin: 35px 3%;
-  background: rgba(142, 136, 192, 0.2);
+  background: rgba(110, 103, 174, 0.3);
   box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
-  border-radius: 0.4em;
+  border-radius: 0.8em;
   user-select: none;
 }
 
@@ -145,15 +145,15 @@ body.login {
   align-items: center;
   justify-content: flex-start;
   float: left;
-  width: 73.1%;
+  width: 70%;
   height: 100%;
   text-align: center;
 }
 
 .info-title .title {
   display: block;
-  margin-left: 4%;
-  color: #eef4ff;
+  margin-left: 3%;
+  color: #ffeffc;
   text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
   font-size: 1.25em;
   font-weight: 500;
@@ -206,7 +206,7 @@ body.login {
 
 .nav-home {
   position: fixed;
-  width: 22%;
+  width: 20.1%;
   top: 0;
   bottom: 0;
   background: #022b3b;
@@ -214,6 +214,7 @@ body.login {
   overflow-x: hidden;
   overflow-y: auto;
   user-select: none;
+  font-size: 80%;
 }
 
 .nav-home span.name_system {
@@ -240,9 +241,9 @@ body.login {
   width: 50px;
   height: 50px;
   margin: 5% 8%;
-  background-color: #6272a4;
+  background-color: #f4f5f7;
   box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
-  border: 3px solid #6272a4;
+  border: 3px solid #6ddea4;
   border-radius: 10em;
   pointer-events: none;
 }
@@ -285,9 +286,9 @@ body.login {
   right: 3%;
   width: 170px;
   margin-top: -10%;
-  background: #383a59;
+  background: #033669;
   box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
-  border: 3px solid #6272a4;
+  border: 3px solid #033669;
   border-radius: 0.4em;
   font-size: 0.95em;
   text-align: left;
@@ -361,16 +362,18 @@ body.login {
 
 .nav-home ul li a:hover,
 .nav-home ul li a:focus {
-  color: #9492c0;
+  color: #e9e9f2;
   transition: all 200ms ease-in;
+  background: #093a4f;
 }
 
 .nav-home ul li a.active {
   padding: 4% 6.8%;
-  color: #9492c0;
+  color: #e9e9f2;
   text-shadow: none;
   border-left: 4px solid #6272a4;
   transition: all 200ms ease-in;
+  background: #093a4f;
 }
 
 .nav-home ul li a:active,
@@ -428,14 +431,15 @@ body.login {
 .content {
   display: block;
   float: right;
-  margin: 0 3%;
-  width: 72%;
+  margin: 0 2%;
+  width: 77%;
 }
 
 .content-aside {
   display: block;
   float: right;
-  width: 27%;
+  width: 22.5%;
+  
 }
 
 .content:after,
@@ -443,6 +447,11 @@ body.login {
   display: block;
   content: "";
   clear: both;
+  
+}
+
+.estado-doctype{
+    padding: 10px;
 }
 
 /*-------------------------------------------
@@ -649,7 +658,7 @@ body.login {
   width: 100%;
   background: #44475a;
   box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
-  border-radius: 0.4em;
+  border-radius: 0.8em;
   user-select: none;
 }
 
@@ -817,11 +826,20 @@ body.login {
 
 .form-gridview {
   float: left;
-  margin: 0 0 20px 0;
-  width: 71%;
+  margin: 3px 0 15px 0;
+  width: 77%;
   background: #44475a;
   box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
-  border-radius: 0.4em;
+  border-radius: 0.5em;
+}
+
+.form-datos {
+  float: left;
+  margin: 0 0 10px 0;
+  width: 77%;
+  background: #2a2d33;
+  box-shadow: 0 2px 2px rgba(73, 80, 104, 0.4);
+  border-radius: 0.5em;
 }
 
 .form-gridview img.data-not-found,
@@ -836,19 +854,20 @@ body.login {
 .form-gridview table.default,
 .form-gridview table.users {
   width: 91%;
-  margin: 4.5% auto 0;
+  margin: 4% auto 0;
   box-shadow: 0 1px 6px rgba(142, 136, 192, 0.2);
   border-collapse: collapse;
   border-top-left-radius: 0.4em;
   border-top-right-radius: 0.4em;
   border-bottom-left-radius: 0.4em;
   border-bottom-right-radius: 0.4em;
-  overflow: hidden;
+  overflow: auto;
+  font-size: 90%;
 }
 
 .form-gridview th {
   padding: 7px 15px;
-  background: #282a36;
+  background: #434d55;
   color: #eef4ff;
   text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
   border: none;
@@ -897,7 +916,7 @@ body.login {
   display: block;
   width: 20px;
   height: 20px;
-  background: #569188;
+  background: #3cc068;
   box-shadow: 0 1px 6px rgba(91, 133, 127, 0.2);
   border: none;
   border-radius: 2em;
@@ -909,13 +928,13 @@ body.login {
 
 .form-gridview td button.btnview:hover,
 .form-gridview td button.btnview:focus {
-  background: #456661;
+  background: #219382;
   border: 4px solid #6daaa3;
   transition: all 200ms ease-in;
 }
 
 .form-gridview td button.btnview:active {
-  background: #569188;
+  background: #3cc068;
   transition: all 200ms ease-in;
 }
 
@@ -1099,7 +1118,7 @@ body.login {
   .select2-container
   .select2-selection--single
   .select2-selection__rendered {
-  padding: 0 1.5% !important;
+  padding: 0 1% !important;
 }
 
 .form-data
@@ -1412,7 +1431,7 @@ body.login {
 
 .form-data th {
   padding: 10px 15px;
-  background: #282a36;
+  background: #434d55;
   color: #eef4ff;
   text-shadow: 0 1px 5px rgba(142, 136, 192, 0.2);
   border: none;
@@ -2018,7 +2037,7 @@ input[type="range"]:active {
 }
 
 .formAttendanceAdd table.attendanceGroups th.nameGroup {
-  background: #282a36;
+  background: #434d55;
   text-transform: none;
 }
 
@@ -2476,7 +2495,7 @@ input[type="range"]:active {
     width: 59.5%;
   }
   .info-title .title {
-    margin-left: 8%;
+    margin-left: 3%;
   }
   .form-data .body .first,
   .form-data .body .last,
@@ -2808,20 +2827,25 @@ ul li a.student-list {
   display: flex;
   align-items: center;
   width: 94%;
+  /* height: calc(6 * 1.2em); */
   margin: 0 0 2% 0;
-  padding: 10px 2%;
-  background: #569188;
+  padding: 7px 2%;
+  background: #58a69a;
   box-shadow: 0 0px 0px rgba(98, 164, 139, 0.4);
   border-radius: 0.4em;
   user-select: none;
   overflow: hidden;
   color: #eef4ff;
-  font-size: 0.875em;
+  font-size: 80%;
   font-weight: 500;
+  line-height: 1.2em;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .box-notification-doc:hover {
-  background: #71b4aa;
+  background: #58a69a;
 }
 
 .btn-notify {
@@ -2839,12 +2863,14 @@ ul li a.student-list {
 
 .box-notification-doc {
   border: 1px solid #ccc;
-  padding: 5px;
+  border-radius: 15px;
+  padding: 2px;
   margin: 5px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   transition: width 0.3s, background 1s;
+  font-size: 80%;
 }
 
 .box-notification-doc p {
@@ -2854,19 +2880,20 @@ ul li a.student-list {
 .close-button {
   border: none;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 5px 15px;
+  padding: 2px 7px;
   text-align: right;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
   color: red;
-  background: #569188;
+  background: #58a69a;
 }
 
 .close-button:hover {
   color: #ffffff;
+  background: #fe0027;
 }
 
 .btn-modal {
@@ -2932,6 +2959,19 @@ ul li a.student-list {
   background: #569188;
 }
 /*informacion estudiante*/
+.contenedor-report{
+    padding:35px;
+    color: white;
+    font-size: 90%;
+    
+}
+
+
+.contenedor-report ul {
+    padding-left: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .contenedor-info {
   padding: 10px;
   margin-bottom: 15px;
@@ -2954,9 +2994,9 @@ ul li a.student-list {
   width: 50px;
   height: 50px;
   margin: 1% 4%;
-  background-color: #6272a4;
+  background-color: #6ddea4;
   box-shadow: 0 0 6px rgba(142, 136, 192, 0.2);
-  border: 3px solid #6272a4;
+  border: 3px solid #6ddea4;
   border-radius: 10em;
   pointer-events: none;
 }
