@@ -13,6 +13,7 @@ WHERE students.user ='" . $id. "'";
 
 if ($result = $conexion->query($sql)) {
   if ($row = mysqli_fetch_array($result)) {
+    
     $_SESSION['user_email'] = $row['email'];
     $_SESSION['user_foto'] = $row['user_image'];
     $_SESSION['user_id'] = $row['id'];
@@ -35,7 +36,7 @@ if ($result = $conexion->query($sql)) {
   include_once "../sections/options.php";
   ?>
 </div>
-<div class="form-gridview">
+<div class="form-datos">
   <h2 class="title-info">Información del Estudiante</h2>
   <div class="contenedor-info">
       <?php
@@ -43,9 +44,7 @@ if ($result = $conexion->query($sql)) {
       ?>
       <div class="info-student">
         <div class="user">
-        <a href="/images/users/<?php echo $_SESSION['user_foto']; ?>" download title="Haz clic para descargar la imagen">
             <img class="image_user" src="/images/users/<?php echo $_SESSION['user_foto']; ?>" />
-          </a>
         </div>
       </div>
       <h2 class="information_student">Jerarquía: <?php echo $_SESSION['user_jerarquia']; ?></h2>
@@ -60,45 +59,150 @@ if ($result = $conexion->query($sql)) {
       
   </div>
 </div>
-<div class="form-gridview">
-  <table class="default">
-    <div class="textList">
-      <div class="item downLeft rounded-blue-box">
-        <h2>Informes Quincenales</h2>
-        <form action="" method="POST">
-          <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
-          <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />
-          <button class="btn-menu-editor" id="btnSave" value="form_infoq" name="btn" type="submit">Ver</button>
-        </form>
-      </div>
-
-      <div class="item downLeft rounded-blue-box">
-        <h2 >Envío 1</h2>
-        <form action="" method="POST">
-          <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
-          <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />
-          <button class="btn-menu-editor" id="btnSave" value="form_documents" name="btn" type="submit">Ver</button>
-        </form>
-      </div>
-
-      <div class="item downLeft rounded-blue-box">
-        <h2 >Envío 2</h2>
-        <form action="" method="POST">
-          <input style="display:none;" type="text" id="texuserid" name="txtuserid" value="<?php echo $id; ?>" />
-          <input style="display:none;" type="text" id="texname" name="txtname" value="<?php echo $name; ?>" />
-          <button class="btn-menu-editor" id="btnSave" value="form_sendtwo" name="btn" type="submit">Ver</button>
-        </form>
-      </div>
-    </div>
-  </table>  
-</div>
 
 <?php
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+// INFORMES QUINCENALES
+// Obtener los tipos de documentos posibles
+$doctype_infoq =  ["Primer Informe Quincenal","Segundo Informe Quincenal","Tercer Informe Quincenal"];
+            
+// Obtener los documentos subidos por el estudiante
+$sql_infoq_subidos = "SELECT doc_type, estado FROM infoq WHERE user ='" . $id. "' AND doc_type IS NOT NULL AND doc_type <> '' ";
+$result_infoq_subidos = $conexion->query($sql_infoq_subidos);
+$infoq_subidos = [];
+while ($row = mysqli_fetch_assoc($result_infoq_subidos)) {
+    $infoq_subidos[] = ['doc_type' => $row['doc_type'], 'estado' => $row['estado']];
+}
+            
+// Calcular los documentos que faltan
+$infoq_faltantes = array_diff($doctype_infoq, array_column($infoq_subidos, 'doc_type'));
+// -------------------------------------------------------------------------------------------------------------------------------------   
 
-// Todos los derechos reservados © Quito - Ecuador || ITIN en línea || Levantamiento de Información || ESPE 2024
+// ENVIO 1
+// Obtener los tipos de documentos posibles
+$doctype_sendone = ["Acta Entrega","Acta Entrega-Recepcion","Record Academico"];
 
-// Betty Lizeth Rodriguez Salas(Saori Coder)
+// Obtener los documentos subidos por el estudiante
+$sql_sendone_subidos = "SELECT doc_type,estado FROM send_one WHERE user='" .$id. "' AND doc_type IS NOT NULL AND doc_type <> '' " ;
+$result_sendone_subidos = $conexion->query($sql_sendone_subidos);
+$sendone_subidos = [];
+while ($row = mysqli_fetch_assoc($result_sendone_subidos)){
+    $sendone_subidos[] = $row['doc_type'];
+}
 
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+    
+// Calcular los documentos que faltan
+$sendone_faltantes = array_diff($doctype_sendone, $sendone_subidos);
+
+// -------------------------------------------------------------------------------------------------------------------------------------   
+// ENVIO 2
+// Obtener los tipos de documentos posibles
+$doctype_sendtwo = ["Informe Servicio Comunitario","Registro de estudiantes","Acta designacion estudiantes","Carta de compromiso","Numero de horas-estudiantes","Evaluacion estudiantes","Hoja de asistencia"];
+            
+// Obtener los documentos subidos por el estudiante
+$sql_sendtwo_subidos = "SELECT doc_type,estado FROM send_two WHERE user ='" . $id. "' AND doc_type IS NOT NULL AND doc_type <> '' " ;
+$result_sendtwo_subidos = $conexion->query($sql_sendtwo_subidos);
+$sendtwo_subidos = [];
+while ($row = mysqli_fetch_assoc($result_sendtwo_subidos)) {
+    $sendtwo_subidos[] = $row['doc_type'];
+}
+            
+// Calcular los documentos que faltan
+$sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
+// -------------------------------------------------------------------------------------------------------------------------------------   
 ?>
+
+<div class="form-datos">
+    <div class="contenedor-report">
+        <h4>Informes Quincenales</h4>
+        <div class="columnas">
+            <div class="columna">
+                <h6>Documentos subidos:</h6>
+                <ul>
+                    <?php foreach ($infoq_subidos as $documento): ?>
+                        <li> <?php echo $documento['doc_type']; ?> 
+                            <?php if ($documento['estado'] == 'Aprobado'): ?> <i class="fas fa-check-circle" style="color: green;"></i>
+                            <?php elseif ($documento['estado'] == 'En revisión'): ?> <i class="fas fa-clock" style="color: orange;"></i>
+                            <?php elseif ($documento['estado'] == 'Rechazado'): ?> <i class="fas fa-times-circle" style="color: red;"></i>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="columna">
+                <h6>Documentos faltantes:</h6>
+                <ul>
+                    <?php foreach ($infoq_faltantes as $documento): ?>
+                        <li> <?php echo $documento; ?> <i class="fas fa-times-circle" style="color: red;"></i> </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+        <hr> <!-- Línea horizontal -->
+        <h4>Envío 1</h4>
+        <div class="columnas">
+            <div class= "columna">
+                <h6>Documentos subidos:</h6>
+                <ul>
+                    <?php foreach ($sendone_subidos as $documento): ?>
+                        <li> <?php echo $documento; ?> <i class="fas fa-check-circle" style="color: green;"></i> </li>
+                    <?php endforeach; ?>
+                </ul> 
+            </div>
+            <div class= "columna"> 
+                <h6>Documentos faltantes:</h6>
+                <ul>
+                    <?php foreach ($sendone_faltantes as $documento): ?>
+                        <li> <?php echo $documento; ?> <i class="fas fa-times-circle" style="color: red;"></i> </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div> 
+        </div>
+        <hr> <!-- Línea horizontal --> 
+         <h4>Envío 2</h4>
+        <div class="columnas">
+            <div class= "columna">
+                <h6>Documentos subidos:</h6>
+                <ul>
+                    <?php foreach ($sendtwo_subidos as $documento): ?>
+                        <li> <?php echo $documento; ?> <i class="fas fa-check-circle" style="color: green;"></i> </li>
+                    <?php endforeach; ?>
+                </ul>    
+            </div>
+            <div class= "columna"> 
+                <h6>Documentos faltantes:</h6>
+                <ul>
+                    <?php foreach ($sendtwo_faltantes as $documento): ?>
+                        <li> <?php echo $documento; ?> <i class="fas fa-times-circle" style="color: red;"></i></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div> 
+        </div>
+        <hr> <!-- Línea horizontal -->
+        <p>
+            Aprobado <i class="fas fa-check-circle" style="color: green;"></i>
+            En revisión <i class="fas fa-clock" style="color: orange;"></i>
+            Rechazado o falta por subir <i class="fas fa-times-circle" style="color: red;"></i>
+        </p>
+        
+    </div>
+</div>
+
+<style>
+    .columnas {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .columna {
+        flex: 1;
+        margin-right: 20px; /* Espacio entre las columnas */
+    }
+
+    /* Estilos para los iconos */
+    .fas {
+        margin-right: 5px; /* Espacio entre el icono y el texto */
+    }
+</style>
+
+<!-- Incluir los iconos de Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

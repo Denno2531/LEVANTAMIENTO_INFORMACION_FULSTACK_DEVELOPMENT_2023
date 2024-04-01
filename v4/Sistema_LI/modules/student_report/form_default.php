@@ -179,3 +179,12 @@ if ($result = $conexion->query($sql)) {
 
 </div>
 
+<?php
+# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+
+// Todos los derechos reservados © Quito - Ecuador || ITIN en línea || Levantamiento de Información || ESPE 2024
+
+// Betty Lizeth Rodriguez Salas(Saori Coder)
+
+# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+?>
