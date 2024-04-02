@@ -86,12 +86,12 @@ $sql_sendone_subidos = "SELECT doc_type,estado FROM send_one WHERE user='" .$id.
 $result_sendone_subidos = $conexion->query($sql_sendone_subidos);
 $sendone_subidos = [];
 while ($row = mysqli_fetch_assoc($result_sendone_subidos)){
-    $sendone_subidos[] = $row['doc_type'];
+    $sendone_subidos[] = ['doc_type' => $row['doc_type'], 'estado' => $row['estado']];
 }
 
     
 // Calcular los documentos que faltan
-$sendone_faltantes = array_diff($doctype_sendone, $sendone_subidos);
+$sendone_faltantes = array_diff($doctype_sendone, array_column($sendone_subidos, 'doc_type'));
 
 // -------------------------------------------------------------------------------------------------------------------------------------   
 // ENVIO 2
@@ -103,11 +103,11 @@ $sql_sendtwo_subidos = "SELECT doc_type,estado FROM send_two WHERE user ='" . $i
 $result_sendtwo_subidos = $conexion->query($sql_sendtwo_subidos);
 $sendtwo_subidos = [];
 while ($row = mysqli_fetch_assoc($result_sendtwo_subidos)) {
-    $sendtwo_subidos[] = $row['doc_type'];
+    $sendtwo_subidos[] = ['doc_type' => $row['doc_type'], 'estado' => $row['estado']];
 }
             
 // Calcular los documentos que faltan
-$sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
+$sendtwo_faltantes = array_diff($doctype_sendtwo, array_column($sendtwo_subidos, 'doc_type'));
 // -------------------------------------------------------------------------------------------------------------------------------------   
 ?>
 
@@ -144,7 +144,12 @@ $sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
                 <h6>Documentos subidos:</h6>
                 <ul>
                     <?php foreach ($sendone_subidos as $documento): ?>
-                        <li> <?php echo $documento; ?> <i class="fas fa-check-circle" style="color: green;"></i> </li>
+                        <li> <?php echo $documento['doc_type']; ?>
+                            <?php if ($documento['estado'] == 'Aprobado'): ?> <i class="fas fa-check-circle" style="color: green;"></i>
+                            <?php elseif ($documento['estado'] == 'En revisión'): ?> <i class="fas fa-clock" style="color: orange;"></i>
+                            <?php elseif ($documento['estado'] == 'Rechazado'): ?> <i class="fas fa-times-circle" style="color: red;"></i>
+                            <?php endif; ?>
+                        </li>
                     <?php endforeach; ?>
                 </ul> 
             </div>
@@ -164,7 +169,12 @@ $sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
                 <h6>Documentos subidos:</h6>
                 <ul>
                     <?php foreach ($sendtwo_subidos as $documento): ?>
-                        <li> <?php echo $documento; ?> <i class="fas fa-check-circle" style="color: green;"></i> </li>
+                        <li> <?php echo $documento['doc_type']; ?>
+                            <?php if ($documento['estado'] == 'Aprobado'): ?> <i class="fas fa-check-circle" style="color: green;"></i>
+                            <?php elseif ($documento['estado'] == 'En revisión'): ?> <i class="fas fa-clock" style="color: orange;"></i>
+                            <?php elseif ($documento['estado'] == 'Rechazado'): ?> <i class="fas fa-times-circle" style="color: red;"></i>
+                            <?php endif; ?>
+                        </li>
                     <?php endforeach; ?>
                 </ul>    
             </div>
@@ -179,8 +189,8 @@ $sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
         </div>
         <hr> <!-- Línea horizontal -->
         <p>
-            Aprobado <i class="fas fa-check-circle" style="color: green;"></i>
-            En revisión <i class="fas fa-clock" style="color: orange;"></i>
+            Aprobado <i class="fas fa-check-circle" style="color: green;"></i>&ensp; &ensp;
+            En revisión <i class="fas fa-clock" style="color: orange;"></i>&ensp; &ensp;
             Rechazado o falta por subir <i class="fas fa-times-circle" style="color: red;"></i>
         </p>
         
@@ -195,7 +205,7 @@ $sendtwo_faltantes = array_diff($doctype_sendtwo, $sendtwo_subidos);
 
     .columna {
         flex: 1;
-        margin-right: 20px; /* Espacio entre las columnas */
+        margin-right: 18px; /* Espacio entre las columnas */
     }
 
     /* Estilos para los iconos */

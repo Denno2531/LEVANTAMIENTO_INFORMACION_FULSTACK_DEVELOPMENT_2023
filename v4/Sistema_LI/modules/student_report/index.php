@@ -59,6 +59,16 @@ include_once '../students/load_data.php';
 			$(".loader").fadeOut("slow");
 		});
 	</script>
+
+	<script>
+		$(document).ready(function() {
+			if (localStorage.getItem("pageloadcount")) {
+				$("#landContainer").hide();
+			} else {
+				localStorage.setItem("pageloadcount", "1");
+			}
+		});
+	</script>
 </head>
 
 <body>

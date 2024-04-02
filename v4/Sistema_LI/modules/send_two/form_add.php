@@ -38,10 +38,24 @@ $id_generate = 'S-' . unique_id(5);
                 <div class="description">
                     <label for="txtinfoqdescription" class="label">Descripción</label>
                     <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Documentación</textarea>
-                </div>
+                 </div>
                 <div class="first">
-                    <label for="txtuserarchivo" class="label">Cargar Archivo</label>
+                    <label for="selectsendtwo" class="label">Tipo de Documento</label>
+                    <select id="selectsendtwo" class="select" name="selectdoctype" required>
+                        <option value="">Seleccione</option>
+                        <option value="Informe Servicio Comunitario">Informe Servicio Comunitario </option>
+                        <option value="Registro de estudiantes">Registro de estudiantes</option>
+                        <option value="Acta designacion estudiantes">Acta designación estudiantes</option>
+                        <option value="Carta de compromiso">Carta de compromiso </option>
+                        <option value="Numero de horas-estudiantes">Número de horas-Estudiantes</option>
+                        <option value="Evaluacion estudiantes">Evaluación estudiantes</option>
+                        <option value="Hoja de asistencia">Hoja de asistencia</option>
+                    </select>
+                <div>
+                    <label for="txtusernum" class="label">Cargar Archivo</label>
                     <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx" required>
+                </div>
+
                 </div>
             </div>
             

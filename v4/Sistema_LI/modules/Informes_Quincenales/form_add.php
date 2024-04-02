@@ -30,30 +30,36 @@ $id_generate = 'Q-' . unique_id(5);
                     <input id="txtuserid" style="display: none;" type="text" name="userid" value="<?php echo $_SESSION['user_id']; ?>" maxlength="50">
                     <input class="text" type="text" name="txt" value="<?php echo $_SESSION['user_id']; ?>" maxlength="50" disabled />
                 </div>
+                
                 <div class="first">
                     <label for="txtusernum" class="label">N°PDF</label>
                     <input id="txtusernum" class="text" style=" display: none;" type="text" name="num" value="<?php echo $id_generate; ?>" maxlength="50" required />
                     <input class="text" type="text" name="txt" value="<?php echo $id_generate; ?>" required disabled />     
                 </div>
+                
                 <div class="description">
                     <label for="txtinfoqdescription" class="label">Descripción</label>
                     <textarea name="descripcion" id="descripcion" class="textarea" cols="30" rows="10" readonly>Enviado para su revisión</textarea>
                 </div>
-                <div>
-                    <label for= "doctype" class="label">Tipo de Documento</label>
-                    <select id="" class="select">
+                
+               <div class="first">
+                    <label for="selectformadd" class="label">Tipo de Documento</label>
+                    <select id="selectformadd" class="select" name="selectdoctype" required>
                         <option value="">Seleccione</option>
-                        <option value="Acta 1">Primer Informe Quincenal</option>
-                        <option value="Acta 2">Segundo Informe Quincenal</option>
-                        <option value="Acta 3">Tercer Informe Quincenal</option>
+                        <option value="Primer Informe Quincenal">Primer Informe Quincenal </option>
+                        <option value="Segundo Informe Quincenal">Segundo Informe Quincenal</option>
+                        <option value="Tercer Informe Quincenal">Tercer Informe Quincenal</option>
                     </select>
-                <div>
+  
+                
                 <div class="first">
                     <label for="txtuserarchivo" class="label">Cargar Archivo</label>
                     <input type="file" class="update-file" id="archivo" name="archivo" accept=".pdf, .doc, .docx" required>
                 </div>
+                
+                   </div>           
             </div>
-            
+
             <button class="btn icon" type="submit">save</button>
         </form>
     </div>
