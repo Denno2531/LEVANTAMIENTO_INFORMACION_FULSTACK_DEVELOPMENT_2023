@@ -14,9 +14,9 @@ include_once 'security.php';
         }
     ?>
 
-        <form action="" method="POST">
+        <!-- <form action="" method="POST">
             <button class="btn btn-disabled icon" name="btn" value="form_coding" type="submit" disabled>code</button>
-        </form>
+        </form> -->
 
         <form action="" method="POST">
             <button class="btn btn-disabled icon" name="btn" value="form_printer" type="submit">print</button>

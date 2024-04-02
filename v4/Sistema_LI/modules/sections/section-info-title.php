@@ -73,7 +73,7 @@ if (strpos($url_actual, 'modules')) {
 </div>
 
 <div id="landContainer">
-    <div style="text-align:center; margin: 120px 0;">
+    <div style="text-align:center; margin: 120px 0; color:#f5f5f5">
         <h1>Bienvenido a la plataforma de</h1>
         <h1>Levantamiento de Información</h1>
         <br>
