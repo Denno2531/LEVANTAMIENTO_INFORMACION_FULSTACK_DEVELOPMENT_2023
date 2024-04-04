@@ -3,62 +3,67 @@ include_once '../security.php';
 include_once '../conexion.php';
 include_once '../notif_info_msgbox.php';
 
-require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin.php');
+require_once($_SESSION['raiz'] . '/modules/sections/role-access-admin-editor.php');
 
-function UpdateUserDB($conex, $user, $email, $pass, $permissions)
-{
-	$date = date('Y-m-d H:i:s');
-
-	if ($email == '') {
-		$sql_update = "UPDATE users SET e
-		 = null, permissions = '" . $permissions . "', updated_at = '" . $date . "' WHERE user = '" . $user . "'";
-	} else {
-		if (empty($pass)) {
-			$sql_update = "UPDATE users SET email = '" . $email . "', permissions = '" . $permissions . "', updated_at = '" . $date . "' WHERE user = '" . $user . "'";
-			
-		} else {
-			$passhash = hash("SHA256",(trim($_POST['txtpass'])));
-			$sql_update = "UPDATE users SET email = '" . $email . "', pass = '" . $pass . "', permissions = '" . $permissions . "', updated_at = '" . $date . "' WHERE user = '" . $user . "'";
-
-		}
-		
-	}
-
-	if (mysqli_query($conex, $sql_update)) {
-		Info('Usuario actualizado.');
-	} else {
-		Error('Error al actualizar.');
-	}
-	header('Location: /modules/users');
-	exit();
-}
-
-if (!empty($_SESSION['user_id']) && !empty($_POST['txtusertype'] == 'admin' || $_POST['txtusertype'] == 'editor') || $_POST['txtusertype'] == 'teacher' || $_POST['txtusertype'] == 'student'|| $_POST['txtusertype'] == 'empre') {
-	$sql = "SELECT user FROM users WHERE email = '" . trim($_POST['txtemailupdate']) . "', pass = '" . trim($_POST['txtpassupdate']) . "' AND user != '" . trim($_SESSION['user_id']) . "' LIMIT 1";
-
-	if ($result = $conexion->query($sql)) {
-		if ($row = mysqli_fetch_array($result)) {
-			Error('Este correo electrónico ya está en uso.');
-			header('Location: /modules/users');
-			exit();
-		} else {
-			UpdateUserDB($conexion, trim($_SESSION['user_id']), trim($_POST['txtemailupdate']), trim($_POST['txtusertype']));
-		}
-	}
+// Validar que el ID de usuario no esté vacío
+if (isset($_POST['txtuserid'])) {
+    $_POST['txtuserid'] = trim($_POST['txtuserid']);
+    if (empty($_POST['txtuserid'])) {
+        Error('Error: No se proporcionó un ID de usuario.');
+        header('Location: /modules/users');
+        exit();
+    }
 } else {
-	header('Location: /');
-	exit();
+    Error('No se recibió un ID de usuario.');
+    header('Location: /modules/users');
+    exit();
 }
 
+// Consulta preparada para evitar inyección de SQL
+$sql_user = "SELECT * FROM users WHERE user = ?";
+$stmt = $conexion->prepare($sql_user);
+$stmt->bind_param("s", $_POST['txtuserid']);
+$stmt->execute();
+$result = $stmt->get_result();
 
+mysqli_begin_transaction($conexion);
+try {
+    if ($row = $result->fetch_assoc()) {
+        $date = date('Y-m-d H:i:s');
+        if (empty($_POST['txtpassupdate'])) {
+            $sql_update_user = "UPDATE users SET name = ?, surnames = ?, email = ?, permissions = ?, rol = ?, updated_at = ? WHERE user = ?";
+            $stmt = $conexion->prepare($sql_update_user);
+            $stmt->bind_param("sssssss", trim($_POST['txtnameupdate']), trim($_POST['txtsurnameupdate']), trim($_POST['txtemailupdate']), trim($_POST['txtusertype']), trim($_POST['txtuserrol']), $date, $_POST['txtuserid']);
+            $stmt->execute();
+        } else {
+            $passhash = hash("SHA256", trim($_POST['txtpassupdate']));
+            $sql_update_user = "UPDATE users SET name = ?, surnames = ?, email = ?, pass = ?, permissions = ?, rol = ?, updated_at = ? WHERE user = ?";
+            $stmt = $conexion->prepare($sql_update_user);
+            $stmt->bind_param("ssssssss", trim($_POST['txtnameupdate']), trim($_POST['txtsurnameupdate']), trim($_POST['txtemailupdate']), $passhash, trim($_POST['txtusertype']), trim($_POST['txtuserrol']), $date, $_POST['txtuserid']);
+            $stmt->execute();
+        }
 
+        if (!$stmt->execute()) {
+            handleError('Error!!! al actualizar el usuario: ' . $stmt->error);
+        }
 
+        if ($stmt->affected_rows > 0) {
+            Info('Usuario actualizado.');
+        } else {
+            Error('No se realizaron cambios en el usuario.');
+        }
+    } else {
+        Error('Este ID de usuario no existe.');
+    }
 
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
+    mysqli_commit($conexion);
+} catch (Exception $e) {
+    mysqli_rollback($conexion);
+    Error('Error al actualizar el usuario:' . $e->getMessage());
+}
 
-// Todos los derechos reservados © Quito - Ecuador || Estudiantes TIC's en línea || Levantamiento de Información || ESPE 2022-2023
+header('Location: /modules/users');
+exit();
 
-// Ricardo Alejandro  Jaramillo Salgado, Michael Andres Espinosa Carrera, Steven Cardenas, Luis LLumiquinga
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
+// Cuando escribi este codigo lo entendiamos Dios y yo, ahora solo Dios.
+?>
