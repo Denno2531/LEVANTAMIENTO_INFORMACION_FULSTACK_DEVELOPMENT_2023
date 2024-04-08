@@ -51,7 +51,7 @@ $nombrePDF=$_SESSION['send_archivo'];
     echo "Mi id es: " . $id;
 
 	if($_FILES["archivo"]["error"]>0){     
-		Info ("Error al cargar el archivo");
+		Error ("Error al cargar el archivo");
 	}else{
 		$permitidos= array("application/pdf"); 
 		$limite_kb=5000;
@@ -68,7 +68,7 @@ $nombrePDF=$_SESSION['send_archivo'];
                     Info ("Archivo guardado correctamente");
 				}else{
                     
-                    Info ("Error al guardar el archivo");
+                    Error ("Error al guardar el archivo");
 				}
 
 			}else{
@@ -77,7 +77,7 @@ $nombrePDF=$_SESSION['send_archivo'];
 			}
 		}else{
 
-			Info ("Archivo no permitido, excede el tamaño");
+			Error ("Archivo no permitido, excede el tamaño");
 		}
 	}
 

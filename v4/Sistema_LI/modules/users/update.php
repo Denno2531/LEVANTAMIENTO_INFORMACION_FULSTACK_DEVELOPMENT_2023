@@ -19,6 +19,19 @@ if (isset($_POST['txtuserid'])) {
     exit();
 }
 
+// Verificar si ya existe otro usuario con el mismo correo electronico
+$sql_check_email = "SELECT * FROM users WHERE email = ? AND user != ?";
+$stmt_check_email = $conexion->prepare($sql_check_email);
+$stmt_check_email->bind_param("ss", trim($_POST['txtemailupdate']), $_POST['txtuserid']);
+$stmt_check_email->execute();
+$result_check_email = $stmt_check_email->get_result();
+
+if ($result_check_email->num_rows > 0) {
+    Error('Ya existe otro usuario con el mismo correo electronico.');
+    header('Location: /modules/users');
+    exit();
+}
+
 // Consulta preparada para evitar inyección de SQL
 $sql_user = "SELECT * FROM users WHERE user = ?";
 $stmt = $conexion->prepare($sql_user);
@@ -44,14 +57,16 @@ try {
         }
 
         if (!$stmt->execute()) {
-            handleError('Error!!! al actualizar el usuario: ' . $stmt->error);
-        }
-
-        if ($stmt->affected_rows > 0) {
-            Info('Usuario actualizado.');
+            Error('Error al actualizar el usuario: ' . $stmt->error);
         } else {
-            Error('No se realizaron cambios en el usuario.');
+            if ($stmt->affected_rows > 0 || $row['updated_at'] != $date) {
+                Info('Usuario actualizado.');
+            } else {
+                Error('No se realizaron cambios en el usuario. Filas afectadas: ' . $stmt->affected_rows);
+            }
         }
+        
+
     } else {
         Error('Este ID de usuario no existe.');
     }

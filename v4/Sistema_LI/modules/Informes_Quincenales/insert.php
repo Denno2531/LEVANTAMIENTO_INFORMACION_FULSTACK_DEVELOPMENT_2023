@@ -54,7 +54,7 @@ $nombrePDF=$_SESSION['infoq_archivo'];
 
 	if($_FILES["archivo"]["error"]>0){     
 		
-		Info ("Error al cargar el archivo");
+		Error ("Error al cargar el archivo");
 	}else{
 		$permitidos= array("application/pdf"); //Solo recibe pdf
 		$limite_kb=4000;
@@ -72,7 +72,7 @@ $nombrePDF=$_SESSION['infoq_archivo'];
 
 				}else{
                     
-                    Info ("Error al guardar el archivo");
+                    Error ("Error al guardar el archivo");
 
 				}
 
@@ -82,7 +82,7 @@ $nombrePDF=$_SESSION['infoq_archivo'];
 			}
 		}else{
 
-			Info ("Archivo no permitido, excede el tamaño");
+			Error ("Archivo no permitido, excede el tamaño");
 
 		}
 	}
