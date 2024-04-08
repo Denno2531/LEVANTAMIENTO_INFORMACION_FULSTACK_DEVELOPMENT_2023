@@ -74,12 +74,3 @@ for ($i = 0; $i < min(8, $_SESSION['total_users']); $i++) {
 	}
 }
 
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
-// Todos los derechos reservados © Quito - Ecuador || ITIN en línea || Levantamiento de Información || ESPE 2024
-
-// Betty Lizeth Rodriguez Salas(Saori Coder)
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-?>
