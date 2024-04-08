@@ -47,7 +47,7 @@ if ($result = $conexion->query($sql)) {
 					<input class="text" type="text" name="txtname" value="<?php echo $_SESSION['student_name']; ?>" disabled />
 					<label class="label">Apellidos</label>
 					<input class="text" type="text" name="txtsurnames" value="<?php echo $_SESSION['student_surnames']; ?>" disabled />
-					<label class="label">Correo institucional</label>
+					<label class="label">Correo Institucional</label>
                     <input class="text" type="text" name="txtuseremail" value="<?php echo $_SESSION['email']; ?>" disabled />
 					<label for="dateofbirth" class="label">Fecha de nacimiento</label>
 					<input id="dateofbirth" class="date" type="text" name="dateofbirth" value="<?php echo $_SESSION['student_date_of_birth']; ?>" disabled />				

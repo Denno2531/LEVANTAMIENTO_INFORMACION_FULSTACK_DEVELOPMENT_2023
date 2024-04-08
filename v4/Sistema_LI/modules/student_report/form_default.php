@@ -12,7 +12,6 @@ if ($result_not = $conexion->query($sql_cont)) {
 	}
 }
 
-
 $sql = "SELECT * FROM notify WHERE estado='revisar'";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
@@ -24,7 +23,6 @@ if ($result = $conexion->query($sql)) {
 		$i += 1;
 	}
 }
-
 
 ?>
 
@@ -137,10 +135,10 @@ if ($result = $conexion->query($sql)) {
 	?>
 </div>
 
-<!-- Muestra Notificaciones -->
+<!-- Muestra Notificaciones 
 <div class="content-aside">
 	<?php
-	$start_index = max(0, $_SESSION['total_not'] - 75); // Comienza desde el índice que mostrará las últimas 75 notificaciones
+	$start_index = max(0, $_SESSION['total_not'] - 10); // Comienza desde el índice que mostrará las últimas 10 notificaciones
 	for ($i = $start_index; $i < $_SESSION['total_not']; $i++) {
 		mysqli_data_seek($result, $i);
 		$row = mysqli_fetch_array($result);
@@ -169,15 +167,4 @@ if ($result = $conexion->query($sql)) {
 	}
 
 	?>
-
-</div>
-
-<?php
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
-// Todos los derechos reservados © Quito - Ecuador || ITIN en línea || Levantamiento de Información || ESPE 2024
-
-// Betty Lizeth Rodriguez Salas(Saori Coder)
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-?>
+</div> -->

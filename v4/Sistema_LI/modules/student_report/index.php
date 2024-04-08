@@ -59,7 +59,7 @@ include_once '../students/load_data.php';
 			$(".loader").fadeOut("slow");
 		});
 	</script>
-
+	
 	<script>
 		$(document).ready(function() {
 			if (localStorage.getItem("pageloadcount")) {
@@ -98,20 +98,3 @@ include_once '../students/load_data.php';
 <script src="/js/controls/buttons.js" type="text/javascript"></script>
 
 </html>
-
-
-
-
-
-
-<?php
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
-// Todos los derechos reservados © Quito - Ecuador || ITIN en línea || Levantamiento de Información || ESPE 2024
-
-// Betty Lizeth Rodriguez Salas(Saori Coder)
-
-# ⚠⚠⚠ DO NOT DELETE ⚠⚠⚠
-
-?>
