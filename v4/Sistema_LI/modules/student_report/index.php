@@ -33,7 +33,7 @@ if (!empty($_POST['page'])) {
 $max = 20;
 $inicio = ($page - 1) * $max;
 
-// Cargar datos de Asignaturas
+// Cargar datos 
 include_once '../students/load_data.php';
 ?>
 <!DOCTYPE html>
