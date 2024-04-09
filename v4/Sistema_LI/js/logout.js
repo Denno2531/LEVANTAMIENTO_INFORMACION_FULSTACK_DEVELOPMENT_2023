@@ -1,5 +1,5 @@
-// Tiempo de inactividad en milisegundos (por ejemplo, 30 minutos)
-var inactivityTime = 30 * 60 * 1000; 
+// Tiempo de inactividad en milisegundos (15 minutos)
+var inactivityTime = 12 * 60 * 1000; 
 
 var timeout;
 
