@@ -53,7 +53,7 @@ include_once 'load_data.php';
     <script src="/js/external/prefixfree.min.js" type="text/javascript"></script>
 	<script src="/js/controls/unsetnotif.js"  type="text/javascript"></script>
 	<script src="/js/external/select2.js" type="text/javascript"></script>
-	<script src="/js/logout.js"></script>
+	<script src="/js/logout2.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
 			$(".loader").fadeOut("slow");

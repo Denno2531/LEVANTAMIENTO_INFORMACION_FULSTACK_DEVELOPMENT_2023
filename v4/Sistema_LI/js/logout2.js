@@ -13,7 +13,7 @@ function resetTimer() {
 }
 
 function logout() {
-    window.location.href = 'modules/logout.php'; // Redirigir a la página de cierre de sesión
+    window.location.href = '../logout.php'; // Redirigir a la página de cierre de sesión
 }
 
 // Detectar eventos de actividad del usuario

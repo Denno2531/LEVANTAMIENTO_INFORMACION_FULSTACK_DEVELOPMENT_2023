@@ -27,7 +27,7 @@ if (!empty($_SESSION['authenticate']) == 'go-' . !empty($_SESSION['usuario'])) {
 	<link rel="stylesheet" href="css/pretty-checkbox.css" media="screen, projection" type="text/css" />
 	<script src="/js/external/jquery.min.js" type="text/javascript"></script>
     <script src="/js/external/prefixfree.min.js" type="text/javascript"></script>
-	<script src="/js/logout.js"></script>
+	<!--<script src="/js/logout.js"></script> -->
 	<script type="text/javascript">
 		$(window).load(function() {
 			$(".loader").fadeOut("slow");
