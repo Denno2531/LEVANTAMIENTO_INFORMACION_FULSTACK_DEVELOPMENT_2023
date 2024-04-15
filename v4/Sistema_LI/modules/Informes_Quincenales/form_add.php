@@ -9,12 +9,18 @@ if ($result = $conexion->query($sql)) {
         $_SESSION['user_id'] = $row['user'];
     }
 }
-		
+
+function unique_id($l = 10)
+{
+    return substr(md5(bin2hex(random_bytes(8))), 0, $l);
+}
+
+/*
 function unique_id($l = 10)
 {
     return substr(md5(uniqid(mt_rand(), true)), 0, $l);
 }
-
+*/
 
 $id_generate = 'Q-' . unique_id(5);
 ?>
@@ -49,6 +55,8 @@ $id_generate = 'Q-' . unique_id(5);
                         <option value="Primer Informe Quincenal">Primer Informe Quincenal </option>
                         <option value="Segundo Informe Quincenal">Segundo Informe Quincenal</option>
                         <option value="Tercer Informe Quincenal">Tercer Informe Quincenal</option>
+                        <option value="Cuarto Informe Quincenal">Cuarto Informe Quincenal</option>
+                        <option value="Quinto Informe Quincenal">Quinto Informe Quincenal</option>
                     </select>
   
                 
