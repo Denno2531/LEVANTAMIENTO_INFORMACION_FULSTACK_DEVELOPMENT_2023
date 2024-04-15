@@ -6,6 +6,9 @@ $sql = "SELECT COUNT(num) AS total FROM send_one";
 if ($result = $conexion->query($sql)) {
 	if ($row = mysqli_fetch_array($result)) {
 		$tpages = ceil($row['total'] / $max);
+		$_SESSION['total_sendone'] = $row['total'];
+	}else{
+	    $_SESSION['total_sendone'] = 0; // Esttablecer a zero, si no hay registros.
 	}
 }
 
@@ -32,7 +35,7 @@ if (!empty($_POST['search'])) {
 			$i += 1;
 		}
 	}
-	$_SESSION['total_infoq'] = count($_SESSION['num']);
+	$_SESSION['total_sendone'] = count($_SESSION['num']);
 } else {
 	$_SESSION['user_id'] = array();
 	$_SESSION['num'] = array();
@@ -51,5 +54,5 @@ if (!empty($_POST['search'])) {
 			$i += 1;
 		}
 	}
-	$_SESSION['total_send'] = count($_SESSION['num']);
+	$_SESSION['total_sendone'] = count($_SESSION['num']);
 }

@@ -36,7 +36,6 @@ if ($result = $conexion->query($sql)) {
 						<tr>
 						<th class="center">User</th>
 							<th class="center">Nombre</th>
-							<th class="center">Sede</th>
 							<th class="center">Carrera</th>
 							<th class="center">Departamento</th>
 							<th class="center">Informe Quincenal</th>
@@ -54,7 +53,6 @@ if ($result = $conexion->query($sql)) {
 						<tr>
 							<td class="center">' . $_SESSION["user_id"][$i] . '</td>
 							<td>' . $_SESSION["student_name"][$i] . '</td>
-							<td class="center">' . $_SESSION["student_sede"][$i] . '</td>
 							<td class="center">' . $_SESSION["student_career"][$i] . '</td>
 							<td class="center">' . $_SESSION["student_departamento"][$i] . '</td>
 							<td class="center">' . $_SESSION["infoq" . $_SESSION['user_id'][$i]] . '</td>
