@@ -74,6 +74,10 @@ if (strpos($url_actual, 'modules')) {
         <li><a class="<?php if ($output[1] == 'student_report') {
                             echo 'active';
                         } ?>" href="/modules/student_report"><span class="icon">library_books</span>Reportes Estudiantes</a></li>
+        <li><a class="<?php if ($output[1] == 'Manual de Uso') {
+                            echo 'active'; 
+                        } ?>" href="/modules/tutoriales_editores"><span class="icon">library_books</span>Manual de Uso</a></li>                     
+
 </div>
 <div class="menu-mobile">
     <header>

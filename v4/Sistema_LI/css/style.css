@@ -2958,6 +2958,8 @@ ul li a.student-list {
 ::-webkit-file-upload-button:hover {
   background: #569188;
 }
+
+
 /*informacion estudiante*/
 .contenedor-report{
     padding:35px;
@@ -3001,4 +3003,25 @@ ul li a.student-list {
   pointer-events: none;
 }
 
+/* Contenedor tutos */
 
+.content-xl {
+  display: block;
+  float: right;
+  margin: 1%;
+  width: 78%;
+}
+.container-tutorial{
+  padding:30px;
+  color: white;
+  font-size: 0.9em;
+  background-color: #2a2d33;
+  border-radius: 17px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; 
+}

@@ -69,7 +69,7 @@ while ($row = mysqli_fetch_array($resultado)){
         ?>
     </table>
     <?php
-    if ($_SESSION['total_infoq'] == 0) {
+    if ($_SESSION['total_sendone'] == 0) {
         echo '
                 <img src="/images/404.svg" class="data-not-found" alt="404">
         ';

@@ -77,7 +77,10 @@ if (strpos($url_actual, 'modules')) {
         <li><a class="<?php if ($output[1] == 'Certificado') {
                             echo 'active';
                         } ?>" href="/modules/certification"><span class="icon">recent_actors</span> <strong>1.5 </strong> <u>Certificados </u></a></li>
-        
+        <li><a class="<?php if ($output[1] == 'Tutoriales') {
+                            echo 'active'; 
+                        } ?>" href="/modules/tutoriales_estudiantes"><span class="icon">library_books</span> <strong>1.6 </strong> <u>Tutoriales<u></a></li>  
+                
         
 </div>
 <div class="menu-mobile">
@@ -87,8 +90,8 @@ if (strpos($url_actual, 'modules')) {
             <ul>
                 <li>
                     <a class="<?php if ($output[1] == 'home') {
-                                    echo 'active';
-                                } ?>" href="/home" title="Dashboard"><span class="icon">dashboard</span></a>
+                            echo 'active';
+                        } ?>" href="/home" title="Dashboard"><span class="icon">dashboard</span></a>
                 </li>
                 <li>
                     <a class="<?php if ($output[1] == 'Informes_Quincenales') {
@@ -96,7 +99,9 @@ if (strpos($url_actual, 'modules')) {
                         } ?>" href="/modules/Informes_Quincenales" title="Informes Quincenales"><span class="icon">recent_actors</span></a>
                 </li>
                 <li>
-                    <a class="" href="" title="Justificaciones"><span class="icon">library_books</span></a>
+                    <a class="<?php if ($output[1] == 'Justificaciones'){
+                            echo 'active';
+                        } ?> " href="/modules/Justificaciones" title="Justificaciones"><span class="icon">library_books</span></a>
                 </li>
                 <li>
                     <a class="" href="" title="Envio_1"><span class="icon">recent_actors</span></a>
@@ -106,6 +111,11 @@ if (strpos($url_actual, 'modules')) {
                 </li>
                 <li>
                     <a class="" href="" title="Certificado"><span class="icon">recent_actors</span></a>
+                </li>
+                <li>
+                    <a class="<?php if ($output[1] == 'Tutoriales') {
+                            echo 'active'; 
+                        } ?>" href="/modules/tutoriales_estudiantes" title="Tutoriales"><span class="icon">library_books</span></a>
                 </li>
                 
             </ul>
