@@ -45,6 +45,16 @@ header('Pragma: no-cache');
              localStorage.setItem("pageloadcount", "1");
          });
     </script>
+    
+    <style>
+        video {
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,24 +73,28 @@ header('Pragma: no-cache');
 		} elseif (!empty($_SESSION['section-student']) == 'go-' . $_SESSION['user']) {
 			include_once '../sections/section-student.php';
 		}
-
-
 		?>
 	</aside>
+	
 	<section class="content-xl">
         <div class="container-tutorial">
             <h2>Subir Archivos </h2>
 
             <h3>Subida de Archivos en Informes Quincenales </h3>
 			<div class="video-container">				
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/5Z56MZFMp0k?si=ewss73hyrCSnPHVJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <video width="640" height="360" controls>
+                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                </video>
 			</div></br>
 			<h3>Subida de Archivos en Envío 1</h3>
 			<div class="video-container">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/okrYMAiwAKA?si=0LRHGp8nPzrYrrH9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			
 			</div></br>
 			
             <h3>Subida de Archivos en Envío 2</h3>
+            <div class="video-container">
+			
+			</div></br>
         </div>
     </section>
 </body>

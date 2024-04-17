@@ -75,7 +75,7 @@ $nombrePDF=$_SESSION['send_archivo'];
 			}
 		}else{
 
-			Info ("Archivo no permitido, excede el tamaño");
+			Error ("Archivo no permitido, excede el tamaño");
 		}
 	}
 

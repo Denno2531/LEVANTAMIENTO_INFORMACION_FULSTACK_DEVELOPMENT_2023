@@ -68,16 +68,16 @@ if (strpos($url_actual, 'modules')) {
         <li><a class="<?php if ($output[1] == 'Justificaciones') {
                             echo 'active';
                         } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span><strong>1.2 </strong><u> Justificaciones</u></a></li>
-        <li><a class="<?php if ($output[1] == 'Envio_1') {
+        <li><a class="<?php if ($output[1] == 'send_one') {
                             echo 'active';
                         } ?>" href="/modules/send_one"><span class="icon">recent_actors</span> <strong>1.3 </strong><u>Envio 1 y Record academico</u></a></li>
-        <li><a class="<?php if ($output[1] == 'Envio_2') {
+        <li><a class="<?php if ($output[1] == 'send_two') {
                             echo 'active';
                         } ?>" href="/modules/send_two"><span class="icon">recent_actors</span><strong>1.4 </strong> <u>Envio 2</u></a></li>
-        <li><a class="<?php if ($output[1] == 'Certificado') {
+        <li><a class="<?php if ($output[1] == 'certification') {
                             echo 'active';
                         } ?>" href="/modules/certification"><span class="icon">recent_actors</span> <strong>1.5 </strong> <u>Certificados </u></a></li>
-        <li><a class="<?php if ($output[1] == 'Tutoriales') {
+        <li><a class="<?php if ($output[1] == 'tutoriales_estudiantes') {
                             echo 'active'; 
                         } ?>" href="/modules/tutoriales_estudiantes"><span class="icon">library_books</span> <strong>1.6 </strong> <u>Tutoriales<u></a></li>  
                 
@@ -104,10 +104,14 @@ if (strpos($url_actual, 'modules')) {
                         } ?> " href="/modules/Justificaciones" title="Justificaciones"><span class="icon">library_books</span></a>
                 </li>
                 <li>
-                    <a class="" href="" title="Envio_1"><span class="icon">recent_actors</span></a>
+                    <a class="<?php if ($output[1] == 'send_one') {
+                            echo 'active';
+                        } ?>" href="/modules/send_one" title="Envio_1"><span class="icon">recent_actors</span></a>
                 </li>
                 <li>
-                    <a class="" href="" title="Envio_2"><span class="icon">recent_actors</span></a>
+                    <a class="<?php if ($output[1] == 'send_two') {
+                            echo 'active';
+                        } ?>" href="/modules/send_two" title="Envio_2"><span class="icon">recent_actors</span></a>
                 </li>
                 <li>
                     <a class="" href="" title="Certificado"><span class="icon">recent_actors</span></a>
