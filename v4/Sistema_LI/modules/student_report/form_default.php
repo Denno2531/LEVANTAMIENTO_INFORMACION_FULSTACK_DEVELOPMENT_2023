@@ -125,6 +125,8 @@ if ($result = $conexion->query($sql)) {
 	</script>
 
 
+
+
 </div>
 <div class="content-aside">
 	<?php
@@ -132,6 +134,16 @@ if ($result = $conexion->query($sql)) {
 	include_once "../sections/options.php";
 	?>
 </div>
+
+
+<div class="content-aside">
+    <div class="btn-report">
+        <form action="print_report.php" method="post" target="_blank">
+            <input type="submit" name="generar_pdf" value="Generar PDF">
+        </form>
+    </div>
+</div>
+
 
 <!-- Muestra Notificaciones 
 <div class="content-aside">
