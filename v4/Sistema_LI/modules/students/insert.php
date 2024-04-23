@@ -20,8 +20,19 @@ if ($_POST['txtuserid'] == '') {
 $sql_check_user = "SELECT * FROM students WHERE cedula = '" . $_POST['txtcedula'] . "'";
 $result_check_user = $conexion->query($sql_check_user);
 
+// Verificar si ya existe otro usuario con el mismo correo electronico
+$sql_check_email = "SELECT * FROM users WHERE email = ? AND user != ?";
+$stmt_check_email = $conexion->prepare($sql_check_email);
+$stmt_check_email->bind_param("ss", trim($_POST['txtuseremail']), $_POST['txtuserid']);
+$stmt_check_email->execute();
+$result_check_email = $stmt_check_email->get_result();
+
 if (mysqli_num_rows($result_check_user) > 0) {
     Error('Este usuario ya está registrado, favor validar por su cédula.');
+    header('Location: /modules/students');
+    exit();
+} elseif ($result_check_email->num_rows > 0){
+    Error('Ya existe otro usuario con el mismo correo electronico.');
     header('Location: /modules/students');
     exit();
 } else {
@@ -66,9 +77,6 @@ if (mysqli_num_rows($result_check_user) > 0) {
         }
     }
 }
-
-
-
 
 
 

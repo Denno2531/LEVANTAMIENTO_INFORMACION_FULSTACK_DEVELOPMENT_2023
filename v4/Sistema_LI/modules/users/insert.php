@@ -19,8 +19,16 @@ if (empty($_POST['txtuserid'])) {
 // Se escapa la contraseña antes de hacer hash.
 $passhash = hash("SHA256", mysqli_real_escape_string($conexion, trim($_POST['txtpass'])));
 
+// Verificar si ya existe otro usuario con el mismo correo electronico
+$sql_check_email = "SELECT * FROM users WHERE email = ? AND user != ?";
+$stmt_check_email = $conexion->prepare($sql_check_email);
+$stmt_check_email->bind_param("ss", trim($_POST['txtemail']), $_POST['txtuserid']);
+$stmt_check_email->execute();
+$result_check_email = $stmt_check_email->get_result();
+
 // Se prepara la consulta SQL utilizando consultas preparadas.
 $sql = "SELECT * FROM administratives WHERE user = ?";
+
 if ($stmt = $conexion->prepare($sql)) {
     // Se vincula el parámetro.
     $stmt->bind_param("s", $_POST['txtuserid']);
@@ -33,6 +41,10 @@ if ($stmt = $conexion->prepare($sql)) {
         Error('Este ID ya está en uso. Elige otro.');
         header('Location: /modules/users');
         exit();
+    } elseif ($result_check_email->num_rows > 0) {
+            Error('Ya existe otro usuario con el mismo correo electronico.');
+            header('Location: /modules/users');
+            exit();
     } else {
         // Se obtiene la fecha actual.
         $date = date('Y-m-d H:i:s');
