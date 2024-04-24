@@ -64,22 +64,22 @@ if (strpos($url_actual, 'modules')) {
                         } ?>" href="/home"><span class="icon">dashboard</span>Dashboard</a></li>        
         <li><a class="<?php if ($output[1] == 'Informes_Quincenales') {
                             echo 'active';
-                        } ?>" href="/modules/Informes_Quincenales"><span class="icon">recent_actors</span> <strong>1.1 </strong><u>Informes Quincenales</u></a></li>
+                        } ?>" href="/modules/Informes_Quincenales"><span class="icon">recent_actors</span> Quincenales </a></li>
         <li><a class="<?php if ($output[1] == 'Justificaciones') {
                             echo 'active';
-                        } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span><strong>1.2 </strong><u> Justificaciones</u></a></li>
+                        } ?>" href="/modules/Justificaciones"><span class="icon">library_books</span> Justificaciones</a></li>
         <li><a class="<?php if ($output[1] == 'send_one') {
                             echo 'active';
-                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span> <strong>1.3 </strong><u>Envio 1 y Record academico</u></a></li>
+                        } ?>" href="/modules/send_one"><span class="icon">recent_actors</span> Envio 1 y Record academico</a></li>
         <li><a class="<?php if ($output[1] == 'send_two') {
                             echo 'active';
-                        } ?>" href="/modules/send_two"><span class="icon">recent_actors</span><strong>1.4 </strong> <u>Envio 2</u></a></li>
+                        } ?>" href="/modules/send_two"><span class="icon">recent_actors</span> Envio 2</a></li>
         <li><a class="<?php if ($output[1] == 'certification') {
                             echo 'active';
-                        } ?>" href="/modules/certification"><span class="icon">recent_actors</span> <strong>1.5 </strong> <u>Certificados </u></a></li>
+                        } ?>" href="/modules/certification"><span class="icon">recent_actors</span>  Certificados </a></li>
         <li><a class="<?php if ($output[1] == 'tutoriales_estudiantes') {
                             echo 'active'; 
-                        } ?>" href="/modules/tutoriales_estudiantes"><span class="icon">library_books</span> <strong>1.6 </strong> <u>Tutoriales<u></a></li>  
+                        } ?>" href="/modules/tutoriales_estudiantes"><span class="icon">library_books</span> Tutoriales</a></li>  
                 
         
 </div>

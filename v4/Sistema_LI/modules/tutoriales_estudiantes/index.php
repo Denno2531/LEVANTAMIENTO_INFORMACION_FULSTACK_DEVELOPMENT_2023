@@ -78,26 +78,38 @@ header('Pragma: no-cache');
 	
 	<section class="content-xl">
         <div class="container-tutorial">
-            <h2>Subir Archivos </h2>
+            <h2 class="titulo-tutorial">Tutoriales para la subida de Archivos </h2></br></br>
 
             <h3>Subida de Archivos en Informes Quincenales </h3>
 			<div class="video-container">				
                 <video width="640" height="360" controls>
                     <source src="InformesQuincenales.mp4" type="video/mp4">
+					
                 </video>
 			</div></br>
+
 			<h3>Subida de Archivos en Envío 1</h3>
 			<div class="video-container">
+			<video width="640" height="360" controls>
+                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                </video>
 			
 			</div></br>
 			
             <h3>Subida de Archivos en Envío 2</h3>
             <div class="video-container">
+			<video width="640" height="360" controls>
+                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                </video>
 			
 			</div></br>
+			<p class="pie"><bold>PROWESS.EC - Levantamiento de la Información</bold></p>
         </div>
     </section>
+	
+	
 </body>
+
 <script src="/js/controls/buttons.js" type="text/javascript"></script>
 
 </html>

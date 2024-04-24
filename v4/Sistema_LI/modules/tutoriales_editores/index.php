@@ -21,7 +21,7 @@ header('Pragma: no-cache');
 	<meta name="robots" content="noindex">
 	<meta name="google" value="notranslate">
 	<link rel="icon" type="image/png" href="/images/icon.png" />
-	<title>Alumnos | Levantamiento Información</title>
+	<title>Editores | Levantamiento Información</title>
 	<meta name="description" content="Prowess ec | Levantamiento de Información." />
 	<link rel="stylesheet" href="/css/style.css?v=<?php echo (rand()); ?>" media="screen, projection" type="text/css" />
 	<link rel="stylesheet" href="/css/select2.css" media="screen, projection" type="text/css" />
@@ -45,9 +45,19 @@ header('Pragma: no-cache');
              localStorage.setItem("pageloadcount", "1");
          });
     </script>
+	<style>
+        video {
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
+	
 	<div class="loader"></div>
 	<header class="header">
 		<?php
@@ -55,6 +65,7 @@ header('Pragma: no-cache');
 		?>
 	</header>
 	<aside>
+		
 		<?php
 		if (!empty($_SESSION['section-admin']) == 'go-' . $_SESSION['user']) {
 			include_once '../sections/section-admin.php';
@@ -67,23 +78,20 @@ header('Pragma: no-cache');
 
 		?>
 	</aside>
+	
 	<section class="content-xl">
+	
         <div class="container-tutorial">
+		<h2 class="titulo-tutorial">Tutoriales para la subida de Archivos </h2></br></br>
+		<h1>Tutoriales para editores</h1>
+		<p>Recuerda que los siguientes vdeos son guías para el uso correcto de la plataforma.</p>
 			<div class="video-container">
-				<iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-			</div></br>
-    
-
-            
-			<div class="video-container">				
-                <video width="640" height="360" controls>
-                    <source src=".mp4" type="video/mp4">
+			<video width="640" height="360" controls>
+                    <source src="InformesQuincenales.mp4" type="video/mp4">
+					
                 </video>
 			</div></br>
-			
-			<div class="video-container">
-			
-			</div></br>
+			<p class="pie"><bold>PROWESS.EC - Levantamiento de la Información</bold></p>
         </div>
     </section>
 </body>

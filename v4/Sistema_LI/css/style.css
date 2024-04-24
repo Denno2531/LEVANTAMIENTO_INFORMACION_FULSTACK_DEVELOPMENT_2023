@@ -3049,6 +3049,26 @@ ul li a.student-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; 
+  height: 55vh; 
+  padding-bottom: 50px;
 }
 
+.titulo-tutorial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-videos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie{
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

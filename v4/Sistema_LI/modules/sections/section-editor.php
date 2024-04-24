@@ -76,7 +76,7 @@ if (strpos($url_actual, 'modules')) {
                         } ?>" href="/modules/student_report"><span class="icon">library_books</span>Reportes Estudiantes</a></li>
         <li><a class="<?php if ($output[1] == 'Manual de Uso') {
                             echo 'active'; 
-                        } ?>" href="/modules/tutoriales_editores"><span class="icon">library_books</span>Manual de Uso</a></li>                     
+                        } ?>" href="/modules/tutoriales_editores"><span class="icon">library_books</span>Tutoriales</a></li>                     
 
 </div>
 <div class="menu-mobile">
