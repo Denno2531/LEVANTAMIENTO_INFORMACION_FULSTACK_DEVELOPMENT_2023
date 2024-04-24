@@ -83,7 +83,7 @@ header('Pragma: no-cache');
             <h3>Subida de Archivos en Informes Quincenales </h3>
 			<div class="video-container">				
                 <video width="640" height="360" controls>
-                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                    <source src="1InformesQuincenales.mp4" type="video/mp4">
 					
                 </video>
 			</div></br>
@@ -91,7 +91,7 @@ header('Pragma: no-cache');
 			<h3>Subida de Archivos en Envío 1</h3>
 			<div class="video-container">
 			<video width="640" height="360" controls>
-                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                    <source src="1InformesQuincenales.mp4" type="video/mp4">
                 </video>
 			
 			</div></br>
@@ -99,7 +99,7 @@ header('Pragma: no-cache');
             <h3>Subida de Archivos en Envío 2</h3>
             <div class="video-container">
 			<video width="640" height="360" controls>
-                    <source src="InformesQuincenales.mp4" type="video/mp4">
+                    <source src="1InformesQuincenales.mp4" type="video/mp4">
                 </video>
 			
 			</div></br>
